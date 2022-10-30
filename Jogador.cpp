@@ -1,5 +1,5 @@
 #include "Jogador.h"
-using namespace Personagens;
+using namespace personagens;
 Jogador::Jogador() {
 }
 

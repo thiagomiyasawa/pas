@@ -1,4 +1,5 @@
 #include "Inimigo.h"
+using namespace personagens;
 
 Inimigo::Inimigo() {
 	body.setFillColor(Color::Red);
