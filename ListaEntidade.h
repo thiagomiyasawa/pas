@@ -13,9 +13,9 @@ class ListaEntidade
 	public:
 		ListaEntidade();
 		~ListaEntidade();
-		void addEnte(Ente* entidade);
-		void removeEnte(Ente* entidade);
-		void getTamanho();
+		void addEntidade(Ente* entidade);
+		void removeEntidade(Ente* entidade);
+		int getTamanho();
 		Ente* operator[] (int num);
 
 

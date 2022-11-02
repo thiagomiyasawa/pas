@@ -8,12 +8,15 @@ ListaEntidade::~ListaEntidade() {
 
 }
 
-void ListaEntidade::addEnte(Ente* entidade) {
+void ListaEntidade::addEntidade(Ente* entidade) {
 	lista.push_back(entidade);
 }
 
-void ListaEntidade::removeEnte(Ente* entidade) {
+void ListaEntidade::removeEntidade(Ente* entidade) {
 	lista.remove(entidade);
+}
+int ListaEntidade::getTamanho() {
+	return lista.size();
 }
 
 Ente* ListaEntidade::operator[] (int num) {
