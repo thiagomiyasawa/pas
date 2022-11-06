@@ -30,7 +30,7 @@
     <ClCompile Include="Inimigo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListaEntidade.cpp">
+    <ClCompile Include="ListaEntidades.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lista.cpp">
@@ -71,7 +71,7 @@
     <ClInclude Include="Inimigo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListaEntidade.h">
+    <ClInclude Include="ListaEntidades.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lista.h">

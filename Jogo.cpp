@@ -1,14 +1,13 @@
 #include "Jogo.h"
 
 Jogo::Jogo():
-window(VideoMode(400, 400), "SFML works!"),
-jogador1(), inimigo1() {
-    
-    jogador1.setWindow(&window);
-    inimigo1.setWindow(&window);
+window(VideoMode(400, 400), "SFML works!") {
+    jogador1 = new Jogador;
+    jogador1->setWindow(&window);
+    fase1 = new Fase(&window, jogador1);
+    LEs = fase1->getListaEntidades();
+
     Executar();
-
-
 }
 
 Jogo::~Jogo(){
@@ -25,10 +24,12 @@ void Jogo::Executar() {
 
         }
 
-        jogador1.move();
+        jogador1->move();
         window.clear();
-        jogador1.draw();
-        inimigo1.draw();
+        for (int i = 0; i < LEs->getSize(); i++) {
+            Ente* temp = LEs->getItem(i);
+            temp->draw();
+        }
         window.display();
     }
 
