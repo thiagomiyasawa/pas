@@ -32,12 +32,12 @@ void Jogador::move() {
     }
     if (NoChao) {
         if (Keyboard::isKeyPressed(Keyboard::Up)) {
-            velocidadey = -2;
+            velocidadey = -0.5;
             NoChao = false;
         }
     }
     else {
-        velocidadey += 0.01f;
+        velocidadey += 0.001f;
     }
 
 

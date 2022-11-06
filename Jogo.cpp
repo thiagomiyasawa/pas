@@ -2,9 +2,10 @@
 
 Jogo::Jogo():
 window(VideoMode(400, 400), "SFML works!"),
-jogador1() {
+jogador1(), inimigo1() {
     
     jogador1.setWindow(&window);
+    inimigo1.setWindow(&window);
     Executar();
 
 
@@ -27,6 +28,7 @@ void Jogo::Executar() {
         jogador1.move();
         window.clear();
         jogador1.draw();
+        inimigo1.draw();
         window.display();
     }
 

@@ -13,6 +13,7 @@ class Jogo{
 private:
 	RenderWindow window;
 	Jogador jogador1;
+	Inimigo inimigo1;
 public:
 	Jogo();
 	~Jogo();
