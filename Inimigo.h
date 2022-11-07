@@ -1,7 +1,7 @@
 #pragma once
-#include "Ente.h"
+#include "Personagem.h"
 namespace personagens {
-	class Inimigo : public Ente {
+	class Inimigo : public Personagem {
 	private:
 	public:
 		Inimigo();

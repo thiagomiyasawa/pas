@@ -1,9 +1,7 @@
 #include "Jogador.h"
 using namespace personagens;
-Jogador::Jogador() {
+Jogador::Jogador() : Personagem(3, 0., 280.) {
     body.setPosition(0.f, 280.f);
-    x = 0.;
-    y = 280.;
     NoChao = true;
     velocidadey = 0;
 }

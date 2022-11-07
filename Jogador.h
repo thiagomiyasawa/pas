@@ -1,12 +1,10 @@
 #pragma once
-#include "Ente.h"
+#include "Personagem.h"
 namespace personagens {
-	class Jogador : public Ente {
+	class Jogador : public Personagem {
 	private:
 		float velocidadey;
 		bool NoChao;
-		float x;
-		float y;
 
 
 	public:
