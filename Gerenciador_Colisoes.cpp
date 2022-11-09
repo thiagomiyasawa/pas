@@ -12,7 +12,7 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 void Gerenciador_Colisoes::execultar() {
 	list<Inimigo*>::iterator it;
 	int i=0;
-	while (i<LIs.size()) {
+	while (i<LOs.size()) {
 
 
 	}
