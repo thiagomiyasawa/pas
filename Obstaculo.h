@@ -1,5 +1,11 @@
 #pragma once
-class Obstaculo
-{
+#include "Entidade.h"
+class Obstaculo : public Entidade{
+protected:
+
+public:
+	Obstaculo();
+	~Obstaculo();
+
 };
 

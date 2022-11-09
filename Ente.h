@@ -5,9 +5,11 @@ class Ente {
 protected:
 	RectangleShape body;
 	RenderWindow* window;
+	float largura;
+	float altura;
 
 public:
-	Ente();
+	Ente(float l, float a);
 	~Ente();
 
 	void setWindow(RenderWindow* w);
