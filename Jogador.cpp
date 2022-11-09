@@ -1,6 +1,6 @@
 #include "Jogador.h"
 using namespace personagens;
-Jogador::Jogador() : Personagem(3, 0., 280.) {
+Jogador::Jogador(int vidas, float x, float y) : Personagem(vidas, x, y) {
     body.setPosition(0.f, 280.f);
 }
 

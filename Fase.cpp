@@ -3,7 +3,7 @@
 Fase::Fase(RenderWindow* w, Jogador* j) {
 	window = w;
 	j1 = j;
-	i1 = new Inimigo;
+	i1 = new Inimigo(3,200.,200.);
 	i1->setWindow(w);
 	listaEntidades = new ListaEntidades;
 	inicializaElementos();
