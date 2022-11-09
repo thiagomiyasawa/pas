@@ -1,5 +1,5 @@
 #include "Ente.h"
-Ente::Ente() :body(Vector2f(100.f, 100.f)) {
+Ente::Ente(float l, float a) :body(Vector2f(l, a)) {
 	window = NULL;
 }
 

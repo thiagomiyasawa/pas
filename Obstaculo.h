@@ -1,10 +1,11 @@
 #pragma once
-class Obstaculo
-{	
-	private:
-		const int id;
+#include "Entidade.h"
+class Obstaculo : public Entidade{
+protected:
 
-	public:
-		Obstaculo(int id);
+public:
+	Obstaculo();
+	~Obstaculo();
+
 };
 

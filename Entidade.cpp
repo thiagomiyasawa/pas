@@ -1,6 +1,6 @@
 #include "Entidade.h"
 
-Entidade::Entidade(float X = 0, float Y = 0) {
+Entidade::Entidade(float X, float Y, float l, float a): Ente(l,a) {
 	x = X;
 	y = Y;
 }

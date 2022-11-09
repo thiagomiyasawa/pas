@@ -5,8 +5,7 @@ protected:
 	float x;
 	float y;
 public:
-	Entidade(float X, float Y);
-	Entidade();
+	Entidade(float X, float Y, float l, float a);
 	~Entidade();
 };
 

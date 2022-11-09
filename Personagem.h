@@ -5,8 +5,10 @@ protected:
 	int num_vidas;
 	float velocidadeX;
 	float velocidadeY;
+	bool NoChao;
 public:
-	Personagem(int n = 0, float x = 0., float y = 0.);
-	Personagem();
+	Personagem(int n, float x = 0., float y = 0.);
 	~Personagem();
+	void gravidade();
+
 };
