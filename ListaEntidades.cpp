@@ -8,38 +8,27 @@ ListaEntidades::~ListaEntidades() {
 
 }
 
-void ListaEntidades::push(Ente* entidade) {
-	lista.push_back(entidade);
+void ListaEntidades::push(Entidade* entidade) {
+	lista.push(entidade);
 }
 
-void ListaEntidades::pop(Ente* entidade) {
-	lista.remove(entidade);
+void ListaEntidades::pop(Entidade* entidade) {
+	lista.pop(entidade);
 }
 int ListaEntidades::getSize() {
-	return lista.size();
+	return lista.getSize();
 }
 
 Ente* ListaEntidades::getItem(int num)
 {
-	if (num > lista.size() || num < 0) {
+	if (num > lista.getSize() || num < 0) {
 		cout << "posicao invalida" << endl;
+		return nullptr;
 	}
-	list<Ente*>::iterator ptr = lista.begin();
-	for (int i = 0; i < num; i++) {
-		ptr++;
+	else {
+		return lista.getItem(num);
 	}
-	return *ptr;
-}
-
-Ente* ListaEntidades::operator[] (int num) {
-	if (num > lista.size() || num < 0) {
-		cout << "posicao invalida" << endl;
-	}
-	list<Ente*>::iterator ptr = lista.begin();
-	for (int i = 0; i < num; i++) {
-		ptr++;
-	}
-	return *ptr;
 	
 }
+
 

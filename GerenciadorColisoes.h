@@ -21,7 +21,7 @@ public:
 	void addInimigo(Inimigo* Inim);
 	void removeObstaculo(int posicao);
 	void removeInimigo(int posicao);
-	int testaColisao(Entidade* obj1, Entidade* obj2);
+	bool testaColisao(Entidade* obj1, Entidade* obj2);
 		
 };
 
