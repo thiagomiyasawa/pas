@@ -10,16 +10,32 @@ GerenciadorColisoes::~GerenciadorColisoes() {
 	LOs.clear();
 }
 void GerenciadorColisoes::executar() {
-	list<Inimigo*>::iterator it;
-	it = LIs.begin();
+	list<Inimigo*>::iterator it1;
+	it1 = LIs.begin();
 	int i = 0;
+	int tipoColi;
+	Inimigo* obj;
 	while (i < LIs.size()) {
-		if (jogador1 != NULL)
-			testaColisao((Entidade*)jogador1, (Entidade*)*it);
+		obj = *it1;
+		if (jogador1 != NULL) {
+			tipoColi=testaColisao((Entidade*)jogador1, (Entidade*)obj);
+
+			if (tipoColi) {
+				obj->colidir(11);
+			}
+		}
 		i++;
-		it++;
+		it1++;
 
+	}
+	vector<Obstaculo*>::iterator it2;
+	it2 = LOs.begin();
+	while(i<LOs.size()){
+		if (jogador1 != NULL)
+			testaColisao((Entidade*)jogador1, (Entidade*)*it2);
 
+		i++;
+		it1++;
 	}
 
 }

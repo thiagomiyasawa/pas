@@ -7,5 +7,6 @@ namespace personagens {
 		Inimigo(int vidas, float x, float y, int id = 0);
 		~Inimigo();
 		void move();
+		virtual void colidir(int ID);
 	};
 }//fim

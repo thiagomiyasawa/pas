@@ -1,9 +1,10 @@
 #pragma once
 #include "Personagem.h"
+#include <math.h>
 namespace personagens {
 	class Jogador : public Personagem {
 	private:
-
+		int atacando;
 
 
 	public:
@@ -11,6 +12,8 @@ namespace personagens {
 		~Jogador();
 
 		void move();
+		void colidir(int ID);
+
 
 
 	};

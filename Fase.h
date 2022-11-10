@@ -14,7 +14,7 @@ class Fase {
 private:
 	Inimigo* i1;
 	Jogador* j1;
-	Chao* chao;
+	Obstaculo* chao;
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
 	RenderWindow* window;
