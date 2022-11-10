@@ -51,10 +51,13 @@
     <ClCompile Include="Personagem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Gerenciador_Colisoes.cpp">
+    <ClCompile Include="GerenciadorColisoes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Gerenciador_Grafico.cpp">
+    <ClCompile Include="GerenciadorGrafico.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Chao.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,10 +95,13 @@
     <ClInclude Include="Personagem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gerenciador_Colisoes.h">
+    <ClInclude Include="GerenciadorColisoes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gerenciador_Grafico.h">
+    <ClInclude Include="GerenciadorGrafico.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chao.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

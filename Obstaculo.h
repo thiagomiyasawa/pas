@@ -4,7 +4,7 @@ class Obstaculo : public Entidade{
 protected:
 
 public:
-	Obstaculo();
+	Obstaculo(float X, float Y, float l, float a);
 	~Obstaculo();
 
 };

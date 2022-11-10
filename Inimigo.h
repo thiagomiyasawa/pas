@@ -6,5 +6,6 @@ namespace personagens {
 	public:
 		Inimigo(int vidas, float x, float y);
 		~Inimigo();
+		void move();
 	};
 }//fim

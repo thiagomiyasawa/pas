@@ -1,7 +1,8 @@
 #include "Obstaculo.h"
 
-Obstaculo::Obstaculo(): Entidade(0,0,0,0)
+Obstaculo::Obstaculo(float X, float Y, float l, float a) : Entidade(X,Y,l,a)
 {
+
 }
 
 Obstaculo::~Obstaculo()

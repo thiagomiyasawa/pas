@@ -10,5 +10,5 @@ public:
 	Personagem(int n, float x = 0., float y = 0.);
 	~Personagem();
 	void gravidade();
-
+	virtual void move() = 0;
 };
