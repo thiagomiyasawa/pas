@@ -1,5 +1,5 @@
 #include "GerenciadorColisoes.h"
-GerenciadorColisoes::GerenciadorColisoes(Jogador* player1,Jogador* player2=NULL){
+GerenciadorColisoes::GerenciadorColisoes(Jogador* player1,Jogador* player2){
 	jogador1 = player1;
 	jogador2 = player2;
 }
@@ -9,15 +9,21 @@ GerenciadorColisoes::~GerenciadorColisoes() {
 	LIs.clear();
 	LOs.clear();
 }
-void GerenciadorColisoes::execultar() {
+void GerenciadorColisoes::executar() {
 	list<Inimigo*>::iterator it;
-	int i=0;
-	while (i<LIs.size()) {
+	it = LIs.begin();
+	int i = 0;
+	while (i < LIs.size()) {
+		if (jogador1 != NULL)
+			testaColisao((Entidade*)jogador1, (Entidade*)*it);
+		i++;
+		it++;
 
 
 	}
+
 }
-void GerenciadorColisoes::addObtaculo(Obstaculo* obst) {
+void GerenciadorColisoes::addObstaculo(Obstaculo* obst) {
 	LOs.push_back(obst);
 }
 void GerenciadorColisoes::addInimigo(Inimigo* Inim) {
@@ -37,4 +43,12 @@ void GerenciadorColisoes::removeInimigo(int posicao) {
 	}
 	LIs.erase(it);
 }
+
+int GerenciadorColisoes::testaColisao(Entidade* obj1, Entidade* obj2) {
+	if (obj1->getX() + obj1->getLargura() > obj2->getX() && obj1->getX() < obj2->getX() + obj2->getLargura() && obj1->getY() + obj1->getAltura() > obj2->getY() && obj1->getY() < obj2->getY() + obj2->getAltura()) {
+		return 1;
+	}
+	return 0;
+}
+
 

@@ -5,6 +5,7 @@
 #include "Obstaculo.h"
 #include "Chao.h"
 #include "ListaEntidades.h"
+#include "GerenciadorColisoes.h"
 
 using namespace sf;
 using namespace personagens;
@@ -15,11 +16,13 @@ private:
 	Jogador* j1;
 	Chao* chao;
 	ListaEntidades* listaEntidades;
+	GerenciadorColisoes colisoes;
 	RenderWindow* window;
 public:
 	Fase(RenderWindow* w, Jogador* j1);
 	~Fase();
 	void inicializaElementos();
 	ListaEntidades* getListaEntidades();
+	void executar();
 };
 

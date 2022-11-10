@@ -14,22 +14,23 @@ Jogo::~Jogo(){
 }
 
 void Jogo::Executar() {
-    while (window.isOpen())
-    {
+    while (window.isOpen()) {
         Event event;
-        while (window.pollEvent(event))
-        {
+
+        while (window.pollEvent(event)) {
             if (event.type == Event::Closed)
                 window.close();
-
         }
 
         jogador1->move();
         window.clear();
+
         for (int i = 0; i < LEs->getSize(); i++) {
             Ente* temp = LEs->getItem(i);
             temp->draw();
         }
+
+        fase1->executar();
         window.display();
     }
 
