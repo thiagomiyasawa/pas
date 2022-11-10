@@ -7,7 +7,7 @@ namespace personagens {
 
 
 	public:
-		Jogador(int vidas, float x, float y);
+		Jogador(int vidas, float x, float y, int id=0);
 		~Jogador();
 
 		void move();

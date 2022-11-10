@@ -30,6 +30,7 @@ void Jogo::Executar() {
             Ente* temp = LEs->getItem(i);
             temp->draw();
         }
+        fase1->executar();
         window.display();
     }
 

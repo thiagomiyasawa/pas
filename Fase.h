@@ -3,14 +3,16 @@
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "ListaEntidades.h"
+#include "Gerenciador_Colisoes.h"
 
 using namespace sf;
 using namespace personagens;
 
 class Fase {
 private:
-	Inimigo* i1;
 	Jogador* j1;
+	Gerenciador_Colisoes colisoes;
+	Inimigo* i1;
 	ListaEntidades* listaEntidades;
 	RenderWindow* window;
 public:
@@ -18,5 +20,6 @@ public:
 	~Fase();
 	void inicializaElementos();
 	ListaEntidades* getListaEntidades();
+	void executar();
 };
 

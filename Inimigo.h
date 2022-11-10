@@ -4,7 +4,7 @@ namespace personagens {
 	class Inimigo : public Personagem {
 	private:
 	public:
-		Inimigo(int vidas, float x, float y);
+		Inimigo(int vidas, float x, float y, int id = 0);
 		~Inimigo();
 	};
 }//fim

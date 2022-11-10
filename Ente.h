@@ -14,6 +14,8 @@ public:
 
 	void setWindow(RenderWindow* w);
 	void draw();
+	float getLargura() const;
+	float getAltura() const;
 };
 
 

@@ -14,14 +14,14 @@ class Gerenciador_Colisoes{
 		Jogador* jogador2=NULL;
 	
 	public:
-		Gerenciador_Colisoes(Jogador* player1, Jogador* player2);
+		Gerenciador_Colisoes(Jogador* player1, Jogador* player2=NULL);
 		~Gerenciador_Colisoes();
 		void execultar();
 		void addObtaculo(Obstaculo* obst);
 		void addInimigo(Inimigo* Inim);
 		void removeObstaculo(int posicao);
 		void removeInimigo(int posicao);
-		bool testaColisao(Obstaculo* obst, Jogador player);
-		bool testaColisao(Inimigo* Inim, Jogador player);
+		int testaColisao(Entidade* obj1, Entidade* obj2);
+		
 };
 
