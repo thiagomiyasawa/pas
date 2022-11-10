@@ -1,23 +1,22 @@
 #pragma once
-#include "Ente.h"
-#include <list>
-#include <iterator>
+#include "Entidade.h"
+#include "Lista.h"
 #include <iostream>
 using namespace std;
+
 
 class ListaEntidades
 {
 	private:
-		list<Ente*> lista;
+		Lista<Entidade> lista;
 	
 	public:
 		ListaEntidades();
 		~ListaEntidades();
-		void push(Ente* entidade);
-		void pop(Ente* entidade);
+		void push(Entidade* entidade);
+		void pop(Entidade* entidade);
 		int getSize();
-		Ente* getItem(int num);//função igual ao [] mas q da pra usar por ponteiro
-		Ente* operator[] (int num);
+		Ente* getItem(int num);
 
 
 
