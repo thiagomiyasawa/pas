@@ -3,7 +3,6 @@
 Entidade::Entidade(float X, float Y, float l, float a,int ID) : Ente(l,a) {
 	x = X;
 	y = Y;
-	id = ID;
 }
 
 Entidade::~Entidade() {
