@@ -5,10 +5,31 @@ using namespace std;
 template <class TL> class Lista
 {
 private:
+	template <class TE> class Elemento
+	{
+	private:
+		Elemento<TE>* pNext;
+		TE* item;
+	public:
+		Elemento() {
+			pNext = nullptr;
+			item = nullptr;
+		}
+		~Elemento() {
+			pNext = nullptr;
+			item = nullptr;
+		}
+		void setPNext(Elemento<TE>* p) { pNext = p; }
+		void setItem(TE* i) { item = i; }
+		Elemento<TE>* getPNext() { return pNext; }
+		TE* getItem() { return item; }
+
+	};
 	Elemento<TL>* pFirst;
 	Elemento<TL>* pLast;
 	int size;
 public:
+
 	Lista();
 	~Lista();
 
