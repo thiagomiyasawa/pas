@@ -16,10 +16,10 @@ public:
 		Elemento<TL>* temp = pFirst;
 		if (position > size || position < 0) {
 			cout << "posicao invalida" << endl;
-			return;
+			return nullptr;
 		}
 		else if (position == 0)
-			return temp->getItem;
+			return temp->getItem();
 		else {
 			for (int i = 0; i < position; i++) {
 				temp = temp->getPNext();
@@ -29,12 +29,12 @@ public:
 	}
 	void push(TL* item) {
 		if (pFirst == nullptr) {
-			pFirst = new Elemento<TL>*;
+			pFirst = new Elemento<TL>;
 			pFirst->setItem(item);
 			pLast = pFirst;
 		}
 		else {
-			Elemento<TL>* temp = new Elemento<TL>*;
+			Elemento<TL>* temp = new Elemento<TL>;
 			temp->setItem(item);
 			pLast->setPNext(temp);
 			pLast = temp;
@@ -44,13 +44,13 @@ public:
 
 	void pop(TL* item) {
 		Elemento<TL>* temp = pFirst;
-		Elemento<TL*> tempAnt = nullptr;
+		Elemento<TL>* tempAnt = nullptr;
 		while (temp->getItem() != item) {
 			tempAnt = temp;
 			temp = temp->getPNext();
 		}
 		if (temp == pFirst) {
-			pFirst = temp->getPNext;
+			pFirst = temp->getPNext();
 		}
 		else if (temp == pLast) {
 			tempAnt->setPNext(nullptr);

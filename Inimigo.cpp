@@ -10,15 +10,19 @@ Inimigo::~Inimigo()
 {
 }
 
-void personagens::Inimigo::move() 
+void personagens::Inimigo::move()
 {
-	body.move(Vector2f(01.f, 0.1f));
+	velocidadeX *= 0.99f;
+	body.move(Vector2f(velocidadeX, velocidadeY));
+	x += velocidadeX;
+	y += velocidadeY;
+	gravidade();
 }
 
 void Inimigo::colidir(int ID) {
 	if (ID == 11) {
 		velocidadeX = 1.0f;
-		velocidadeY = 0.5f;
+		velocidadeY = -0.5f;
 
 	}
 }

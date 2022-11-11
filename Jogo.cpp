@@ -27,6 +27,7 @@ void Jogo::Executar() {
 
         for (int i = 0; i < LEs->getSize(); i++) {
             Ente* temp = LEs->getItem(i);
+            temp->move();
             temp->draw();
         }
 

@@ -60,11 +60,11 @@ void GerenciadorColisoes::removeInimigo(int posicao) {
 	LIs.erase(it);
 }
 
-bool GerenciadorColisoes::testaColisao(Entidade* obj1, Entidade* obj2) {
+int GerenciadorColisoes::testaColisao(Entidade* obj1, Entidade* obj2) {
 	if (obj1->getX() + obj1->getLargura() > obj2->getX() && obj1->getX() < obj2->getX() + obj2->getLargura() && obj1->getY() + obj1->getAltura() > obj2->getY() && obj1->getY() < obj2->getY() + obj2->getAltura()) {
-		return true;
+		return 1;
 	}
-	return false;
+	return 0;
 }
 
 

@@ -16,6 +16,7 @@ public:
 	void draw();
 	float getLargura() const;
 	float getAltura() const;
+	virtual void move();
 };
 
 

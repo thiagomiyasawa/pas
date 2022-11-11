@@ -22,3 +22,7 @@ float Ente::getLargura() const {
 float Ente::getAltura() const {
 	return altura;
 }
+
+void Ente::move() {
+
+}
