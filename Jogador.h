@@ -14,8 +14,11 @@ namespace personagens {
 		~Jogador();
 
 		void move();
-		void colidir(int ID);
+
+		int getAtacando();
 		int getImune();
+		void setAtacando();
+		void setImune();
 
 
 

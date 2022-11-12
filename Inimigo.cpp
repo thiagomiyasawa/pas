@@ -22,10 +22,7 @@ void personagens::Inimigo::move()
 	id = 2;
 }
 
-void Inimigo::colidir(int ID) {
 
-	if (ID == 21) {
-		velocidadeY = 0;
-		noChao = true;
-	}
+int Inimigo::getDano() {
+	return dano;
 }

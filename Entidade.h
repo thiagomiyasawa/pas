@@ -12,5 +12,7 @@ public:
 	float getY() const;
 	int getId() const;
 	virtual float getVelocidadeY();
+	void setX(int valor);
+	void setY(int valor);
 };
 

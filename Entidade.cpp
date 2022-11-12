@@ -21,3 +21,10 @@ int Entidade::getId() const {
 float Entidade::getVelocidadeY() {
 	return 0;
 }
+
+void Entidade::setX(int valor) {
+	x = valor;
+}
+void Entidade::setY(int valor) {
+	y = valor;
+}

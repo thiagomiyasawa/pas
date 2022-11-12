@@ -10,44 +10,44 @@ GerenciadorColisoes::~GerenciadorColisoes() {
 	LOs.clear();
 }
 void GerenciadorColisoes::executar() {
-	list<Inimigo*>::iterator it1;
-	it1 = LIs.begin();
+	list<Inimigo*>::iterator itI;
+	itI = LIs.begin();
 	int i = 0, j=0;
 	int tipoColi;
 	Inimigo* obj;
 	while (i < LIs.size()) {
-		obj = *it1;
+		obj = *itI;
 		if (jogador1 != NULL) {
 			tipoColi=testaColisao((Entidade*)jogador1, (Entidade*)obj);
 
-			if (tipoColi) {
-				if(!jogador1->getImune())
-					jogador1->colidir(11);
+			if (testaColisao((Entidade*)jogador1, (Entidade*)obj)) {
+				if (!jogador1->getImune())
+					colidirInimigo(jogador1, *itI);
 			}
 		}
 
 		i++;
-		it1++;
+		itI++;
 
 	}
-	vector<Obstaculo*>::iterator it2;
-	it2 = LOs.begin();
+	vector<Obstaculo*>::iterator itO;
+	itO = LOs.begin();
 	i = 0;
 	while(i<LOs.size()){
 		if (jogador1 != NULL) {
-			int colisao =20 + testaColisao((Entidade*)jogador1, (Entidade*)*it2);
-			jogador1->colidir(colisao);
+			int tipo =testaColisao((Entidade*)jogador1, (Entidade*)*itO);
+			colidirObstaculo(tipo, jogador1, *itO);
 		}
-		it1 = LIs.begin();
+		itI = LIs.begin();
 		j = 0;
 		while (j < LIs.size()) {
-			int colisao =20 + testaColisao((Entidade*)*it1, (Entidade*)*it2);
-			(*it1)->colidir(colisao);
+			int tipo = testaColisao((Entidade*)*itI, (Entidade*)*itO);
+			colidirObstaculo(tipo, *itI, *itO);
 			j++;
-			it1++;
+			itI++;
 		}
 		i++;
-		it2++;
+		itO++;
 	}
 
 }
@@ -83,11 +83,61 @@ int GerenciadorColisoes::testaColisao(Entidade* obj1, Entidade* obj2){
 			return 2;
 		}
 
-		if (obj1->getX() + obj1->getLargura() > obj2->getX() - 1 || obj1->getX() < obj2->getX() + obj2->getLargura()){
+		if (obj1->getX() + obj1->getLargura() < obj2->getX() + 2 ){
 			return 3;
+		}
+		if (obj1->getX() > obj2->getX() + obj2->getLargura() - 1) {
+			return 4;
 		}
 	}
 	return 0;	
 }
 
+void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo* obj2) {
+	if (obj2->getId() == 31) {
+		if (direcao == 1 && !obj1->getNoChao()) {
+			obj1->setVelocidadeY(0);
+			obj1->setNoChao(true);
+		}
+
+		else if (direcao == 2) {
+			obj1->setVelocidadeY(obj1->getVelocidadeY() * -0.5f);
+		}
+
+		else if (direcao == 3) {
+			obj1->setVelocidadeX(0);
+			obj1->setX(obj2->getX() - obj1->getLargura()-2);
+		}
+		else if (direcao == 4) {
+			obj1->setVelocidadeX(0);
+			obj1->setX(obj2->getX() + obj2->getLargura());
+		}
+	}
+}
+void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo* obj2) {
+	if (obj2->getId() == 31) {
+		if (direcao == 1 && !obj1->getNoChao()) {
+			obj1->setVelocidadeY(0);
+			obj1->setNoChao(true);
+		}
+
+		else if (direcao == 2) {
+			obj1->setVelocidadeY(obj1->getVelocidadeY() * -0.5f);
+		}
+
+		else if (direcao == 3) {
+			obj1->setVelocidadeX(0);
+			obj1->setX(obj2->getX() - obj1->getLargura() - 2);
+		}
+		else if (direcao == 4) {
+			obj1->setVelocidadeX(0);
+			obj1->setX(obj2->getX() + obj2->getLargura());
+		}
+	}
+}
+void GerenciadorColisoes::colidirInimigo( Jogador* obj1, Inimigo* obj2){
+	obj1->removevidas(obj2->getDano());
+	obj1->setImune();
+	obj1->getBody()->setFillColor(Color::Color(20, 34, 184));
+}
 

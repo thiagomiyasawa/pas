@@ -14,7 +14,37 @@ Personagem::~Personagem() {
 void Personagem::gravidade() {
         velocidadeY += 0.001f;
 }
+float Personagem::getVelocidadeX() {
+	return velocidadeX;
+}
 
 float Personagem::getVelocidadeY(){
 	return velocidadeY;
+}
+
+bool Personagem::getNoChao() {
+	return noChao;
+}
+
+void Personagem::setVelocidadeX(float velocidade) {
+	velocidadeX = velocidade;
+}
+
+void Personagem::setVelocidadeY(float velocidade) {
+	velocidadeY = velocidade;
+}
+
+void Personagem::setNoChao(bool estado) {
+	noChao = estado;
+}
+
+void Personagem::addVidas(int valor) {
+	num_vidas += valor;
+	if (num_vidas > 5) {
+		num_vidas = 5;
+	}
+}
+
+void Personagem::removevidas(int dano) {
+	num_vidas -= dano;
 }

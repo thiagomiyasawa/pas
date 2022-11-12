@@ -22,6 +22,8 @@ public:
 	void removeObstaculo(int posicao);
 	void removeInimigo(int posicao);
 	int testaColisao(Entidade* obj1, Entidade* obj2);
-		
+	void colidirObstaculo(int diracao, Jogador* obj1, Obstaculo* obj2);
+	void colidirObstaculo(int diracao, Inimigo* obj1, Obstaculo* obj2);
+	void colidirInimigo(Jogador* obj1, Inimigo* obj2);
 };
 

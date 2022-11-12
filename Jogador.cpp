@@ -35,9 +35,9 @@ void Jogador::move() {
             velocidadeY += -0.7f;
 
     }
-    body->move(Vector2f(velocidadeX, velocidadeY));
     y += velocidadeY;
     x += velocidadeX;
+    body->setPosition(x,y);
     if(!noChao)
         gravidade();
     
@@ -47,29 +47,11 @@ void Jogador::move() {
 
 }
 
-void Jogador::colidir(int ID) {
-    if (ID == 21 && !noChao) {
-        velocidadeY = 0;
-        noChao = true;
-    }
-
-    if (ID == 22) {
-        velocidadeY *= -0.99f;
-    }
-
-    if (ID == 23) {
-        velocidadeX*=0;
-    }
-
-    if (!imune) {
-        if (ID == 11) {
-            num_vidas--;
-            imune = 1500;
-            body->setFillColor(Color::Color(20, 34, 184));
-        }
-    }
-}
 
 int Jogador::getImune() {
     return imune;
+}
+
+void Jogador::setImune() {
+    imune = 3000;
 }
