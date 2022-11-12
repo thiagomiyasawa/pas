@@ -1,10 +1,11 @@
 #include "Jogador.h"
 using namespace personagens;
 Jogador::Jogador(int vidas, float x, float y, int id) : Personagem(vidas, x, y, id) {
-    body.setPosition(0.f, 280.f);
-    body.setFillColor(Color::Color(58,238,39));
+    body->setPosition(0.f, 280.f);
+    body->setFillColor(Color::Color(58,238,39));
     velocidadeX = 0;
     imune = 0;
+    atacando = 0;
 }
 
 Jogador::~Jogador()
@@ -16,7 +17,7 @@ void Jogador::move() {
     if (imune) {
         imune--;
         if (!imune) {
-            body.setFillColor(Color::Color(58, 238, 39));
+            body->setFillColor(Color::Color(58, 238, 39));
         }
     }
 
@@ -35,7 +36,7 @@ void Jogador::move() {
             velocidadeY += -0.5f;
 
     }
-    body.move(Vector2f(velocidadeX, velocidadeY));
+    body->move(Vector2f(velocidadeX, velocidadeY));
     y += velocidadeY;
     x += velocidadeX;
     if(!noChao)
@@ -60,7 +61,7 @@ void Jogador::colidir(int ID) {
         if (ID == 11) {
             num_vidas--;
             imune = 1500;
-            body.setFillColor(Color::Color(20, 34, 184));
+            body->setFillColor(Color::Color(20, 34, 184));
         }
     }
 }

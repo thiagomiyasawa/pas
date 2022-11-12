@@ -12,7 +12,7 @@ Inimigo::~Inimigo()
 
 void personagens::Inimigo::move()
 {
-	body.move(Vector2f(velocidadeX, velocidadeY));
+	body->move(Vector2f(velocidadeX, velocidadeY));
 	x += velocidadeX;
 	y += velocidadeY;
 	if(!noChao) {

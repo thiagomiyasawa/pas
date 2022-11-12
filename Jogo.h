@@ -14,7 +14,8 @@ using namespace personagens;
 class Jogo{
 private:
 	GerenciadorGrafico* grafico;
-	Jogador* jogador1;
+	Jogador* link1;
+	Jogador* link2;
 	ListaEntidades* LEs;
 
 	Fase* fase1;
