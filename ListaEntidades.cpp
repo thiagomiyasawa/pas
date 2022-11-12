@@ -22,7 +22,6 @@ int ListaEntidades::getSize() {
 Ente* ListaEntidades::getItem(int num)
 {
 	if (num > lista.getSize() || num < 0) {
-		cout << "posicao invalida" << endl;
 		return nullptr;
 	}
 	else {

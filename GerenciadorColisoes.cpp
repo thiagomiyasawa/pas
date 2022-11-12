@@ -10,16 +10,46 @@ GerenciadorColisoes::~GerenciadorColisoes() {
 	LOs.clear();
 }
 void GerenciadorColisoes::executar() {
-	list<Inimigo*>::iterator it;
-	it = LIs.begin();
-	int i = 0;
+	list<Inimigo*>::iterator it1;
+	it1 = LIs.begin();
+	int i = 0, j=0;
+	int tipoColi;
+	Inimigo* obj;
 	while (i < LIs.size()) {
-		if (jogador1 != NULL)
-			testaColisao((Entidade*)jogador1, (Entidade*)*it);
+		obj = *it1;
+		if (jogador1 != NULL) {
+			tipoColi=testaColisao((Entidade*)jogador1, (Entidade*)obj);
+
+			if (tipoColi) {
+				if(!jogador1->getImune())
+					jogador1->colidir(11);
+			}
+		}
+
 		i++;
-		it++;
+		it1++;
 
+	}
+	vector<Obstaculo*>::iterator it2;
+	it2 = LOs.begin();
+	i = 0;
+	while(i<LOs.size()){
+		if (jogador1 != NULL) {
+			int colisao =20+testaColisao((Entidade*)jogador1, (Entidade*)*it2);
+			jogador1->colidir(colisao);
+		}
+		it1 = LIs.begin();
+		while (j < LIs.size()) {
+			int colisao = testaColisao((Entidade*)*it1, (Entidade*)*it2);
 
+			if (colisao == 1) {
+				(* it1)->colidir(21);
+			}
+			j++;
+			it1++;
+		}
+		i++;
+		it2++;
 	}
 
 }
@@ -44,11 +74,20 @@ void GerenciadorColisoes::removeInimigo(int posicao) {
 	LIs.erase(it);
 }
 
-bool GerenciadorColisoes::testaColisao(Entidade* obj1, Entidade* obj2) {
-	if (obj1->getX() + obj1->getLargura() > obj2->getX() && obj1->getX() < obj2->getX() + obj2->getLargura() && obj1->getY() + obj1->getAltura() > obj2->getY() && obj1->getY() < obj2->getY() + obj2->getAltura()) {
-		return true;
+int GerenciadorColisoes::testaColisao(Entidade* obj1, Entidade* obj2){
+	if (obj1->getX() + obj1->getLargura() > obj2->getX()-1 && obj1->getX() < obj2->getX() + obj2->getLargura() && obj1->getY() + obj1->getAltura() > obj2->getY() -1 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
+
+		if (obj1->getY() + obj1->getAltura() < obj2->getY() + 2) {
+			return 1;
+		}
+		if(obj1->getY()< obj2->getY()+obj2->getAltura()-5) {
+			return 2;
+		}
+		else {
+			return 3;
+		}
 	}
-	return false;
+	return 0;	
 }
 
 

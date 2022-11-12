@@ -1,14 +1,34 @@
 #pragma once
-#include "Elemento.h"
 #include <iostream>
 using namespace std;
 template <class TL> class Lista
 {
 private:
+	template <class TE> class Elemento
+	{
+	private:
+		Elemento<TE>* pNext;
+		TE* item;
+	public:
+		Elemento() {
+			pNext = nullptr;
+			item = nullptr;
+		}
+		~Elemento() {
+			pNext = nullptr;
+			item = nullptr;
+		}
+		void setPNext(Elemento<TE>* p) { pNext = p; }
+		void setItem(TE* i) { item = i; }
+		Elemento<TE>* getPNext() { return pNext; }
+		TE* getItem() { return item; }
+
+	};
 	Elemento<TL>* pFirst;
 	Elemento<TL>* pLast;
 	int size;
 public:
+
 	Lista();
 	~Lista();
 
@@ -16,10 +36,10 @@ public:
 		Elemento<TL>* temp = pFirst;
 		if (position > size || position < 0) {
 			cout << "posicao invalida" << endl;
-			return;
+			return nullptr;
 		}
 		else if (position == 0)
-			return temp->getItem;
+			return temp->getItem();
 		else {
 			for (int i = 0; i < position; i++) {
 				temp = temp->getPNext();
@@ -29,12 +49,12 @@ public:
 	}
 	void push(TL* item) {
 		if (pFirst == nullptr) {
-			pFirst = new Elemento<TL>*;
+			pFirst = new Elemento<TL>;
 			pFirst->setItem(item);
 			pLast = pFirst;
 		}
 		else {
-			Elemento<TL>* temp = new Elemento<TL>*;
+			Elemento<TL>* temp = new Elemento<TL>;
 			temp->setItem(item);
 			pLast->setPNext(temp);
 			pLast = temp;
@@ -44,13 +64,13 @@ public:
 
 	void pop(TL* item) {
 		Elemento<TL>* temp = pFirst;
-		Elemento<TL*> tempAnt = nullptr;
+		Elemento<TL>* tempAnt = nullptr;
 		while (temp->getItem() != item) {
 			tempAnt = temp;
 			temp = temp->getPNext();
 		}
 		if (temp == pFirst) {
-			pFirst = temp->getPNext;
+			pFirst = temp->getPNext();
 		}
 		else if (temp == pLast) {
 			tempAnt->setPNext(nullptr);

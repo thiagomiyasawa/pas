@@ -3,7 +3,7 @@
 using namespace sf;
 class Ente {
 protected:
-	RectangleShape body;
+	RectangleShape* body;
 	RenderWindow* window;
 	float largura;
 	float altura;
@@ -16,6 +16,7 @@ public:
 	void draw();
 	float getLargura() const;
 	float getAltura() const;
+	RectangleShape* getBody();
 };
 
 

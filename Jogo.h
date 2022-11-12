@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Ente.h"
+#include "GerenciadorGrafico.h"
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "ListaEntidades.h"
@@ -12,7 +13,7 @@ using namespace sf;
 using namespace personagens;
 class Jogo{
 private:
-	RenderWindow window;
+	GerenciadorGrafico* grafico;
 	Jogador* jogador1;
 	ListaEntidades* LEs;
 

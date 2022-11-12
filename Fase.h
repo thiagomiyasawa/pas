@@ -3,7 +3,6 @@
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "Obstaculo.h"
-#include "Chao.h"
 #include "ListaEntidades.h"
 #include "GerenciadorColisoes.h"
 
@@ -14,7 +13,8 @@ class Fase {
 private:
 	Inimigo* i1;
 	Jogador* j1;
-	Chao* chao;
+	Obstaculo* chao;
+	Obstaculo* obst1;
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
 	RenderWindow* window;

@@ -1,8 +1,9 @@
 #include "Entidade.h"
 
-Entidade::Entidade(float X, float Y, float l, float a,int ID) : Ente(l,a) {
+Entidade::Entidade(float X, float Y, float l, float a,int ID=0) : Ente(l,a) {
 	x = X;
 	y = Y;
+	id = ID;
 }
 
 Entidade::~Entidade() {
