@@ -54,6 +54,27 @@
     <ClCompile Include="GerenciadorGrafico.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Espinhos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ganondorf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Octorok.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Moa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Plataforma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlataformaFalsa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lava.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Jogo.h">
@@ -93,6 +114,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lista.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Espinhos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ganondorf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Octorok.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Moa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plataforma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlataformaFalsa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lava.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

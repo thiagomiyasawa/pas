@@ -5,6 +5,7 @@ Jogador::Jogador(int vidas, float x, float y, int id) : Personagem(vidas, x, y, 
     body->setFillColor(Color::Color(58,238,39));
     velocidadeX = 0;
     imune = 0;
+    atacando = 0;
 }
 
 Jogador::~Jogador()
