@@ -1,6 +1,7 @@
 #include "Ente.h"
-Ente::Ente(float l, float a) :body(Vector2f(l, a)) {
+Ente::Ente(float l, float a){
 	window = NULL;
+	body = new RectangleShape(Vector2f(l, a));
 	largura = l;
 	altura = a;
 }
@@ -13,7 +14,7 @@ void Ente::setWindow(RenderWindow* w) {
 }
 
 void Ente::draw() {
-	window->draw(body);
+	window->draw(*body);
 }
 
 float Ente::getLargura() const {
@@ -21,4 +22,9 @@ float Ente::getLargura() const {
 }
 float Ente::getAltura() const {
 	return altura;
+}
+
+RectangleShape* Ente::getBody()
+{
+	return body;
 }

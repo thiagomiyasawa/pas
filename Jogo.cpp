@@ -1,10 +1,10 @@
 #include "Jogo.h"
 
-Jogo::Jogo():
-window(VideoMode(1366, 768), "SFML works!") {
+Jogo::Jogo() {
+    grafico = GerenciadorGrafico::getInstance();
     jogador1 = new Jogador(5,0.,280.);
-    jogador1->setWindow(&window);
-    fase1 = new Fase(&window, jogador1);
+    jogador1->setWindow(grafico->getWindow());
+    fase1 = new Fase(grafico->getWindow(), jogador1);
     LEs = fase1->getListaEntidades();
 
     Executar();
@@ -14,25 +14,18 @@ Jogo::~Jogo(){
 }
 
 void Jogo::Executar() {
-    while (window.isOpen()) {
-        Event event;
-
-        while (window.pollEvent(event)) {
-            if (event.type == Event::Closed)
-                window.close();
-        }
-
+    while (grafico->isWindowOpen()) {
+        grafico->Executar();
         jogador1->move();
-        window.clear();
-
         for (int i = 0; i < LEs->getSize(); i++) {
             Ente* temp = LEs->getItem(i);
-            temp->draw();
+            grafico->render(temp->getBody());
         }
 
         fase1->executar();
-        window.display();
+        grafico->display();
     }
 
 
 }
+float GerenciadorGrafico::dt(0.);

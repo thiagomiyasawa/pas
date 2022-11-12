@@ -54,9 +54,6 @@
     <ClCompile Include="GerenciadorGrafico.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Chao.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Jogo.h">
@@ -93,12 +90,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GerenciadorGrafico.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Chao.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Elemento.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lista.h">

@@ -1,7 +1,7 @@
 #include "Jogador.h"
 using namespace personagens;
 Jogador::Jogador(int vidas, float x, float y, int id) : Personagem(vidas, x, y, id) {
-    body.setPosition(0.f, 280.f);
+    body->setPosition(0.f, 280.f);
     velocidadeX = 0;
 }
 
@@ -22,7 +22,7 @@ void Jogador::move() {
 
     }
     
-    body.move(Vector2f(velocidadeX, velocidadeY));
+    body->move(Vector2f(velocidadeX, velocidadeY));
     y += velocidadeY;
     x += velocidadeX;
     gravidade();
