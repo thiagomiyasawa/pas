@@ -32,6 +32,9 @@ ListaEntidades* Fase::getListaEntidades() {
 }
 
 void Fase::executar() {
+	j1->move();
 	colisoes.executar();
+
+
 
 }

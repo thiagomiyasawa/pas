@@ -3,7 +3,6 @@
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "Obstaculo.h"
-#include "Chao.h"
 #include "ListaEntidades.h"
 #include "GerenciadorColisoes.h"
 
