@@ -7,7 +7,7 @@ Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	i1->setWindow(w);
 	colisoes.addInimigo(i1);
 	chao = new Obstaculo(0, 680, 1366, 100);
-	obst1 = new Obstaculo(200, 400, 100, 100);
+	obst1 = new Obstaculo(200, 580, 100, 100);
 	colisoes.addObstaculo(chao);
 	colisoes.addObstaculo(obst1);
 	chao->setWindow(w);
@@ -33,8 +33,8 @@ ListaEntidades* Fase::getListaEntidades() {
 
 void Fase::executar() {
 	j1->move();
+	i1->move();
 	colisoes.executar();
-
 
 
 }

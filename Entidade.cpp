@@ -18,3 +18,6 @@ float Entidade::getY() const {
 int Entidade::getId() const {
 	return id;
 }
+float Entidade::getVelocidadeY() {
+	return 0;
+}

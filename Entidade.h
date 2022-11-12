@@ -11,5 +11,6 @@ public:
 	float getX() const;
 	float getY() const;
 	int getId() const;
+	virtual float getVelocidadeY();
 };
 

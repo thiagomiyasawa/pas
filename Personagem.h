@@ -12,4 +12,5 @@ public:
 	void gravidade();
 	virtual void move() = 0;
 	virtual void colidir(int ID) = 0;
+	float getVelocidadeY();
 };

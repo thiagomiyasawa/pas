@@ -14,3 +14,7 @@ Personagem::~Personagem() {
 void Personagem::gravidade() {
         velocidadeY += 0.001f;
 }
+
+float Personagem::getVelocidadeY(){
+	return velocidadeY;
+}

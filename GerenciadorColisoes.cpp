@@ -35,16 +35,14 @@ void GerenciadorColisoes::executar() {
 	i = 0;
 	while(i<LOs.size()){
 		if (jogador1 != NULL) {
-			int colisao =20+testaColisao((Entidade*)jogador1, (Entidade*)*it2);
+			int colisao =20 + testaColisao((Entidade*)jogador1, (Entidade*)*it2);
 			jogador1->colidir(colisao);
 		}
 		it1 = LIs.begin();
+		j = 0;
 		while (j < LIs.size()) {
-			int colisao = testaColisao((Entidade*)*it1, (Entidade*)*it2);
-
-			if (colisao == 1) {
-				(* it1)->colidir(21);
-			}
+			int colisao =20 + testaColisao((Entidade*)*it1, (Entidade*)*it2);
+			(*it1)->colidir(colisao);
 			j++;
 			it1++;
 		}
@@ -75,15 +73,17 @@ void GerenciadorColisoes::removeInimigo(int posicao) {
 }
 
 int GerenciadorColisoes::testaColisao(Entidade* obj1, Entidade* obj2){
-	if (obj1->getX() + obj1->getLargura() > obj2->getX()-1 && obj1->getX() < obj2->getX() + obj2->getLargura() && obj1->getY() + obj1->getAltura() > obj2->getY() -1 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
+	if (obj1->getX() + obj1->getLargura() > obj2->getX()-1 && obj1->getX() < obj2->getX() + obj2->getLargura() && obj1->getY() + obj1->getAltura() > obj2->getY()-0.5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
 
 		if (obj1->getY() + obj1->getAltura() < obj2->getY() + 2) {
 			return 1;
 		}
-		if(obj1->getY()< obj2->getY()+obj2->getAltura()-5) {
+
+		if (obj1->getY() > obj2->getY() + obj2->getAltura() - 5 && obj1->getVelocidadeY() < 0 ) {
 			return 2;
 		}
-		else {
+
+		if (obj1->getX() + obj1->getLargura() > obj2->getX() - 1 || obj1->getX() < obj2->getX() + obj2->getLargura()){
 			return 3;
 		}
 	}
