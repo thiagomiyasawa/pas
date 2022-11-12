@@ -1,5 +1,4 @@
 #pragma once
-#include "Elemento.h"
 #include <iostream>
 using namespace std;
 template <class TL> class Lista

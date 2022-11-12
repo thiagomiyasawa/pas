@@ -5,27 +5,12 @@ Personagem::Personagem(int n, float x, float y, int id)
 	
     velocidadeX = 0;
 	velocidadeY = 0;
-    
-    NoChao = true;
+	noChao = false;
 }
 
 Personagem::~Personagem() {
 }
 
 void Personagem::gravidade() {
-    if (y >= 280) {
-        NoChao = true;
-        velocidadeY = 0;
-    }
-
-    if (NoChao) {
-        if (Keyboard::isKeyPressed(Keyboard::Up)) {
-            velocidadeY = -0.5;
-            NoChao = false;
-        }
-    }
-    
-    else {
         velocidadeY += 0.001f;
-    }
 }

@@ -15,6 +15,7 @@ private:
 	Inimigo* i1;
 	Jogador* j1;
 	Obstaculo* chao;
+	Obstaculo* obst1;
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
 	RenderWindow* window;
