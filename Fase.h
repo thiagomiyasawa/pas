@@ -2,7 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include "Jogador.h"
 #include "Inimigo.h"
+#include "Ganondorf.h"
+#include "Moa.h"
+#include "Octorok.h"
 #include "Obstaculo.h"
+#include "Plataforma.h"
+#include "PlataformaFalsa.h"
+#include "Espinhos.h"
+#include "Lava.h"
 #include "ListaEntidades.h"
 #include "GerenciadorColisoes.h"
 
@@ -11,10 +18,17 @@ using namespace personagens;
 
 class Fase {
 private:
-	Inimigo* i1;
+	
 	Jogador* j1;
 	Obstaculo* chao;
-	Obstaculo* obst1;
+	Plataforma* plat1;
+	PlataformaFalsa* platF1;
+	Espinhos* espinho1;
+	Lava* lava1;
+	Inimigo* i1;
+	Ganondorf* ganondorf;
+	Octorok* octo1;
+	Moa* moa1;
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
 	RenderWindow* window;

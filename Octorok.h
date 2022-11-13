@@ -2,7 +2,7 @@
 #include "Inimigo.h"
 namespace personagens {
 	//polvo que atira
-	class Octorok : Inimigo
+	class Octorok : public Inimigo
 	{
 	private:
 	public:
