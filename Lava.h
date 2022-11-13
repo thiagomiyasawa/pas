@@ -3,7 +3,7 @@
 class Lava :
     public Obstaculo
 {
-    Lava(float X, float Y, float l, float a, int id = 0);
+    Lava(float X, float Y, float l, float a);
     ~Lava();
 
 };

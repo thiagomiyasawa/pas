@@ -7,7 +7,7 @@ namespace personagens {
     {
     private:
     public:
-        Moa(int vidas, float x, float y, int id = 0);
+        Moa(int vidas, float x, float y);
         ~Moa();
     };
 }//fim do namespace

@@ -26,3 +26,20 @@ void personagens::Inimigo::move()
 int Inimigo::getDano() {
 	return dano;
 }
+
+int Inimigo::getImune() {
+	return imune;
+}
+
+void Inimigo::setImune() {
+	imune = 100;
+}
+
+void Inimigo::removeVidas(int dano) {
+	num_vidas -= dano;
+	body->setFillColor(Color(232, 124, 171));
+	if (num_vidas <= 0) {
+		vivo = false;
+	}
+
+}

@@ -18,8 +18,12 @@ float Entidade::getY() const {
 int Entidade::getId() const {
 	return id;
 }
+float Entidade::getVelocidadeX() {
+	return velocidadeX;
+}
+
 float Entidade::getVelocidadeY() {
-	return 0;
+	return velocidadeY;
 }
 
 void Entidade::setX(int valor) {
@@ -27,4 +31,15 @@ void Entidade::setX(int valor) {
 }
 void Entidade::setY(int valor) {
 	y = valor;
+}
+void Entidade::setVelocidadeX(float velocidade) {
+	velocidadeX = velocidade;
+}
+
+void Entidade::setVelocidadeY(float velocidade) {
+	velocidadeY = velocidade;
+}
+
+void Entidade::move() {
+
 }

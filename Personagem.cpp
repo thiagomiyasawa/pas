@@ -1,11 +1,14 @@
 #include "Personagem.h"
-Personagem::Personagem(int n, float x, float y, int id) 
+Personagem::Personagem(int n, float x, float y, int id, int estado)
     : Entidade(x, y, 100.f, 100.f, id) {
 	num_vidas = n;
 	
     velocidadeX = 0;
 	velocidadeY = 0;
 	noChao = false;
+	vivo = true;
+	direcao = estado;
+
 }
 
 Personagem::~Personagem() {
@@ -14,24 +17,10 @@ Personagem::~Personagem() {
 void Personagem::gravidade() {
         velocidadeY += 0.001f;
 }
-float Personagem::getVelocidadeX() {
-	return velocidadeX;
-}
 
-float Personagem::getVelocidadeY(){
-	return velocidadeY;
-}
 
 bool Personagem::getNoChao() {
 	return noChao;
-}
-
-void Personagem::setVelocidadeX(float velocidade) {
-	velocidadeX = velocidade;
-}
-
-void Personagem::setVelocidadeY(float velocidade) {
-	velocidadeY = velocidade;
 }
 
 void Personagem::setNoChao(bool estado) {
@@ -45,6 +34,9 @@ void Personagem::addVidas(int valor) {
 	}
 }
 
-void Personagem::removevidas(int dano) {
+void Personagem::removeVidas(int dano) {
 	num_vidas -= dano;
+	if (num_vidas <= 0) {
+		vivo = false;
+	}
 }

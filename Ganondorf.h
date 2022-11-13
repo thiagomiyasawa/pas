@@ -7,7 +7,7 @@ namespace personagens {
     {
     private:
     public:
-        Ganondorf(int vidas, float x, float y, int id = 0);
+        Ganondorf(int vidas, float x, float y);
         ~Ganondorf();
     };
 }//fim do namespace

@@ -10,5 +10,10 @@ namespace personagens {
 		void move();
 
 		int getDano();
+		int getImune();
+
+		void setImune();
+
+		void removeVidas(int dano);
 	};
 }//fim

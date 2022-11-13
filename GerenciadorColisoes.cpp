@@ -11,6 +11,7 @@ GerenciadorColisoes::~GerenciadorColisoes() {
 }
 void GerenciadorColisoes::executar() {
 	list<Inimigo*>::iterator itI;
+	list<Projetil*>::iterator itP;
 	itI = LIs.begin();
 	int i = 0, j=0;
 	int tipoColi;
@@ -23,6 +24,9 @@ void GerenciadorColisoes::executar() {
 			if (testaColisao((Entidade*)jogador1, (Entidade*)obj)) {
 				if (!jogador1->getImune())
 					colidirInimigo(jogador1, *itI);
+			}
+			if (jogador1->getAtacando()) {
+				colidirAtaque(*itI, jogador1);
 			}
 		}
 
@@ -46,16 +50,42 @@ void GerenciadorColisoes::executar() {
 			j++;
 			itI++;
 		}
+		itP = LPs.begin();
+		j = 0;
+		while (j < LIs.size()) {
+			if(testaColisao((Entidade*)*itP, (Entidade*)*itO))
+				colidirObstaculo(*itP, *itO);
+			j++;
+			itP++;
+		}
 		i++;
 		itO++;
 	}
+	i = 0;
+	itP = LPs.begin();
+	while (i < LPs.size()) {
+		if ((*itP)->getAtivo()) {
 
+			if (jogador1 != NULL) {
+				if(jogador1->getAtacando())
+					colidirAtaque(*itP, jogador1);
+				if (testaColisao((Entidade*)jogador1, (Entidade*)*itP)) {
+					colidirProjetil(jogador1, *itP);
+				}
+			}
+		}
+		i++;
+		itP++;
+	}
 }
 void GerenciadorColisoes::addObstaculo(Obstaculo* obst) {
 	LOs.push_back(obst);
 }
 void GerenciadorColisoes::addInimigo(Inimigo* Inim) {
 	LIs.push_back(Inim);
+}
+void GerenciadorColisoes::addProjetil(Projetil* tiro) {
+	LPs.push_back(tiro);
 }
 void GerenciadorColisoes::removeObstaculo(int posicao) {
 	vector<Obstaculo*>::iterator it = LOs.begin();
@@ -106,11 +136,11 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo
 
 		else if (direcao == 3) {
 			obj1->setVelocidadeX(0);
-			obj1->setX(obj2->getX() - obj1->getLargura()-2);
+			obj1->setX(obj2->getX() - (float)(obj1->getLargura()-2));
 		}
 		else if (direcao == 4) {
 			obj1->setVelocidadeX(0);
-			obj1->setX(obj2->getX() + obj2->getLargura());
+			obj1->setX(obj2->getX() +(float) (obj2->getLargura()+2));
 		}
 	}
 }
@@ -127,17 +157,53 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo
 
 		else if (direcao == 3) {
 			obj1->setVelocidadeX(0);
-			obj1->setX(obj2->getX() - obj1->getLargura() - 2);
+			obj1->setX(obj2->getX() - (float)(obj1->getLargura() - 2));
 		}
 		else if (direcao == 4) {
 			obj1->setVelocidadeX(0);
-			obj1->setX(obj2->getX() + obj2->getLargura());
+			obj1->setX(obj2->getX() + (float)(obj2->getLargura() +2));
 		}
 	}
 }
+void GerenciadorColisoes::colidirObstaculo(Projetil* obj1, Obstaculo* obj2) {
+	obj1->setAtivo(false);
+}
+
 void GerenciadorColisoes::colidirInimigo( Jogador* obj1, Inimigo* obj2){
-	obj1->removevidas(obj2->getDano());
+	obj1->removeVidas(obj2->getDano());
 	obj1->setImune();
 	obj1->getBody()->setFillColor(Color::Color(20, 34, 184));
 }
 
+void GerenciadorColisoes::colidirAtaque(Inimigo* obj1, Jogador* obj2) {
+	if (obj2->getDirecao() < 0) {
+		if (obj1->getX() + obj1->getLargura() > obj2->getX() - 20 && obj1->getX() < obj2->getX() && obj1->getY() + obj1->getAltura() > obj2->getY() - 5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
+			obj1->removeVidas(1);
+
+		}
+	}
+
+	else if (obj2->getDirecao() > 0) {
+		if (obj1->getX() + obj1->getLargura() > obj2->getX() + obj2->getLargura() && obj1->getX() < obj2->getX() + obj2->getLargura() + 20 && obj1->getY() + obj1->getAltura() > obj2->getY() - 5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
+			obj1->removeVidas(1);
+		}
+	}
+}
+void GerenciadorColisoes::colidirAtaque(Projetil* obj1, Jogador* obj2) {
+	if (obj2->getDirecao() < 0) {
+		if (obj1->getX() + obj1->getLargura() > obj2->getX() - 20 && obj1->getX() < obj2->getX() && obj1->getY() + obj1->getAltura() > obj2->getY() - 5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
+			obj1->setAtivo(false);
+
+		}
+	}
+
+	else if (obj2->getDirecao() > 0) {
+		if (obj1->getX() + obj1->getLargura() > obj2->getX() + obj2->getLargura() && obj1->getX() < obj2->getX() + obj2->getLargura() + 20 && obj1->getY() + obj1->getAltura() > obj2->getY() - 5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
+			obj1->setAtivo(false);
+		}
+	}
+}
+void GerenciadorColisoes::colidirProjetil(Jogador* obj1, Projetil* obj2) {
+	obj1->removeVidas(1);
+	obj2->setAtivo(false);
+}
