@@ -1,13 +1,13 @@
 #pragma once
 #include "Personagem.h"
 #include <math.h>
+#include "Projetil.h"
 using namespace std;
 namespace personagens {
 	class Jogador : public Personagem {
 	private:
 		int atacando;
-		int imune;
-
+		Projetil* tiro;
 
 	public:
 		Jogador(int vidas, float x, float y, int id = 0);
@@ -17,8 +17,10 @@ namespace personagens {
 
 		int getAtacando();
 		int getImune();
-		void setAtacando();
+		int getDirecao();
+		Projetil* getTiro();
 		void setImune();
+		void atira();
 
 
 

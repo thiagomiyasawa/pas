@@ -3,25 +3,25 @@
 class Personagem : public Entidade {
 protected:
 	int num_vidas;
-	float velocidadeX;
-	float velocidadeY;
 	bool noChao;
+	bool vivo;
+	int direcao;
+	int imune;
 public:
-	Personagem(int n, float x = 0., float y = 0., int id = 0);
+	Personagem(int n, float x = 0., float y = 0., int id = 0, int estado = -1);
 	~Personagem();
 
 	void gravidade();
 	virtual void move() = 0;
 
-	float getVelocidadeX();
-	float getVelocidadeY();
+	
 	bool getNoChao();
-
-	void setVelocidadeX(float velocidade);
-	void setVelocidadeY(float velocidade);
 	void setNoChao(bool estado);
+
 	void addVidas(int valor);
-	void removevidas(int dano);
+	virtual void removeVidas(int dano);
+	virtual void setImune() = 0;
+	virtual int getImune() = 0;
 
 
 };

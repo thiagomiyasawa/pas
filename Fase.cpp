@@ -3,6 +3,7 @@
 Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	window = w;
 	j1 = j;
+	colisoes.addProjetil(j->getTiro());
 	i1 = new Inimigo(3,200.,200.);
 	i1->setWindow(w);
 	colisoes.addInimigo(i1);
@@ -24,6 +25,7 @@ void Fase::inicializaElementos() {
 	listaEntidades->push(i1);
 	listaEntidades->push(chao);
 	listaEntidades->push(obst1);
+	listaEntidades->push(j1->getTiro());
 
 }
 
@@ -33,6 +35,7 @@ ListaEntidades* Fase::getListaEntidades() {
 
 void Fase::executar() {
 	j1->move();
+	(j1->getTiro())->move();
 	i1->move();
 	colisoes.executar();
 
