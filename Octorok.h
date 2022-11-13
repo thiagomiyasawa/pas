@@ -6,7 +6,7 @@ namespace personagens {
 	{
 	private:
 	public:
-		Octorok(int vidas, float x, float y, int id = 0);
+		Octorok(int vidas, float x, float y);
 		~Octorok();
 	};
 }//fim do namespace
