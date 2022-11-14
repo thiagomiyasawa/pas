@@ -4,8 +4,10 @@ class Espinhos :
     public Obstaculo 
 {
 private:
+    int dano;
 public:
-    Espinhos(float X, float Y, float l, float a, int id = 0);
+    Espinhos(float X, float Y, float l, float a);
     ~Espinhos();
+    int getDano();
 };
 

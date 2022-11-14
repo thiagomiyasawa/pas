@@ -10,7 +10,7 @@ namespace personagens {
 		Projetil* tiro;
 
 	public:
-		Jogador(int vidas, float x, float y, int id = 0);
+		Jogador(int vidas, float x, float y );
 		~Jogador();
 
 		void move();

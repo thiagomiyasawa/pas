@@ -5,7 +5,7 @@ class Plataforma :
 {
 private:
 public:
-    Plataforma(float X, float Y, float l, float a, int id = 0);
+    Plataforma(float X, float Y, float l, float a);
     ~Plataforma();
 };
 

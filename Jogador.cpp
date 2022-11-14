@@ -1,6 +1,6 @@
 #include "Jogador.h"
 using namespace personagens;
-Jogador::Jogador(int vidas, float x, float y, int id) : Personagem(vidas, x, y, id, 1) {
+Jogador::Jogador(int vidas, float x, float y) : Personagem(vidas, x, y, 11, 1) {
     body->setPosition(0.f, 280.f);
     body->setFillColor(Color::Color(58,238,39));
     velocidadeX = 0;
@@ -57,7 +57,9 @@ void Jogador::move() {
     body->setPosition(x,y);
     if(!noChao)
         gravidade();
-    
+    if (!vivo) {
+        body->setFillColor(Color(200, 114, 185));
+    }
     noChao = false;
     id = 1;
 
