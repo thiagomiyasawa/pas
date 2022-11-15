@@ -16,4 +16,7 @@ int PlataformaFalsa::getAtivo() {
 }
 void PlataformaFalsa::reduzAtivo() {
 	ativo--;
+	if (!ativo) {
+		body->setFillColor(Color::Transparent);
+	}
 }
