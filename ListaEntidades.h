@@ -15,6 +15,7 @@ class ListaEntidades
 		~ListaEntidades();
 		void push(Entidade* entidade);
 		void pop(Entidade* entidade);
+		void popDelete(Entidade* entidade);
 		int getSize();
 		Ente* getItem(int num);
 

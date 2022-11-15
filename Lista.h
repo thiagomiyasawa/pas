@@ -83,6 +83,28 @@ public:
 		size--;
 
 	}
+	
+	void popDelete(TL* item) {
+		Elemento<TL>* temp = pFirst;
+		Elemento<TL>* tempAnt = nullptr;
+		while (temp->getItem() != item) {
+			tempAnt = temp;
+			temp = temp->getPNext();
+		}
+		if (temp == pFirst) {
+			pFirst = temp->getPNext();
+		}
+		else if (temp == pLast) {
+			tempAnt->setPNext(nullptr);
+			pLast = tempAnt;
+		}
+		else {
+			tempAnt->setPNext(temp->getPNext());
+		}
+		delete item;
+		delete temp;
+		size--;
+	}
 
 	int getSize() { return size; }
 };
