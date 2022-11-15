@@ -14,7 +14,7 @@ Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	colisoes.addInimigo(octo1);
 	colisoes.addInimigo(moa1);
 	chao = new Obstaculo(0, 680, 1366, 100);
-	plat1 = new Plataforma(500, 580, 100, 100);
+	plat1 = new Plataforma(500, 480, 100, 100);
 	platF1 = new PlataformaFalsa(650, 380, 100, 100);
 	espinho1 = new Espinhos(800, 380, 100, 100);
 	lava1 = new Lava(950, 380, 100, 100);

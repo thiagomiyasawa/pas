@@ -25,6 +25,9 @@ void Jogador::move() {
         if (atacando > 0)
             atacando--;
     }
+    if (pulo > 1000000) {
+        pulo = 10000;
+    }
     if (Keyboard::isKeyPressed(Keyboard::Right)) {
         direcao = 1;
         if (velocidadeX < 0.1f)
@@ -37,9 +40,9 @@ void Jogador::move() {
             velocidadeX += -0.03f;
 
     }
-    if (Keyboard::isKeyPressed(Keyboard::Up)) {
-        if (noChao)
+    if (Keyboard::isKeyPressed(Keyboard::Up) && pulo>160) {
             velocidadeY += -0.7f;
+            pulo = 0;
 
     }
     if (Keyboard::isKeyPressed(Keyboard::Z)) {
@@ -98,4 +101,9 @@ void Jogador::atira() {
     }
     tiro->setVelocidadeY(0);
     tiro->setAtivo(true);
+}
+
+void Jogador::setNoChao(bool estado) {
+    noChao = estado;
+    pulo++;
 }

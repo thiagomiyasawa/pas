@@ -16,7 +16,7 @@ public:
 
 	
 	bool getNoChao();
-	void setNoChao(bool estado);
+	virtual void setNoChao(bool estado);
 
 	void addVidas(int valor);
 	virtual void removeVidas(int dano);

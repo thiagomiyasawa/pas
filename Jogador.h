@@ -8,6 +8,7 @@ namespace personagens {
 	private:
 		int atacando;
 		Projetil* tiro;
+		int pulo;
 
 	public:
 		Jogador(int vidas, float x, float y );
@@ -21,6 +22,7 @@ namespace personagens {
 		Projetil* getTiro();
 		void setImune();
 		void atira();
+		void setNoChao(bool estado);
 
 
 

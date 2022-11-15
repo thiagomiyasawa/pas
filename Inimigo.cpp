@@ -21,6 +21,7 @@ void personagens::Inimigo::move()
 		gravidade();
 	}
 	id = 2;
+	noChao = false;
 }
 
 
