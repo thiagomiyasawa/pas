@@ -23,7 +23,7 @@ int ListaEntidades::getSize() {
 	return lista.getSize();
 }
 
-Ente* ListaEntidades::getItem(int num)
+Entidade* ListaEntidades::getItem(int num)
 {
 	if (num > lista.getSize() || num < 0) {
 		return nullptr;

@@ -6,7 +6,7 @@ class PlataformaFalsa :
 private:
     int ativo;
 public:
-    PlataformaFalsa(float X, float Y, float l, float a);
+    PlataformaFalsa(Vector2f coordenada, Vector2f tamanho);
     ~PlataformaFalsa();
     int getAtivo();
     void reduzAtivo();

@@ -3,7 +3,7 @@
 Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	window = w;
 	j1 = j;
-	colisoes.addProjetil(j->getTiro());
+	/*colisoes.addProjetil(j->getTiro());
 	i1 = new Inimigo(3,200.,200.);
 	ganondorf = new Ganondorf(3, 400., 200.);
 	octo1 = new Octorok(3, 600., 200.);
@@ -12,20 +12,10 @@ Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	colisoes.addInimigo(i1);
 	colisoes.addInimigo(ganondorf);
 	colisoes.addInimigo(octo1);
-	colisoes.addInimigo(moa1);
-	chao = new Obstaculo(0, 680, 1366, 100);
-	plat1 = new Plataforma(500, 580, 100, 100);
-	platF1 = new PlataformaFalsa(650, 380, 100, 100);
-	espinho1 = new Espinhos(800, 380, 100, 100);
-	lava1 = new Lava(950, 380, 100, 100);
-	colisoes.addObstaculo(chao);
-	colisoes.addObstaculo(plat1);
-	colisoes.addObstaculo(platF1);
-	colisoes.addObstaculo(espinho1);
-	colisoes.addObstaculo(lava1);
-	chao->setWindow(w);
-	plat1->setWindow(w);
+	colisoes.addInimigo(moa1);*/
 	listaEntidades = new ListaEntidades;
+	listaObstaculos = new Lista<Obstaculo>;
+	criaMapa();
 	inicializaElementos();
 }
 
@@ -34,16 +24,15 @@ Fase::~Fase() {
 
 void Fase::inicializaElementos() {
 	listaEntidades->push(j1);
-	listaEntidades->push(i1);
+	/*listaEntidades->push(i1);
 	listaEntidades->push(ganondorf);
 	listaEntidades->push(octo1);
 	listaEntidades->push(moa1);
-	listaEntidades->push(chao);
-	listaEntidades->push(plat1);
-	listaEntidades->push(platF1);
-	listaEntidades->push(espinho1);
-	listaEntidades->push(lava1);
-	listaEntidades->push(j1->getTiro());
+	listaEntidades->push(j1->getTiro());*/
+	for (int i = 0; i < listaObstaculos->getSize(); i++) {
+		Entidade* temp = listaObstaculos->getItem(i);
+		listaEntidades->push(temp);
+	}
 
 }
 
@@ -51,13 +40,79 @@ ListaEntidades* Fase::getListaEntidades() {
 	return listaEntidades;
 }
 
+void Fase::criaMapa() {
+	int i;
+	
+	Vector2f coordenada;
+	Vector2f tamanho(50.f,50.f);
+
+	//meio
+	coordenada = Vector2f(465, 370);
+	for (i = 0; i < 7; i++) {
+		Obstaculo* temp = new Plataforma(coordenada, tamanho);
+		listaObstaculos->push(temp);
+		coordenada.x += 50.;
+	}
+	
+	//inferior esquerda
+	coordenada = Vector2f(15, 520);
+	for (i = 0; i < 7; i++) {
+		Obstaculo* temp = new Plataforma(coordenada, tamanho);
+		listaObstaculos->push(temp);
+		coordenada.x += 50.;
+	}
+
+	//inferior direita
+	coordenada = Vector2f(915, 520);
+	for (i = 0; i < 7; i++) {
+		Obstaculo* temp = new Plataforma(coordenada, tamanho);
+		listaObstaculos->push(temp);
+		coordenada.x += 50.;
+	}
+	//superior esquerda
+	coordenada = Vector2f(15, 220);
+	for (i = 0; i < 7; i++) {
+		Obstaculo* temp = new Plataforma(coordenada, tamanho);
+		listaObstaculos->push(temp);
+		coordenada.x += 50.;
+	}
+
+	//superior direita
+	coordenada = Vector2f(915, 220);
+	for (i = 0; i < 7; i++) {
+		Obstaculo* temp = new Plataforma(coordenada, tamanho);
+		listaObstaculos->push(temp);
+		coordenada.x += 50.;
+	}
+	//gera um numero aleatorio de plataformas falsas entre 3 e 20% das plaataformas
+	srand(time(NULL));
+	convertePlatF(rand() % (listaObstaculos->getSize() / 5 - 3) + 3);
+	for (int i = 0; i < listaObstaculos->getSize(); i++) {
+		Obstaculo* temp = listaObstaculos->getItem(i);
+		colisoes.addObstaculo(temp);
+	}
+}
+
+void Fase::convertePlatF(int n) {
+	srand(time(NULL));
+	while (n != 0) {
+		for (int i = 0; i < listaObstaculos->getSize(); i++) {
+			if(rand()%100==1 && listaObstaculos->getItem(i)->getId()==31)
+
+		}
+	}
+}
+
+void Fase::converteEsp(int n) {
+}
+
 void Fase::executar() {
 	j1->move();
 	(j1->getTiro())->move();
-	i1->move();
+	/*i1->move();
 	ganondorf->move();
 	octo1->move();
-	moa1->move();
+	moa1->move();*/
 	colisoes.executar();
 
 

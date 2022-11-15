@@ -18,7 +18,7 @@ void Jogo::Executar() {
         grafico->Executar();
         link1->move();
         for (int i = 0; i < LEs->getSize(); i++) {
-            Ente* temp = LEs->getItem(i);
+            Entidade* temp = LEs->getItem(i);
             grafico->render(temp->getBody());
         }
 

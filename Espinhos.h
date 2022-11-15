@@ -6,7 +6,7 @@ class Espinhos :
 private:
     int dano;
 public:
-    Espinhos(float X, float Y, float l, float a);
+    Espinhos(Vector2f coordenada, Vector2f tamanho);
     ~Espinhos();
     int getDano();
 };

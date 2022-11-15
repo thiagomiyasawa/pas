@@ -5,7 +5,7 @@ class Lava :
 {
 private:
 public:
-    Lava(float X, float Y, float l, float a);
+    Lava(Vector2f coordenada, Vector2f tamanho);
     ~Lava();
 
 };

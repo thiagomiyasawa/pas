@@ -1,7 +1,7 @@
 #include "PlataformaFalsa.h"
 
-PlataformaFalsa::PlataformaFalsa(float X, float Y, float l, float a) :
-	Obstaculo(X, Y, l, a, 34)
+PlataformaFalsa::PlataformaFalsa(Vector2f coordenada, Vector2f tamanho) :
+	Obstaculo(coordenada, tamanho, 34)
 {
 	body->setFillColor(Color::Green);
 	ativo = 100;

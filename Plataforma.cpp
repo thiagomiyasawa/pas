@@ -1,7 +1,7 @@
 #include "Plataforma.h"
 
-Plataforma::Plataforma(float X, float Y, float l, float a) :
-	Obstaculo(X, Y, l, a, 31)
+Plataforma::Plataforma(Vector2f coordenada, Vector2f tamanho) :
+	Obstaculo(coordenada,tamanho, 31)
 {
 	body->setFillColor(Color::Blue);
 }

@@ -1,7 +1,7 @@
 #include "Lava.h"
 
-Lava::Lava(float X, float Y, float l, float a) :
-	Obstaculo(X, Y, l, a, 33)
+Lava::Lava(Vector2f coordenada, Vector2f tamanho) :
+	Obstaculo(coordenada, tamanho, 33)
 {
 	body->setFillColor(Color::Red);
 }

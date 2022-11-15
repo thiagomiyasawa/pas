@@ -5,7 +5,7 @@ class Plataforma :
 {
 private:
 public:
-    Plataforma(float X, float Y, float l, float a);
+    Plataforma(Vector2f coordenada, Vector2f tamanho);
     ~Plataforma();
 };
 

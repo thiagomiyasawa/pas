@@ -12,7 +12,10 @@
 #include "Lava.h"
 #include "ListaEntidades.h"
 #include "GerenciadorColisoes.h"
-
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
 using namespace sf;
 using namespace personagens;
 
@@ -20,15 +23,11 @@ class Fase {
 private:
 	
 	Jogador* j1;
-	Obstaculo* chao;
-	Plataforma* plat1;
-	PlataformaFalsa* platF1;
-	Espinhos* espinho1;
-	Lava* lava1;
 	Inimigo* i1;
 	Ganondorf* ganondorf;
 	Octorok* octo1;
 	Moa* moa1;
+	Lista<Obstaculo>* listaObstaculos;
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
 	RenderWindow* window;
@@ -37,6 +36,9 @@ public:
 	~Fase();
 	void inicializaElementos();
 	ListaEntidades* getListaEntidades();
+	void criaMapa();
+	void convertePlatF(int n);
+	void converteEsp(int n);
 	void executar();
 };
 

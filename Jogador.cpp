@@ -2,7 +2,7 @@
 using namespace personagens;
 Jogador::Jogador(int vidas, float x, float y) : Personagem(vidas, x, y, 11, 1) {
     body->setPosition(0.f, 280.f);
-    body->setFillColor(Color::Color(58,238,39));
+    body->setFillColor(Color::Color(200,238,39));
     velocidadeX = 0;
     imune = 0;
     atacando = 0;
