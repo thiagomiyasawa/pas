@@ -10,9 +10,9 @@ Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	moa1 = new Moa(3, 800., 200.);
 	i1->setWindow(w);
 	colisoes.addInimigo(i1);
-	//colisoes.addInimigo(ganondorf);
-	//colisoes.addInimigo(octo1);
-	//colisoes.addInimigo(moa1);
+	colisoes.addInimigo(ganondorf);
+	colisoes.addInimigo(octo1);
+	colisoes.addInimigo(moa1);
 	chao = new Obstaculo(0, 680, 1366, 100);
 	plat1 = new Plataforma(500, 380, 100, 100);
 	platF1 = new PlataformaFalsa(650, 380, 100, 100);
