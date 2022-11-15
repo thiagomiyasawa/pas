@@ -1,10 +1,11 @@
 #include "Inimigo.h"
 using namespace personagens;
 
-Inimigo::Inimigo(int vida, float x,float y, int id) : Personagem(vida, x, y, id) {
+Inimigo::Inimigo(int vida, float x,float y, int valor,int id) : Personagem(vida, x, y, id) {
 	
 	body->setPosition(Vector2f(x, y));
 	noChao = false;
+	dano = valor;
 }
 
 Inimigo::~Inimigo()

@@ -18,7 +18,7 @@ void GerenciadorColisoes::executar() {
 	Inimigo* obj;
 	while (i < LIs.size()) {
 		obj = *itI;
-		if (jogador1 != NULL) {
+		if (jogador1 != NULL && !jogador1->getImune()) {
 			tipoColi=testaColisao((Entidade*)jogador1, (Entidade*)obj);
 
 			if (testaColisao((Entidade*)jogador1, (Entidade*)obj)) {
@@ -54,7 +54,7 @@ void GerenciadorColisoes::executar() {
 		}
 		itP = LPs.begin();
 		j = 0;
-		while (j < LIs.size()) {
+		while (j < LPs.size()) {
 			if(testaColisao((Entidade*)*itP, (Entidade*)*itO))
 				colidirObstaculo(*itP, *itO);
 			j++;
@@ -146,9 +146,11 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo
 		}
 	}
 	else if (obj2->getId() == 32) {
-		obj1->removeVidas(obj2->getDano());
-		obj1->setImune();
-		obj1->getBody()->setFillColor(Color::Color(20, 34, 184));
+		if (!obj1->getImune()) {
+			obj1->removeVidas(obj2->getDano());
+			obj1->setImune();
+			obj1->getBody()->setFillColor(Color::Color(20, 34, 184));
+		}
 	}
 	else if (obj2->getId() == 33) {
 		obj1->removeVidas(100);
@@ -203,9 +205,11 @@ void GerenciadorColisoes::colidirObstaculo(Projetil* obj1, Obstaculo* obj2) {
 }
 
 void GerenciadorColisoes::colidirInimigo( Jogador* obj1, Inimigo* obj2){
-	obj1->removeVidas(obj2->getDano());
-	obj1->setImune();
-	obj1->getBody()->setFillColor(Color::Color(20, 34, 184));
+	if (!obj1->getImune()) {
+		obj1->removeVidas(obj2->getDano());
+		obj1->setImune();
+		obj1->getBody()->setFillColor(Color::Color(20, 34, 184));
+	}
 }
 
 void GerenciadorColisoes::colidirAtaque(Inimigo* obj1, Jogador* obj2) {
