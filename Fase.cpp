@@ -144,7 +144,7 @@ void Fase::criaMapa() {
 
 void Fase::convertePlatF(int n) {
 	srand(time(NULL));
-	/*while (n != 0) {
+	while (n != 0) {
 		for (int i = 0; i < listaObstaculos->getSize(); i++) {
 			if (rand() % 100 == 1 && listaObstaculos->getItem(i)->getId() == 31) {
 				Obstaculo* temp = listaObstaculos->getItem(i);

@@ -5,7 +5,7 @@ PlataformaFalsa::PlataformaFalsa(Vector2f coordenada, Vector2f tamanho) :
 {
 	textura.loadFromFile("sprites/plataformaFalsa.png");
 	body->setTexture(&textura);
-	ativo = 100;
+	ativo = 500;
 }
 
 PlataformaFalsa::~PlataformaFalsa()

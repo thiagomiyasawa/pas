@@ -38,5 +38,7 @@ public:
 	void converteEsp(int n);
 
 	void executar();
+
+	void geraInimigo();
 };
 
