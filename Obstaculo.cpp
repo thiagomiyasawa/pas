@@ -17,3 +17,4 @@ int Obstaculo::getAtivo() {
 void Obstaculo::reduzAtivo() {
 
 }
+

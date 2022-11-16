@@ -84,9 +84,22 @@ void Fase::criaMapa() {
 		listaObstaculos->push(temp);
 		coordenada.x += 50.;
 	}
+	
 	//gera um numero aleatorio de plataformas falsas entre 3 e 20% das plaataformas
 	srand(time(NULL));
 	convertePlatF(rand() % (listaObstaculos->getSize() / 5 - 3) + 3);
+	
+	//gera um numero aleatorio de plataformas falsas entre 3 e 20% das plataformas
+	converteEsp(rand() % (listaObstaculos->getSize() / 5 - 3) + 3);
+
+	//adiciona a lava
+
+	coordenada = Vector2f(-300., 650.);
+	tamanho = Vector2f(1880., 70.);
+
+	Obstaculo* temp = new Lava(coordenada, tamanho);
+	listaObstaculos->push(temp);
+
 	for (int i = 0; i < listaObstaculos->getSize(); i++) {
 		Obstaculo* temp = listaObstaculos->getItem(i);
 		colisoes.addObstaculo(temp);
@@ -97,13 +110,30 @@ void Fase::convertePlatF(int n) {
 	srand(time(NULL));
 	while (n != 0) {
 		for (int i = 0; i < listaObstaculos->getSize(); i++) {
-			if(rand()%100==1 && listaObstaculos->getItem(i)->getId()==31)
-
+			if (rand() % 100 == 1 && listaObstaculos->getItem(i)->getId() == 31) {
+				Obstaculo* temp = listaObstaculos->getItem(i);
+				listaObstaculos->pop(temp);
+				temp = new PlataformaFalsa(Vector2f(temp->getX(), temp->getY()), Vector2f(temp->getLargura(), temp->getAltura()));
+				listaObstaculos->push(temp);
+				n--;
+			}
 		}
 	}
 }
 
 void Fase::converteEsp(int n) {
+	srand(time(NULL));
+	while (n != 0) {
+		for (int i = 0; i < listaObstaculos->getSize(); i++) {
+			if (rand() % 100 == 1 && listaObstaculos->getItem(i)->getId() == 31) {
+				Obstaculo* temp = listaObstaculos->getItem(i);
+				listaObstaculos->pop(temp);
+				temp = new Espinhos(Vector2f(temp->getX(), temp->getY()), Vector2f(temp->getLargura(), temp->getAltura()));
+				listaObstaculos->push(temp);
+				n--;
+			}
+		}
+	}
 }
 
 void Fase::executar() {
