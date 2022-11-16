@@ -1,8 +1,14 @@
 #include "Jogador.h"
 using namespace personagens;
-Jogador::Jogador(int vidas, float x, float y) : Personagem(vidas, x, y, 11, 1) {
+Jogador::Jogador(int vidas, float x, float y, bool link1) : Personagem(vidas, x, y, 11, 1) {
     body->setPosition(0.f, 280.f);
-    body->setFillColor(Color::Color(200,238,39));
+    if (link1) {
+        textura.loadFromFile("sprites/Link1Idle.png");
+    }
+    else {
+        textura.loadFromFile("sprites/Link2Idle.png");
+    }
+    body->setTexture(&textura);
     velocidadeX = 0;
     imune = 0;
     atacando = 0;

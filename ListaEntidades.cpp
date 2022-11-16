@@ -16,9 +16,10 @@ void ListaEntidades::pop(Entidade* entidade) {
 	lista.pop(entidade);
 }
 
-void ListaEntidades::popDelete(Entidade* entidade) {
-	lista.popDelete(entidade);
+void ListaEntidades::pop(int n) {
+	lista.pop(n);
 }
+
 int ListaEntidades::getSize() {
 	return lista.getSize();
 }

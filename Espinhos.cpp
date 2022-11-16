@@ -3,7 +3,8 @@
 Espinhos::Espinhos(Vector2f coordenada, Vector2f tamanho) :
 	Obstaculo(coordenada, tamanho, 32)
 {
-	body->setFillColor(Color::Cyan);
+	textura.loadFromFile("sprites/espinhos.png");
+	body->setTexture(&textura);
 	dano = 1;
 }
 

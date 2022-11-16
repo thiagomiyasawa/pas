@@ -9,9 +9,10 @@ namespace personagens {
 		int atacando;
 		Projetil* tiro;
 		int pulo;
+		Texture textura;
 
 	public:
-		Jogador(int vidas, float x, float y );
+		Jogador(int vidas, float x, float y, bool link1 = true);
 		~Jogador();
 
 		void move();

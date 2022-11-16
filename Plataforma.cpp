@@ -3,7 +3,8 @@
 Plataforma::Plataforma(Vector2f coordenada, Vector2f tamanho) :
 	Obstaculo(coordenada,tamanho, 31)
 {
-	body->setFillColor(Color::Blue);
+	textura.loadFromFile("sprites/plataforma.png");
+	body->setTexture(&textura);
 }
 
 Plataforma::~Plataforma()

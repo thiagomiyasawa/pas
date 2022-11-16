@@ -3,7 +3,8 @@
 PlataformaFalsa::PlataformaFalsa(Vector2f coordenada, Vector2f tamanho) :
 	Obstaculo(coordenada, tamanho, 34)
 {
-	body->setFillColor(Color::Green);
+	textura.loadFromFile("sprites/plataformaFalsa.png");
+	body->setTexture(&textura);
 	ativo = 100;
 }
 

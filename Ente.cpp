@@ -7,6 +7,8 @@ Ente::Ente(float l, float a){
 }
 
 Ente::~Ente() {
+	delete window;
+	delete body;
 }
 
 void Ente::setWindow(RenderWindow* w) {
