@@ -40,7 +40,7 @@ void Jogador::move() {
             velocidadeX += -0.03f;
 
     }
-    if (Keyboard::isKeyPressed(Keyboard::Up) && pulo>160) {
+    if (Keyboard::isKeyPressed(Keyboard::Up) && pulo>160 && noChao) {
             velocidadeY += -0.7f;
             pulo = 0;
 

@@ -133,7 +133,7 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo
 		}
 
 		else if (direcao == 2) {
-			obj1->setVelocidadeY(obj1->getVelocidadeY() * -0.5f);
+			obj1->setVelocidadeY(0);
 		}
 
 		else if (direcao == 3) {
