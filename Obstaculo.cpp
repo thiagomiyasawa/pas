@@ -2,7 +2,6 @@
 
 Obstaculo::Obstaculo(Vector2f coordenada, Vector2f tamanho, int id)
 	: Entidade(coordenada.x, coordenada.y, tamanho.x, tamanho.y, id) {
-	body->setFillColor(Color::Red);
 	body->setPosition(coordenada);
 }
 
@@ -17,3 +16,4 @@ int Obstaculo::getAtivo() {
 void Obstaculo::reduzAtivo() {
 
 }
+

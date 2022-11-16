@@ -83,11 +83,11 @@ public:
 		size--;
 
 	}
-	
-	void popDelete(TL* item) {
+
+	void pop(int n) {
 		Elemento<TL>* temp = pFirst;
 		Elemento<TL>* tempAnt = nullptr;
-		while (temp->getItem() != item) {
+		for (int i = 0; i < n; i++) {
 			tempAnt = temp;
 			temp = temp->getPNext();
 		}
@@ -101,11 +101,10 @@ public:
 		else {
 			tempAnt->setPNext(temp->getPNext());
 		}
-		delete item;
 		delete temp;
 		size--;
-	}
 
+	}
 	int getSize() { return size; }
 };
 

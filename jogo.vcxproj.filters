@@ -78,6 +78,12 @@
     <ClCompile Include="Projetil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PrimeiraFase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SegundaFase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Jogo.h">
@@ -141,6 +147,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Projetil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimeiraFase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SegundaFase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

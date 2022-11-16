@@ -1,6 +1,6 @@
 #include "Personagem.h"
 Personagem::Personagem(int n, float x, float y, int id, int estado)
-    : Entidade(x, y, 50.f, 100.f, id) {
+    : Entidade(x, y, 40.f, 80.f, id) {
 	num_vidas = n;
 	
     velocidadeX = 0;

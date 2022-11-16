@@ -20,19 +20,16 @@ using namespace sf;
 using namespace personagens;
 
 class Fase {
-private:
-	
+protected:
 	Jogador* j1;
-	Inimigo* i1;
-	Ganondorf* ganondorf;
-	Octorok* octo1;
-	Moa* moa1;
+	Jogador* j2;
 	Lista<Obstaculo>* listaObstaculos;
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
 	RenderWindow* window;
 public:
 	Fase(RenderWindow* w, Jogador* j1);
+	Fase(RenderWindow* w, Jogador* J1, Jogador* J2);
 	~Fase();
 	void inicializaElementos();
 	ListaEntidades* getListaEntidades();

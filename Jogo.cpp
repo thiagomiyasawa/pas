@@ -2,15 +2,34 @@
 
 Jogo::Jogo() {
     grafico = GerenciadorGrafico::getInstance();
-    link1 = new Jogador(5,0.,280.);
+    link1 = new Jogador(5, 0., 280.);
     link1->setWindow(grafico->getWindow());
-    fase1 = new Fase(grafico->getWindow(), link1);
+    cout << "quantos jogadadores ?" << endl;
+    int n;
+    cin >> n;
+    getchar();
+    if (n == 2) {
+        link2 = new Jogador(5., 0., 280., false);
+        link2->setWindow(grafico->getWindow());
+        fase1 = new Fase(grafico->getWindow(), link1, link2);
+        
+    }
+    else {
+        link2 = nullptr;
+        fase1 = new Fase(grafico->getWindow(), link1);
+    }
+    
     LEs = fase1->getListaEntidades();
 
     Executar();
 }
 
 Jogo::~Jogo(){
+    delete grafico;
+    delete link1;
+    delete link2;
+    delete LEs;
+    delete fase1;
 }
 
 void Jogo::Executar() {

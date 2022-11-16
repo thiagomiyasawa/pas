@@ -3,7 +3,8 @@
 Lava::Lava(Vector2f coordenada, Vector2f tamanho) :
 	Obstaculo(coordenada, tamanho, 33)
 {
-	body->setFillColor(Color::Red);
+	textura.loadFromFile("sprites/lava.png");
+	body->setTexture(&textura);
 }
 
 
