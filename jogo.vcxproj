@@ -159,7 +159,9 @@
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="PlataformaFalsa.cpp" />
+    <ClCompile Include="PrimeiraFase.cpp" />
     <ClCompile Include="Projetil.cpp" />
+    <ClCompile Include="SegundaFase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h" />
@@ -182,7 +184,9 @@
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Plataforma.h" />
     <ClInclude Include="PlataformaFalsa.h" />
+    <ClInclude Include="PrimeiraFase.h" />
     <ClInclude Include="Projetil.h" />
+    <ClInclude Include="SegundaFase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

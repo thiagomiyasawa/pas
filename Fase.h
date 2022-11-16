@@ -20,14 +20,9 @@ using namespace sf;
 using namespace personagens;
 
 class Fase {
-private:
-	
+protected:
 	Jogador* j1;
 	Jogador* j2;
-	/*Inimigo* i1;
-	Ganondorf* ganondorf;
-	Octorok* octo1;
-	Moa* moa1;*/
 	Lista<Obstaculo>* listaObstaculos;
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
