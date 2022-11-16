@@ -45,6 +45,8 @@ void Fase::criaMapa() {
 	
 	Vector2f coordenada;
 	Vector2f tamanho(50.f,50.f);
+	
+
 
 	//meio
 	coordenada = Vector2f(465, 370);

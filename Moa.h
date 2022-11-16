@@ -9,5 +9,6 @@ namespace personagens {
     public:
         Moa(int vidas, float x, float y);
         ~Moa();
+        void move();
     };
 }//fim do namespace

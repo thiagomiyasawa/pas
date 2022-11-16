@@ -18,12 +18,14 @@ void Jogador::move() {
     if (imune) {
         imune--;
         if (!imune) {
-            body->setFillColor(Color::Color(58, 238, 39));
+            body->setFillColor(Color::Color(200, 238, 39));
         }
     }
-    if (atacando) {
-        if (atacando > 0)
-            atacando--;
+    if (atacando>-2000) {
+        atacando--;
+        if (!atacando) {
+            body->setFillColor(Color::Color(200, 238, 39));
+        }
     }
     if (pulo > 1000000) {
         pulo = 10000;
@@ -46,8 +48,9 @@ void Jogador::move() {
 
     }
     if (Keyboard::isKeyPressed(Keyboard::Z)) {
-        if (!atacando) {
-            atacando = 100;
+        if (atacando<=-2000) {
+            atacando = 1000;
+            body->setFillColor(Color(155, 157, 131));
         }
     }
     if (Keyboard::isKeyPressed(Keyboard::X)) {

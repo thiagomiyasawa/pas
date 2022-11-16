@@ -39,6 +39,7 @@ public:
 	void criaMapa();
 	void convertePlatF(int n);
 	void converteEsp(int n);
+
 	void executar();
 };
 

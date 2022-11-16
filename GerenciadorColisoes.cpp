@@ -18,8 +18,7 @@ void GerenciadorColisoes::executar() {
 	Inimigo* obj;
 	while (i < LIs.size()) {
 		obj = *itI;
-		if (jogador1 != NULL && !jogador1->getImune()) {
-			tipoColi=testaColisao((Entidade*)jogador1, (Entidade*)obj);
+		if (jogador1 != NULL) {
 
 			if (testaColisao((Entidade*)jogador1, (Entidade*)obj)) {
 				if (!jogador1->getImune())
@@ -48,7 +47,8 @@ void GerenciadorColisoes::executar() {
 		j = 0;
 		while (j < LIs.size()) {
 			int tipo = testaColisao((Entidade*)*itI, (Entidade*)*itO);
-			colidirObstaculo(tipo, *itI, *itO);
+			if((*itO)->getAtivo())
+				colidirObstaculo(tipo, *itI, *itO);
 			j++;
 			itI++;
 		}
@@ -198,7 +198,7 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo
 	}
 }
 void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo* obj2) {
-	if (obj2->getId() == 31 || obj2->getId()==32) {
+	if (obj2->getId() == 31 || obj2->getId()==32 || obj2->getId() == 34) {
 		if (direcao == 1 && !obj1->getNoChao()) {
 			obj1->setVelocidadeY(0);
 			obj1->setNoChao(true);
@@ -216,9 +216,14 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo
 			obj1->setVelocidadeX(0);
 			obj1->setX(obj2->getX() + (float)(obj2->getLargura() +2));
 		}
+
+
+		if (testaColisãoFutura(obj1->getX() + obj1->getVelocidadeX(), obj1->getY(), obj1->getLargura(), obj1->getAltura(), obj2)){
+			obj1->setVelocidadeX(obj1->getVelocidadeX() * -1);
+		}
 	}
 	else if (obj2->getId() == 33) {
-		//obj1->removeVidas(100);
+		obj1->removeVidas(100);
 
 	}
 	else if (obj2->getId() == 34) {
@@ -286,4 +291,12 @@ void GerenciadorColisoes::colidirAtaque(Projetil* obj1, Jogador* obj2) {
 void GerenciadorColisoes::colidirProjetil(Jogador* obj1, Projetil* obj2) {
 	obj1->removeVidas(1);
 	obj2->setAtivo(false);
+}
+
+bool GerenciadorColisoes::testaColisãoFutura(int x, int y, int l, int a, Obstaculo* obj) {
+	if (x + l > obj->getX() - 1 && x < obj->getX() + obj->getLargura() && y + a > obj->getY() - 2 && y < obj->getY() + obj->getAltura() + 2) {
+		return true;
+	}
+
+	return false;
 }

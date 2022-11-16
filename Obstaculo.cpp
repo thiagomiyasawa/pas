@@ -12,7 +12,7 @@ int Obstaculo::getDano() {
 	return 0;
 }
 int Obstaculo::getAtivo() {
-	return 0;
+	return 1;
 }
 void Obstaculo::reduzAtivo() {
 
