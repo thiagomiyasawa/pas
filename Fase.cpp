@@ -4,8 +4,8 @@ Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	window = w;
 	j1 = j;
 	j2 == nullptr;
-	/*colisoes.addProjetil(j->getTiro());
-	i1 = new Inimigo(3,200.,200.);
+	colisoes.addProjetil(j->getTiro());
+	/*i1 = new Inimigo(3, 200., 200.);
 	ganondorf = new Ganondorf(3, 400., 200.);
 	octo1 = new Octorok(3, 600., 200.);
 	moa1 = new Moa(3, 800., 200.);
@@ -26,8 +26,8 @@ Fase::Fase(RenderWindow* w, Jogador* J1, Jogador* J2) : colisoes(J1, J2) {
 	window = w;
 	j1 = J1;
 	j2 = J2;
-	/*colisoes.addProjetil(j->getTiro());
-	i1 = new Inimigo(3,200.,200.);
+	colisoes.addProjetil(j1->getTiro());
+	/*i1 = new Inimigo(3, 200., 200.);
 	ganondorf = new Ganondorf(3, 400., 200.);
 	octo1 = new Octorok(3, 600., 200.);
 	moa1 = new Moa(3, 800., 200.);
@@ -58,8 +58,8 @@ void Fase::inicializaElementos() {
 	/*listaEntidades->push(i1);
 	listaEntidades->push(ganondorf);
 	listaEntidades->push(octo1);
-	listaEntidades->push(moa1);
-	listaEntidades->push(j1->getTiro());*/
+	listaEntidades->push(moa1);*/
+	listaEntidades->push(j1->getTiro());
 	for (int i = 0; i < listaObstaculos->getSize(); i++) {
 		Entidade* temp = listaObstaculos->getItem(i);
 		listaEntidades->push(temp);
@@ -140,6 +140,11 @@ void Fase::criaMapa() {
 		Obstaculo* temp = listaObstaculos->getItem(i);
 		colisoes.addObstaculo(temp);
 	}
+
+	for (int i = 0; i < 5; i++) {
+		geraInimigo();
+	}
+
 }
 
 void Fase::convertePlatF(int n) {
@@ -173,16 +178,60 @@ void Fase::converteEsp(int n) {
 }
 
 void Fase::executar() {
-	j1->move();
+	/*j1->move();
 	(j1->getTiro())->move();
 	if (j2 != nullptr) {
-	//	j2->move();
+	j2->move();
+	}*/
+	for (int i = 0; i < listaEntidades->getSize(); i++) {
+		Entidade* temp = listaEntidades->getItem(i);
+		temp->move();
 	}
-	/*i1->move();
-	ganondorf->move();
-	octo1->move();
-	moa1->move();*/
+	
 	colisoes.executar();
+	geraInimigo();
 
 
+}
+
+void Fase::geraInimigo() {
+	bool criado=false;
+	if (colisoes.getQuantInimigos() < 5) {
+		if (rand() % 2 == 0) {
+			Moa* moa=NULL;
+			int area = rand() % 4;
+			if (area == 0) {
+				moa = new Moa(1, 20 + rand() % 1180, rand() % 180);
+			}
+			else if(area==1){
+				moa = new Moa(1, 400 + rand() % 500, rand() % 70 + 210);
+			}
+			else if(area==2){
+				moa = new Moa(1, 20 + rand() % 380, rand() % 80 + 290);
+			}
+			else if(area==2){
+				moa = new Moa(1, 900 + rand() % 380, rand() % 80 + 290);
+			}
+			colisoes.addInimigo(moa);
+			listaEntidades->push(moa);
+		}
+		else {
+			Octorok* octorok= NULL;
+			int area = rand() % 4;
+			if (area == 0) {
+				octorok = new Octorok(1, 20 + rand() % 1180, rand() % 180);
+			}
+			else if (area == 1) {
+				octorok = new Octorok(1, 400 + rand() % 500, rand() % 70 + 210);
+			}
+			else if (area == 2) {
+				octorok = new Octorok(1, 20 + rand() % 380, rand() % 80 + 290);
+			}
+			else if (area == 3) {
+				octorok = new Octorok(1, 900 + rand() % 380, rand() % 80 + 290);
+			}
+			colisoes.addInimigo(octorok);
+			listaEntidades->push(octorok);
+		}
+	}
 }

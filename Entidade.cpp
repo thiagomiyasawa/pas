@@ -43,3 +43,6 @@ void Entidade::setVelocidadeY(float velocidade) {
 void Entidade::move() {
 
 }
+void Entidade::gravidade() {
+	velocidadeY += 0.001f;
+}

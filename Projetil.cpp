@@ -9,6 +9,13 @@ Projetil::~Projetil() {
 }
 void Projetil::setAtivo(bool estado) {
 	ativo = estado;
+	if(ativo)
+		body->setFillColor(Color(232, 194, 102));
+	else {
+		body->setFillColor(Color::Transparent);
+		x = -100;
+		y = -100;
+	}
 }
 bool Projetil::getAtivo() {
 	return ativo;

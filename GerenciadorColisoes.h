@@ -38,6 +38,11 @@ public:
 	void colidirProjetil(Jogador* obj1, Projetil* obj2);
 
 	bool testaColisãoFutura(int x, int y, int l, int a, Obstaculo* obj);
+
+	int getQuantInimigos();
+
+	bool testaPosição(Entidade* obj);
+	
 };
 
 

@@ -21,5 +21,7 @@ public:
 	void setY(int valor);
 	void setVelocidadeX(float velocidade);
 	void setVelocidadeY(float velocidade);
+
+	void gravidade();
 };
 

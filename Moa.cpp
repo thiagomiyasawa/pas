@@ -15,4 +15,8 @@ Moa::~Moa()
 
 void Moa::move() {
 	x += velocidadeX;
+	y += velocidadeY;
+	body->setPosition(x, y);
+	velocidadeY -= 0.001f;
+	gravidade();
 }

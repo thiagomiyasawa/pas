@@ -17,6 +17,8 @@ Octorok::~Octorok()
 void Octorok::move() {
 	x += velocidadeX;
 	y += velocidadeY;
+	body->setPosition(x, y);
 	pedra->setAtivo(true);
+	velocidadeY -= 0.001f;
 	gravidade();
 }

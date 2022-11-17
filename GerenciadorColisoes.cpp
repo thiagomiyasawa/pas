@@ -24,7 +24,7 @@ void GerenciadorColisoes::executar() {
 				if (!jogador1->getImune())
 					colidirInimigo(jogador1, *itI);
 			}
-			if (jogador1->getAtacando()) {
+			if (jogador1->getAtacando()>0) {
 				colidirAtaque(*itI, jogador1);
 			}
 		}
@@ -69,7 +69,7 @@ void GerenciadorColisoes::executar() {
 		if ((*itP)->getAtivo()) {
 
 			if (jogador1 != NULL) {
-				if(jogador1->getAtacando())
+				if(jogador1->getAtacando()>0)
 					colidirAtaque(*itP, jogador1);
 				if (testaColisao((Entidade*)jogador1, (Entidade*)*itP)) {
 					colidirProjetil(jogador1, *itP);
@@ -198,7 +198,7 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo
 	}
 }
 void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo* obj2) {
-	if (obj2->getId() == 31 || obj2->getId()==32 || obj2->getId() == 34) {
+	if (obj2->getId() == 31 || obj2->getId()==32 || obj2->getId() == 34 ) {
 		if (direcao == 1 && !obj1->getNoChao()) {
 			obj1->setVelocidadeY(0);
 			obj1->setNoChao(true);
@@ -211,15 +211,12 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo
 		else if (direcao == 3) {
 			obj1->setVelocidadeX(0);
 			obj1->setX(obj2->getX() - (float)(obj1->getLargura() + 2));
+			//obj1->setVelocidadeX(obj1->getVelocidadeX() + -1);
 		}
 		else if (direcao == 4) {
 			obj1->setVelocidadeX(0);
-			obj1->setX(obj2->getX() + (float)(obj2->getLargura() +2));
-		}
-
-
-		if (testaColisãoFutura(obj1->getX() + obj1->getVelocidadeX(), obj1->getY(), obj1->getLargura(), obj1->getAltura(), obj2)){
-			obj1->setVelocidadeX(obj1->getVelocidadeX() * -1);
+			obj1->setX(obj2->getX() + (float)(obj2->getLargura() + 2));
+			//obj1->setVelocidadeX(obj1->getVelocidadeX() + -1);
 		}
 	}
 	else if (obj2->getId() == 33) {
@@ -299,4 +296,21 @@ bool GerenciadorColisoes::testaColisãoFutura(int x, int y, int l, int a, Obstacu
 	}
 
 	return false;
+}
+
+int GerenciadorColisoes::getQuantInimigos() {
+	return LIs.size();
+}
+
+bool GerenciadorColisoes::testaPosição(Entidade* obj) {
+	vector<Obstaculo*>::iterator itO;
+	itO = LOs.begin();
+	bool valido = true;
+	while (itO != LOs.end()) {
+		if (testaColisao(obj, *itO)) {
+			valido = false;
+		}
+		itO++;
+	}
+	return valido;
 }

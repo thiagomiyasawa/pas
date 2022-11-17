@@ -7,7 +7,7 @@ namespace personagens {
 	public:
 		Inimigo(int vidas, float x, float y, int valor = 1, int id = 0);
 		~Inimigo();
-		void move();
+		virtual void move();
 
 		int getDano();
 		int getImune();

@@ -14,11 +14,6 @@ Personagem::Personagem(int n, float x, float y, int id, int estado)
 Personagem::~Personagem() {
 }
 
-void Personagem::gravidade() {
-        velocidadeY += 0.001f;
-}
-
-
 bool Personagem::getNoChao() {
 	return noChao;
 }
@@ -39,4 +34,8 @@ void Personagem::removeVidas(int dano) {
 	if (num_vidas <= 0) {
 		vivo = false;
 	}
+}
+
+bool Personagem::getVivo() {
+	return vivo;
 }

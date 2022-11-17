@@ -11,7 +11,6 @@ public:
 	Personagem(int n, float x = 0., float y = 0., int id = 0, int estado = -1);
 	~Personagem();
 
-	void gravidade();
 	virtual void move() = 0;
 
 	
@@ -22,6 +21,8 @@ public:
 	virtual void removeVidas(int dano);
 	virtual void setImune() = 0;
 	virtual int getImune() = 0;
+
+	bool getVivo();
 
 
 };
