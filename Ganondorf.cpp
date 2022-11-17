@@ -3,7 +3,8 @@ using namespace personagens;
 Ganondorf::Ganondorf(int vidas, float x, float y) :
 	Inimigo(vidas, x, y, 33)
 {
-	body->setFillColor(Color::Yellow);
+	//textura.loadFromFile("sprites/ganondorfIdle.png");
+	//body->setTexture(&textura);
 }
 
 Ganondorf::~Ganondorf()

@@ -16,7 +16,7 @@ public:
 	void draw();
 	float getLargura() const;
 	float getAltura() const;
-	RectangleShape* getBody();
+	RectangleShape* getBody() const;
 };
 
 
