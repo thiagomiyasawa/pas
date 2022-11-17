@@ -2,10 +2,11 @@
 #include "Personagem.h"
 namespace personagens {
 	class Inimigo : public Personagem {
-	private:
+	protected:
 		int dano;
+		Texture textura;
 	public:
-		Inimigo(int vidas, float x, float y, int valor = 1, int id = 0);
+		Inimigo(int vidas, float x, float y, int id = 0, int valor = 1);
 		~Inimigo();
 		virtual void move();
 

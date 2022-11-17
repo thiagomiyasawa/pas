@@ -4,7 +4,7 @@ Jogo::Jogo() {
     grafico = GerenciadorGrafico::getInstance();
     link1 = new Jogador(5, 0., 280.);
     link1->setWindow(grafico->getWindow());
-    cout << "quantos jogadadores ?" << endl;
+    /*cout << "quantos jogadadores ?" << endl;
     int n;
     cin >> n;
     getchar();
@@ -14,10 +14,10 @@ Jogo::Jogo() {
         fase1 = new Fase(grafico->getWindow(), link1, link2);
         
     }
-    else {
+    else {*/
         link2 = nullptr;
         fase1 = new Fase(grafico->getWindow(), link1);
-    }
+    //}
     
     LEs = fase1->getListaEntidades();
 

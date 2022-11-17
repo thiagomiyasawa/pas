@@ -26,7 +26,6 @@ float Ente::getAltura() const {
 	return altura;
 }
 
-RectangleShape* Ente::getBody()
-{
+RectangleShape* Ente::getBody() const {
 	return body;
 }
