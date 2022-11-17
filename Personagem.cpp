@@ -33,9 +33,18 @@ void Personagem::removeVidas(int dano) {
 	num_vidas -= dano;
 	if (num_vidas <= 0) {
 		vivo = false;
+		//body->setFillColor(Color::Transparent);
 	}
 }
 
 bool Personagem::getVivo() {
 	return vivo;
+}
+
+void Personagem::setDirecao(int valor) {
+	direcao = valor;
+}
+
+int Personagem::getDirecao() {
+	return direcao;
 }

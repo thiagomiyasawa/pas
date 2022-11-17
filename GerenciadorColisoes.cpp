@@ -209,14 +209,14 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo
 		}
 
 		else if (direcao == 3) {
-			obj1->setVelocidadeX(0);
 			obj1->setX(obj2->getX() - (float)(obj1->getLargura() + 2));
-			//obj1->setVelocidadeX(obj1->getVelocidadeX() + -1);
+			obj1->setVelocidadeX(obj1->getVelocidadeX() * -1);
+			obj1->setDirecao(obj1->getDirecao() * -1);
 		}
 		else if (direcao == 4) {
-			obj1->setVelocidadeX(0);
 			obj1->setX(obj2->getX() + (float)(obj2->getLargura() + 2));
-			//obj1->setVelocidadeX(obj1->getVelocidadeX() + -1);
+			obj1->setVelocidadeX(obj1->getVelocidadeX() * -1);
+			obj1->setDirecao(obj1->getDirecao() * -1);
 		}
 	}
 	else if (obj2->getId() == 33) {

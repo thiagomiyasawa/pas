@@ -24,5 +24,7 @@ public:
 
 	bool getVivo();
 
+	void setDirecao(int valor);
+	int getDirecao();
 
 };

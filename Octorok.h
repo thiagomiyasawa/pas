@@ -7,11 +7,14 @@ namespace personagens {
 	{
 	private:
 		Projetil* pedra;
+		int recarga;
 
 	public:
 		Octorok(int vidas, float x, float y);
 		~Octorok();
 		void move();
+		void atira();
+		Projetil* getProjetil();
 	};
 }//fim do namespace
 

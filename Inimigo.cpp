@@ -42,6 +42,7 @@ void Inimigo::removeVidas(int dano) {
 	body->setFillColor(Color(232, 124, 171));
 	if (num_vidas <= 0) {
 		vivo = false;
+		body->setFillColor(Color::Transparent);
 	}
 
 }

@@ -217,7 +217,7 @@ void Fase::geraInimigo() {
 			Moa* moa=NULL;
 			int area = rand() % 4;
 			if (area == 0) {
-				moa = new Moa(1, 20 + rand() % 1180, rand() % 180);
+				moa = new Moa(1, 20 + rand() % 1180, rand() % 140);
 			}
 			else if(area==1){
 				moa = new Moa(1, 400 + rand() % 500, rand() % 70 + 210);
@@ -235,7 +235,7 @@ void Fase::geraInimigo() {
 			Octorok* octorok= NULL;
 			int area = rand() % 4;
 			if (area == 0) {
-				octorok = new Octorok(1, 20 + rand() % 1180, rand() % 180);
+				octorok = new Octorok(1, 20 + rand() % 1180, rand() % 140);
 			}
 			else if (area == 1) {
 				octorok = new Octorok(1, 400 + rand() % 500, rand() % 70 + 210);
@@ -248,6 +248,8 @@ void Fase::geraInimigo() {
 			}
 			colisoes.addInimigo(octorok);
 			listaEntidades->push(octorok);
+			colisoes.addProjetil(octorok->getProjetil());
+			listaEntidades->push(octorok->getProjetil());
 		}
 	}
 }
