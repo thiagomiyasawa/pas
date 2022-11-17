@@ -127,14 +127,30 @@ void Fase::criaMapa() {
 
 	//adiciona a lava
 
-	coordenada = Vector2f(-305., 650.);
+	coordenada = Vector2f(-60., 650.);
 	tamanho = Vector2f(70., 70.);
 
-	for (i = 0; i < 29; i++) {
+	for (i = 0; i < 20; i++) {
 		Obstaculo* temp = new Lava(coordenada, tamanho);
 		listaObstaculos->push(temp);
 		coordenada.x += 70.;
 	}
+
+	//gera o contorno da fase
+	coordenada = Vector2f(-100., 0.);
+	tamanho = Vector2f(10., 820.);
+	Obstaculo* temp = new Plataforma(coordenada, tamanho);
+	listaObstaculos->push(temp);
+
+	coordenada = Vector2f(-100., 820.);
+	tamanho = Vector2f(1280., 30.);
+	temp = new Plataforma(coordenada, tamanho);
+	listaObstaculos->push(temp);
+
+	coordenada = Vector2f(1370., 0);
+	tamanho = Vector2f(10., 820.);
+	temp = new Plataforma(coordenada, tamanho);
+	listaObstaculos->push(temp);
 
 	for (int i = 0; i < listaObstaculos->getSize(); i++) {
 		Obstaculo* temp = listaObstaculos->getItem(i);
