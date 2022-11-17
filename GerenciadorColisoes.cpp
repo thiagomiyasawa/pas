@@ -26,9 +26,16 @@ void GerenciadorColisoes::executar() {
 			}
 			if (jogador1->getAtacando()>0) {
 				colidirAtaque(*itI, jogador1);
+				if (!(*itI)->getVivo()) {
+					removeInimigo(i);
+					itI = LIs.begin();
+					i--;
+					for (int t = 0; t < i; t++) {
+						itI++;
+					}
+				}
 			}
 		}
-
 		i++;
 		itI++;
 
@@ -47,7 +54,7 @@ void GerenciadorColisoes::executar() {
 		j = 0;
 		while (j < LIs.size()) {
 			int tipo = testaColisao((Entidade*)*itI, (Entidade*)*itO);
-			if((*itO)->getAtivo())
+			if((*itO)->getAtivo() && tipo)
 				colidirObstaculo(tipo, *itI, *itO);
 			j++;
 			itI++;

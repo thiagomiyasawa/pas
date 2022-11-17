@@ -46,3 +46,7 @@ void Entidade::move() {
 void Entidade::gravidade() {
 	velocidadeY += 0.001f;
 }
+
+bool Entidade::getVivo() {
+	return true;
+}

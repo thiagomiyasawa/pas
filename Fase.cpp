@@ -201,6 +201,7 @@ void Fase::executar() {
 	}*/
 	for (int i = 0; i < listaEntidades->getSize(); i++) {
 		Entidade* temp = listaEntidades->getItem(i);
+		if(temp->getVivo())
 		temp->move();
 	}
 	

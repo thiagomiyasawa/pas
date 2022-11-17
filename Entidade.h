@@ -23,5 +23,7 @@ public:
 	void setVelocidadeY(float velocidade);
 
 	void gravidade();
+
+	virtual bool getVivo();
 };
 
