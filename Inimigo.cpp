@@ -1,9 +1,9 @@
 #include "Inimigo.h"
 using namespace personagens;
 
-Inimigo::Inimigo(int vida, float x,float y, int id,int valor) : Personagem(vida, x, y, id) {
+Inimigo::Inimigo(int vida,Vector2f t, Vector2f p, int id, int valor) : Personagem(vida, t, p, id) {
 	
-	body->setPosition(Vector2f(x, y));
+	body->setPosition(p);
 	noChao = false;
 	dano = valor;
 }
@@ -14,9 +14,9 @@ Inimigo::~Inimigo()
 
 void personagens::Inimigo::move()
 {
-	body->move(Vector2f(velocidadeX, velocidadeY));
-	x += velocidadeX;
-	y += velocidadeY;
+	body->move(velocidade);
+	posicao.x += velocidade.x;
+	posicao.y += velocidade.y;
 	if(!noChao) {
 		gravidade();
 	}

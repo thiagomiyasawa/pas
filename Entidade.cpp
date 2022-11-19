@@ -1,50 +1,54 @@
 #include "Entidade.h"
 
-Entidade::Entidade(float X, float Y, float l, float a,int ID=0) : Ente(l,a) {
-	x = X;
-	y = Y;
+Entidade::Entidade(Vector2f p, Vector2f t,int ID) : Ente(t) {
+	posicao = p;
 	id = ID;
 }
 
 Entidade::~Entidade() {
 }
 
+void Entidade::move()
+{
+}
+
 float Entidade::getX() const {
-	return x;
+	return posicao.x;
 }
 float Entidade::getY() const {
-	return y;
+	return posicao.y;
 }
 int Entidade::getId() const {
 	return id;
 }
 float Entidade::getVelocidadeX() {
-	return velocidadeX;
+	return velocidade.x;
 }
 
 float Entidade::getVelocidadeY() {
-	return velocidadeY;
+	return velocidade.y;
 }
 
 void Entidade::setX(int valor) {
-	x = valor;
+	posicao.x = valor;
 }
 void Entidade::setY(int valor) {
-	y = valor;
+	posicao.y = valor;
 }
-void Entidade::setVelocidadeX(float velocidade) {
-	velocidadeX = velocidade;
-}
-
-void Entidade::setVelocidadeY(float velocidade) {
-	velocidadeY = velocidade;
+void Entidade::setVelocidadeX(float v) {
+	velocidade.x = v;
 }
 
-void Entidade::move() {
-
+void Entidade::setVelocidadeY(float v) {
+	velocidade.y = v;
 }
+
+void Entidade::setVelocidade(Vector2f v) {
+	velocidade = v;
+}
+
 void Entidade::gravidade() {
-	velocidadeY += 0.001f;
+	velocidade.y += 0.001f;
 }
 
 bool Entidade::getVivo() {

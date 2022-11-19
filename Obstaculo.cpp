@@ -1,8 +1,8 @@
  #include "Obstaculo.h"
 
-Obstaculo::Obstaculo(Vector2f coordenada, Vector2f tamanho, int id)
-	: Entidade(coordenada.x, coordenada.y, tamanho.x, tamanho.y, id) {
-	body->setPosition(coordenada);
+Obstaculo::Obstaculo(Vector2f p, Vector2f t, int id)
+	: Entidade(p, t, id) {
+	body->setPosition(p);
 }
 
 Obstaculo::~Obstaculo() {

@@ -1,9 +1,8 @@
 #include "Ente.h"
-Ente::Ente(float l, float a){
+Ente::Ente(Vector2f t){
 	window = nullptr;
-	body = new RectangleShape(Vector2f(l, a));
-	largura = l;
-	altura = a;
+	body = new RectangleShape(t);
+	tamanho = t;
 }
 
 Ente::~Ente() {
@@ -20,10 +19,10 @@ void Ente::draw() {
 }
 
 float Ente::getLargura() const {
-	return largura;
+	return tamanho.x;
 }
 float Ente::getAltura() const {
-	return altura;
+	return tamanho.y;
 }
 
 RectangleShape* Ente::getBody() const {

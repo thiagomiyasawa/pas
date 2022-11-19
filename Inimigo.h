@@ -4,9 +4,8 @@ namespace personagens {
 	class Inimigo : public Personagem {
 	protected:
 		int dano;
-		Texture textura;
 	public:
-		Inimigo(int vidas, float x, float y, int id = 0, int valor = 1);
+		Inimigo(int vidas, Vector2f t, Vector2f p, int id = 0, int valor = 1);
 		~Inimigo();
 		virtual void move();
 

@@ -2,14 +2,15 @@
 #include "Ente.h"
 class Entidade : public Ente {
 protected:
-	float x;
-	float y;
+	Vector2f posicao;
+	Vector2f velocidade;
+	
+	Texture textura;
 	int id;
-	float velocidadeX;
-	float velocidadeY;
 public:
-	Entidade(float X, float Y, float l, float a, int ID);
+	Entidade(Vector2f p, Vector2f t, int ID = 0);
 	~Entidade();
+	
 	virtual void move();
 	float getX() const;
 	float getY() const;
@@ -19,8 +20,9 @@ public:
 
 	void setX(int valor);
 	void setY(int valor);
-	void setVelocidadeX(float velocidade);
-	void setVelocidadeY(float velocidade);
+	void setVelocidadeX(float v);
+	void setVelocidadeY(float v);
+	void setVelocidade(Vector2f v);
 
 	void gravidade();
 

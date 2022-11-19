@@ -1,14 +1,13 @@
 #include "Moa.h"
 using namespace personagens;
 
-Moa::Moa(int vidas, float x, float y) :
-	Inimigo(vidas, x, y, 21 )
+Moa::Moa(int vidas, Vector2f p) :
+	Inimigo(vidas, Vector2f(50., 50.), p, 22)
 {
 	textura.loadFromFile("sprites/moa1.png");
 	body->setTexture(&textura);
 	body->setFillColor(Color::Red);
-	velocidadeX = 0.08f;
-	velocidadeY = 0.f;
+	velocidade = Vector2f(0.088, 0.);
 }
 
 Moa::~Moa()
@@ -16,9 +15,9 @@ Moa::~Moa()
 }
 
 void Moa::move() {
-	x += velocidadeX;
-	y += velocidadeY;
-	body->setPosition(x, y);
-	velocidadeY -= 0.001f;
+	posicao.x += velocidade.x;
+	posicao.y += velocidade.y;
+	body->setPosition(posicao);
+	velocidade.y -= 0.001f;
 	gravidade();
 }

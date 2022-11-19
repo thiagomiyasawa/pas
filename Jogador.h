@@ -12,7 +12,7 @@ namespace personagens {
 		Texture textura;
 
 	public:
-		Jogador(int vidas, float x, float y, bool link1 = true);
+		Jogador(int vidas, Vector2f p, bool link1 = true);
 		~Jogador();
 
 		void move();

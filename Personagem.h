@@ -8,7 +8,7 @@ protected:
 	int direcao;
 	int imune;
 public:
-	Personagem(int n, float x = 0., float y = 0., int id = 0, int estado = -1);
+	Personagem(int n, Vector2f t, Vector2f p = Vector2f(0.f, 0.f), int id = 0, int estado = -1);
 	~Personagem();
 
 	virtual void move() = 0;

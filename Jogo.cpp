@@ -2,7 +2,7 @@
 
 Jogo::Jogo() {
     grafico = GerenciadorGrafico::getInstance();
-    link1 = new Jogador(5, 0., 280.);
+    link1 = new Jogador(5, Vector2f(0., 280.));
     link1->setWindow(grafico->getWindow());
     /*cout << "quantos jogadadores ?" << endl;
     int n;

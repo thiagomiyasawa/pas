@@ -1,7 +1,7 @@
 #include "Jogador.h"
 using namespace personagens;
-Jogador::Jogador(int vidas, float x, float y, bool link1) : Personagem(vidas, x, y, 11, 1) {
-    body->setPosition(0.f, 280.f);
+Jogador::Jogador(int vidas, Vector2f p, bool link1) : Personagem(vidas, Vector2f(40.,80.), p , 11, 1) {
+    body->setPosition(p);
     if (link1) {
         textura.loadFromFile("sprites/Link1Idle.png");
     }
@@ -9,18 +9,18 @@ Jogador::Jogador(int vidas, float x, float y, bool link1) : Personagem(vidas, x,
         textura.loadFromFile("sprites/Link2Idle.png");
     }
     body->setTexture(&textura);
-    velocidadeX = 0;
+    velocidade.x = 0;
     imune = 0;
     atacando = 0;
     tiro = new Projetil;
 }
 
-Jogador::~Jogador()
-{
+Jogador::~Jogador() {
+    delete tiro;
 }
 
 void Jogador::move() {
-    velocidadeX*=0.9f;
+    velocidade.x*=0.9f;
     if (imune) {
         imune--;
         if (!imune) {
@@ -38,18 +38,18 @@ void Jogador::move() {
     }
     if (Keyboard::isKeyPressed(Keyboard::Right)) {
         direcao = 1;
-        if (velocidadeX < 0.1f)
-            velocidadeX += 0.03f;
+        if (velocidade.x < 0.1f)
+            velocidade.x += 0.03f;
 
     }
     if (Keyboard::isKeyPressed(Keyboard::Left)) {
         direcao = -1;
-        if (velocidadeX > -0.1f)
-            velocidadeX += -0.03f;
+        if (velocidade.x > -0.1f)
+            velocidade.x += -0.03f;
 
     }
     if (Keyboard::isKeyPressed(Keyboard::Up) && pulo>160 && noChao) {
-            velocidadeY += -0.7f;
+            velocidade.y += -0.7f;
             pulo = 0;
 
     }
@@ -64,9 +64,9 @@ void Jogador::move() {
             atira();
         }
     }
-    y += velocidadeY;
-    x += velocidadeX;
-    body->setPosition(x,y);
+    posicao.y += velocidade.y;
+    posicao.x += velocidade.x;
+    body->setPosition(posicao);
     if(!noChao)
         gravidade();
     if (!vivo) {
@@ -99,13 +99,13 @@ void Jogador::setImune() {
 
 void Jogador::atira() {
     if (direcao > 0) {
-        tiro->setX(x + largura + 2);
-        tiro->setY(y + 20);
+        tiro->setX(posicao.x + tamanho.x + 2);
+        tiro->setY(posicao.y + 20);
         tiro->setVelocidadeX(1.f);
     }
     else {
-        tiro->setX(x - (2+tiro->getLargura()));
-        tiro->setY(y + 20);
+        tiro->setX(posicao.x - (2+tiro->getLargura()));
+        tiro->setY(posicao.y + 20);
         tiro->setVelocidadeX(-1.f);
     }
     tiro->setVelocidadeY(0);

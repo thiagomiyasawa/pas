@@ -2,7 +2,6 @@
 #include "Entidade.h"
 class Obstaculo : public Entidade{
 protected:
-	Texture textura;
 public:
 	Obstaculo(Vector2f coordenada, Vector2f tamanho, int id=30);
 	~Obstaculo();

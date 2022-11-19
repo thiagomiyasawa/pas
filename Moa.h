@@ -7,7 +7,7 @@ namespace personagens {
     {
     private:
     public:
-        Moa(int vidas, float x, float y);
+        Moa(int vidas, Vector2f p);
         ~Moa();
         void move();
     };
