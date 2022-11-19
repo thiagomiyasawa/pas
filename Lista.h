@@ -26,7 +26,7 @@ private:
 	};
 	Elemento<TL>* pFirst;
 	Elemento<TL>* pLast;
-	int size;
+	int size = 0;
 public:
 
 	Lista();

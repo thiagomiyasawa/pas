@@ -54,7 +54,7 @@ void Jogador::move() {
 
     }
     if (Keyboard::isKeyPressed(Keyboard::Z)) {
-        if (atacando<=-2000) {
+        if (atacando<=-1000) {
             atacando = 1000;
             body->setFillColor(Color(155, 157, 131));
         }

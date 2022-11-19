@@ -16,36 +16,30 @@ void GerenciadorColisoes::executar() {
 	int i = 0, j=0;
 	int tipoColi;
 	Inimigo* obj;
-	while (i < LIs.size()) {
+	while (i<LIs.size()) {
+		
 		obj = *itI;
 		if (jogador1 != NULL) {
 
 			if (testaColisao((Entidade*)jogador1, (Entidade*)obj)) {
-				if (!jogador1->getImune())
+				if (jogador1->getAtacando() > 0) {
+					printf("%d", i);
+					colidirAtaque(*itI, jogador1);
+				}
+				else if (!jogador1->getImune()) {
 					colidirInimigo(jogador1, *itI);
-			}
-			if (jogador1->getAtacando()>0) {
-				colidirAtaque(*itI, jogador1);
-				if (!(*itI)->getVivo()) {
-					removeInimigo(i);
-					itI = LIs.begin();
-					i--;
-					for (int t = 0; t < i; t++) {
-						itI++;
-					}
 				}
 			}
 		}
 		i++;
 		itI++;
-
 	}
 	vector<Obstaculo*>::iterator itO;
 	itO = LOs.begin();
 	i = 0;
-	while(i<LOs.size()){
+	while (i < LOs.size()) {
 		if (jogador1 != NULL) {
-			int tipo =testaColisao((Entidade*)jogador1, (Entidade*)*itO);
+			int tipo = testaColisao((Entidade*)jogador1, (Entidade*)*itO);
 			if (tipo) {
 				colidirObstaculo(tipo, jogador1, *itO);
 			}
@@ -54,7 +48,7 @@ void GerenciadorColisoes::executar() {
 		j = 0;
 		while (j < LIs.size()) {
 			int tipo = testaColisao((Entidade*)*itI, (Entidade*)*itO);
-			if((*itO)->getAtivo() && tipo)
+			if ((*itO)->getAtivo() && tipo)
 				colidirObstaculo(tipo, *itI, *itO);
 			j++;
 			itI++;
@@ -62,7 +56,7 @@ void GerenciadorColisoes::executar() {
 		itP = LPs.begin();
 		j = 0;
 		while (j < LPs.size()) {
-			if(testaColisao((Entidade*)*itP, (Entidade*)*itO))
+			if (testaColisao((Entidade*)*itP, (Entidade*)*itO))
 				colidirObstaculo(*itP, *itO);
 			j++;
 			itP++;
@@ -76,16 +70,24 @@ void GerenciadorColisoes::executar() {
 		if ((*itP)->getAtivo()) {
 
 			if (jogador1 != NULL) {
-				if(jogador1->getAtacando()>0)
-					colidirAtaque(*itP, jogador1);
+				
 				if (testaColisao((Entidade*)jogador1, (Entidade*)*itP)) {
-					colidirProjetil(jogador1, *itP);
+					if (jogador1->getAtacando() > 0)
+						colidirAtaque(*itP, jogador1);
+
+					else if (jogador1->getImune()) {
+						(*itP)->setAtivo(false);
+					}
+
+					else {
+						colidirProjetil(jogador1, *itP);
+					}
 				}
 			}
 		}
 		i++;
 		itP++;
-	}
+	} 
 }
 void GerenciadorColisoes::addObstaculo(Obstaculo* obst) {
 	LOs.push_back(obst);
@@ -265,59 +267,33 @@ void GerenciadorColisoes::colidirInimigo( Jogador* obj1, Inimigo* obj2){
 }
 
 void GerenciadorColisoes::colidirAtaque(Inimigo* obj1, Jogador* obj2) {
-	if (obj2->getDirecao() < 0) {
-		if (obj1->getX() + obj1->getLargura() > obj2->getX() - 20 && obj1->getX() < obj2->getX() && obj1->getY() + obj1->getAltura() > obj2->getY() - 5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
-			obj1->removeVidas(1);
-
-		}
-	}
-
-	else if (obj2->getDirecao() > 0) {
-		if (obj1->getX() + obj1->getLargura() > obj2->getX() + obj2->getLargura() && obj1->getX() < obj2->getX() + obj2->getLargura() + 20 && obj1->getY() + obj1->getAltura() > obj2->getY() - 5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
-			obj1->removeVidas(1);
-		}
-	}
+	obj1->removeVidas(1);
 }
 void GerenciadorColisoes::colidirAtaque(Projetil* obj1, Jogador* obj2) {
-	if (obj2->getDirecao() < 0) {
-		if (obj1->getX() + obj1->getLargura() > obj2->getX() - 20 && obj1->getX() < obj2->getX() && obj1->getY() + obj1->getAltura() > obj2->getY() - 5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
-			obj1->setAtivo(false);
-
-		}
-	}
-
-	else if (obj2->getDirecao() > 0) {
-		if (obj1->getX() + obj1->getLargura() > obj2->getX() + obj2->getLargura() && obj1->getX() < obj2->getX() + obj2->getLargura() + 20 && obj1->getY() + obj1->getAltura() > obj2->getY() - 5 && obj1->getY() < obj2->getY() + obj2->getAltura()) {
-			obj1->setAtivo(false);
-		}
-	}
+	obj1->setAtivo(false);
 }
 void GerenciadorColisoes::colidirProjetil(Jogador* obj1, Projetil* obj2) {
 	obj1->removeVidas(1);
 	obj2->setAtivo(false);
 }
 
-bool GerenciadorColisoes::testaColisãoFutura(int x, int y, int l, int a, Obstaculo* obj) {
-	if (x + l > obj->getX() - 1 && x < obj->getX() + obj->getLargura() && y + a > obj->getY() - 2 && y < obj->getY() + obj->getAltura() + 2) {
-		return true;
-	}
-
-	return false;
-}
 
 int GerenciadorColisoes::getQuantInimigos() {
 	return LIs.size();
 }
 
-bool GerenciadorColisoes::testaPosição(Entidade* obj) {
-	vector<Obstaculo*>::iterator itO;
-	itO = LOs.begin();
-	bool valido = true;
-	while (itO != LOs.end()) {
-		if (testaColisao(obj, *itO)) {
-			valido = false;
+
+bool GerenciadorColisoes::testaListaInimigo() {
+	list<Inimigo*>::iterator itI = LIs.begin();
+	while (itI != LIs.end()) {
+		if ((*itI)->getVivo()) {
+			return false;
 		}
-		itO++;
+		itI++;
 	}
-	return valido;
+	return true;
+}
+
+void GerenciadorColisoes::limpaListaInimigo() {
+	LIs.clear();
 }
