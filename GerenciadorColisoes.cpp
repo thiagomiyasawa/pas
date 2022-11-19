@@ -23,7 +23,6 @@ void GerenciadorColisoes::executar() {
 
 			if (testaColisao((Entidade*)jogador1, (Entidade*)obj)) {
 				if (jogador1->getAtacando() > 0) {
-					printf("%d", i);
 					colidirAtaque(*itI, jogador1);
 				}
 				else if (!jogador1->getImune()) {

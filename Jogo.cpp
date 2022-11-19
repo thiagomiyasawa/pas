@@ -33,7 +33,7 @@ Jogo::~Jogo(){
 }
 
 void Jogo::Executar() {
-    while (grafico->isWindowOpen() /*link1->getVivo()  && link2->getVivo()*/) {
+    while (grafico->isWindowOpen() && link1->getVivo()  /* && link2->getVivo() */ ) {
         grafico->Executar();
         link1->move();
         for (int i = 0; i < LEs->getSize(); i++) {
