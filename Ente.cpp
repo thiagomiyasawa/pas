@@ -1,13 +1,13 @@
 #include "Ente.h"
 Ente::Ente(float l, float a){
-	window = NULL;
+	window = nullptr;
 	body = new RectangleShape(Vector2f(l, a));
 	largura = l;
 	altura = a;
 }
 
 Ente::~Ente() {
-	delete window;
+	window=nullptr;
 	delete body;
 }
 
@@ -27,5 +27,6 @@ float Ente::getAltura() const {
 }
 
 RectangleShape* Ente::getBody() const {
+
 	return body;
 }

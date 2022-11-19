@@ -39,6 +39,8 @@ public:
 
 	void executar();
 
-	void geraInimigo();
+	void geraInimigoAleatorio();
+	void geraMoa();
+	void geraOctorok();
 };
 
