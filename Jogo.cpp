@@ -4,6 +4,7 @@ Jogo::Jogo() {
     grafico = GerenciadorGrafico::getInstance();
     link1 = new Jogador(5, Vector2f(0., 280.));
     link1->setWindow(grafico->getWindow());
+    menu = new Menu(grafico->getWindow());
     /*cout << "quantos jogadadores ?" << endl;
     int n;
     cin >> n;
@@ -40,7 +41,7 @@ void Jogo::Executar() {
         if (estado == 0) {
             menu->run_menu(&estado);
             if (estado == 2) {
-                link2 = new Jogador(5., 0., 280., false);
+                link2 = new Jogador(5, Vector2f(0., 280.));
                 link2->setWindow(grafico->getWindow());
                 estado = 1;
             }
