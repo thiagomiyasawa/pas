@@ -8,6 +8,7 @@
 #include "Inimigo.h"
 #include "ListaEntidades.h"
 #include "fase.h"
+#include "Menu.h"
 using namespace std;
 using namespace sf;
 using namespace personagens;
@@ -17,12 +18,15 @@ private:
 	Jogador* link1;
 	Jogador* link2;
 	ListaEntidades* LEs;
+	Menu* menu;
 
 	Fase* fase1;
+	int estado;
 public:
 	Jogo();
 	~Jogo();
 	void Executar();
+	void setEstado(int valor);
 
 
 };
