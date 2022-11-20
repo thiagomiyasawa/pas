@@ -233,16 +233,16 @@ void Fase::geraMoa() {
 	Moa* moa = nullptr; 
 	int area = rand() % 4;
 	if (area == 0) {
-		moa = new Moa(1, 20 + rand() % 1180, rand() % 140);
+		moa = new Moa(1, Vector2f(20 + rand() % 1180, rand() % 140));
 	}
 	else if (area == 1) {
-		moa = new Moa(1, 400 + rand() % 500, rand() % 70 + 210);
+		moa = new Moa(1, Vector2f(400 + rand() % 500, rand() % 70 + 210));
 	}
 	else if (area == 2) {
-		moa = new Moa(1, 20 + rand() % 380, rand() % 80 + 290);
+		moa = new Moa(1, Vector2f(20 + rand() % 380, rand() % 80 + 290));
 	}
 	else if (area == 3) {
-		moa = new Moa(1, 900 + rand() % 380, rand() % 80 + 290);
+		moa = new Moa(1, Vector2f(900 + rand() % 380, rand() % 80 + 290));
 	}
 	colisoes.addInimigo(moa);
 	listaEntidades->push(moa);
@@ -251,16 +251,16 @@ void Fase::geraOctorok() {
 	Octorok* octorok = nullptr;
 	int area = rand() % 4;
 	if (area == 0) {
-		octorok = new Octorok(1, 20 + rand() % 1180, rand() % 140);
+		octorok = new Octorok(1, Vector2f(20 + rand() % 1180, rand() % 140));
 	}
 	else if (area == 1) {
-		octorok = new Octorok(1, 400 + rand() % 500, rand() % 70 + 210);
+		octorok = new Octorok(1, Vector2f(400 + rand() % 500, rand() % 70 + 210));
 	}
 	else if (area == 2) {
-		octorok = new Octorok(1, 20 + rand() % 380, rand() % 80 + 290);
+		octorok = new Octorok(1, Vector2f(20 + rand() % 380, rand() % 80 + 290));
 	}
 	else if (area == 3) {
-		octorok = new Octorok(1, 900 + rand() % 380, rand() % 80 + 290);
+		octorok = new Octorok(1, Vector2f(900 + rand() % 380, rand() % 80 + 290));
 	}
 	colisoes.addInimigo(octorok);
 	listaEntidades->push(octorok);

@@ -1,14 +1,11 @@
 #include "Personagem.h"
-Personagem::Personagem(int n, float x, float y, int id, int estado)
-    : Entidade(x, y, 40.f, 80.f, id) {
+Personagem::Personagem(int n, Vector2f t, Vector2f p, int id, int estado)
+	: Entidade(p, t, id) {
 	num_vidas = n;
-	
-    velocidadeX = 0;
-	velocidadeY = 0;
 	noChao = false;
 	vivo = true;
+	imune = 0;
 	direcao = estado;
-
 }
 
 Personagem::~Personagem() {

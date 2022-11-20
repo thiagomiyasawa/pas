@@ -1,8 +1,7 @@
 #include "Projetil.h"
-Projetil:: Projetil():Entidade(0,0,20,10,41) {
+Projetil:: Projetil():Entidade(Vector2f(0.,0.), Vector2f(20.,10.), 41) {
 	ativo = false;
-	velocidadeX = 0.2;
-	velocidadeY = 0;
+	velocidade = Vector2f(0.2, 0.);
 }
 Projetil::~Projetil() {
 
@@ -13,8 +12,8 @@ void Projetil::setAtivo(bool estado) {
 		body->setFillColor(Color(232, 194, 102));
 	else {
 		body->setFillColor(Color::Transparent);
-		x = -100;
-		y = -100;
+		posicao.x = -100;
+		posicao.y = -100;
 	}
 }
 bool Projetil::getAtivo() {
@@ -22,9 +21,10 @@ bool Projetil::getAtivo() {
 }
 void Projetil::move() {
 	if (ativo) {
-		x += velocidadeX;
-		y += velocidadeY;
-		body->setPosition(x, y);
-		velocidadeY += 0.001f;
+		
+		posicao.x += velocidade.x;
+		posicao.y += velocidade.y;
+		body->setPosition(posicao);
+		velocidade.y += 0.001f;
 	}
 }

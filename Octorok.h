@@ -10,7 +10,7 @@ namespace personagens {
 		int recarga;
 
 	public:
-		Octorok(int vidas, float x, float y);
+		Octorok(int vidas, Vector2f p);
 		~Octorok();
 		void move();
 		void atira();
