@@ -17,11 +17,11 @@ Jogo::Jogo() {
     }
     else {*/
         link2 = nullptr;
-        fase1 = new Fase(grafico->getWindow(), link1);
+        fase = new PrimeiraFase(grafico->getWindow(), link1);
     //}
     
     estado = 0;
-    LEs = fase1->getListaEntidades();
+    LEs = fase->getListaEntidades();
 
     Executar();
 }
@@ -31,7 +31,7 @@ Jogo::~Jogo(){
     delete link1;
     delete link2;
     delete LEs;
-    delete fase1;
+    delete fase;
     delete menu;
     menu = nullptr;
 }
@@ -55,7 +55,7 @@ void Jogo::Executar() {
                     grafico->render(temp->getBody());
             }
 
-            fase1->executar();
+            fase->executar();
             grafico->display();
         }
     }

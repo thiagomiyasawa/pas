@@ -7,7 +7,9 @@
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "ListaEntidades.h"
-#include "fase.h"
+#include "Fase.h"
+#include "PrimeiraFase.h"
+#include "SegundaFase.h"
 #include "Menu.h"
 using namespace std;
 using namespace sf;
@@ -20,7 +22,7 @@ private:
 	ListaEntidades* LEs;
 	Menu* menu;
 
-	Fase* fase1;
+	Fase* fase;
 	int estado;
 public:
 	Jogo();

@@ -33,14 +33,14 @@ public:
 	~Fase();
 	void inicializaElementos();
 	ListaEntidades* getListaEntidades();
-	void criaMapa();
+	
+	void executar();
+	
+	virtual void criaMapa() = 0;
 	void convertePlatF(int n);
 	void converteEsp(int n);
 
-	void executar();
-
-	void geraInimigoAleatorio();
-	void geraMoa();
-	void geraOctorok();
+	virtual void geraInimigoAleatorio() = 0;
+	
 };
 
