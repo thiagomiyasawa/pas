@@ -2,7 +2,7 @@
 
 Jogo::Jogo() {
     grafico = GerenciadorGrafico::getInstance();
-    link1 = new Jogador(5, Vector2f(0., 280.));
+    link1 = new Jogador(5, Vector2f(0., 280.),11);
     link1->setWindow(grafico->getWindow());
     menu = new Menu(grafico->getWindow());
     /*cout << "quantos jogadadores ?" << endl;
@@ -17,12 +17,10 @@ Jogo::Jogo() {
     }
     else {*/
         link2 = nullptr;
-        fase = new PrimeiraFase(grafico->getWindow(), link1);
     //}
     
     estado = 0;
     time = 0;
-    LEs = fase->getListaEntidades();
 
     Executar();
 }
@@ -42,14 +40,17 @@ void Jogo::Executar() {
         if (estado == 0) {
             menu->run_menu(&estado);
             if (estado == 2) {
-                link2 = new Jogador(5, Vector2f(0., 280.));
+                link2 = new Jogador(5, Vector2f(0., 280.),12);
                 link2->setWindow(grafico->getWindow());
                 estado = 1;
+            }
+            if (estado != 0) {
+                fase = new PrimeiraFase(grafico->getWindow(), link1, link2);
+                LEs = fase->getListaEntidades();
             }
         }
         if (estado == 1) {
             grafico->Executar();
-            link1->move();
             for (int i = 0; i < LEs->getSize(); i++) {
                 Entidade* temp = LEs->getItem(i);
                 if (temp != nullptr)

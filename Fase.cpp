@@ -4,7 +4,6 @@ Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	window = w;
 	j1 = j;
 	j2 = nullptr;
-	colisoes.addProjetil(j->getTiro());
 	listaEntidades = new ListaEntidades;
 	listaEntidades->push(j1);
 	listaObstaculos = new Lista<Obstaculo>;
@@ -14,10 +13,11 @@ Fase::Fase(RenderWindow* w, Jogador* J1, Jogador* J2) : colisoes(J1, J2) {
 	window = w;
 	j1 = J1;
 	j2 = J2;
-	colisoes.addProjetil(j1->getTiro());
 	listaEntidades = new ListaEntidades;
 	listaEntidades->push(j1);
-	listaEntidades->push(j2);
+	if (j2 != nullptr) {
+		listaEntidades->push(j2);
+	}
 	listaObstaculos = new Lista<Obstaculo>;
 }
 
@@ -35,7 +35,6 @@ void Fase::inicializaElementos() {
 	listaEntidades->push(ganondorf);
 	listaEntidades->push(octo1);
 	listaEntidades->push(moa1);*/
-	listaEntidades->push(j1->getTiro());
 	for (int i = 0; i < listaObstaculos->getSize(); i++) {
 		Entidade* temp = listaObstaculos->getItem(i);
 		listaEntidades->push(temp);

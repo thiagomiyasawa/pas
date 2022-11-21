@@ -54,7 +54,7 @@ void Menu::loop_events(int* estado){
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !pressed){
-      if( pos < 4){
+      if( pos < 2){
         ++pos;
         pressed = true;
         texts[pos].setOutlineThickness(4);
@@ -80,7 +80,7 @@ void Menu::loop_events(int* estado){
       if (pos == 1) {
           *estado = 1;
       }
-      if (pos == 1) {
+      if (pos == 2) {
           *estado = 2;
       }
     }

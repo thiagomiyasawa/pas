@@ -19,14 +19,27 @@ void GerenciadorColisoes::executar() {
 	while (i<LIs.size()) {
 		
 		obj = *itI;
-		if (jogador1 != NULL) {
+		if ((*itI)->getVivo()) {
+			if (jogador1 != NULL) {
 
-			if (testaColisao((Entidade*)jogador1, (Entidade*)obj)) {
-				if (jogador1->getAtacando() > 0) {
-					colidirAtaque(*itI, jogador1);
+				if (testaColisao((Entidade*)jogador1, (Entidade*)obj)) {
+					if (jogador1->getAtacando() > 0) {
+						colidirAtaque(*itI, jogador1);
+					}
+					else if (!jogador1->getImune()) {
+						colidirInimigo(jogador1, *itI);
+					}
 				}
-				else if (!jogador1->getImune()) {
-					colidirInimigo(jogador1, *itI);
+			}
+			if (jogador2 != NULL) {
+
+				if (testaColisao((Entidade*)jogador2, (Entidade*)obj)) {
+					if (jogador2->getAtacando() > 0) {
+						colidirAtaque(*itI, jogador2);
+					}
+					else if (!jogador2->getImune()) {
+						colidirInimigo(jogador2, *itI);
+					}
 				}
 			}
 		}
@@ -41,6 +54,12 @@ void GerenciadorColisoes::executar() {
 			int tipo = testaColisao((Entidade*)jogador1, (Entidade*)*itO);
 			if (tipo) {
 				colidirObstaculo(tipo, jogador1, *itO);
+			}
+		}
+		if (jogador2 != NULL) {
+			int tipo = testaColisao((Entidade*)jogador2, (Entidade*)*itO);
+			if (tipo) {
+				colidirObstaculo(tipo, jogador2, *itO);
 			}
 		}
 		itI = LIs.begin();
@@ -80,6 +99,21 @@ void GerenciadorColisoes::executar() {
 
 					else {
 						colidirProjetil(jogador1, *itP);
+					}
+				}
+			}
+			if (jogador2 != NULL) {
+
+				if (testaColisao((Entidade*)jogador2, (Entidade*)*itP)) {
+					if (jogador2->getAtacando() > 0)
+						colidirAtaque(*itP, jogador2);
+
+					else if (jogador2->getImune()) {
+						(*itP)->setAtivo(false);
+					}
+
+					else {
+						colidirProjetil(jogador2, *itP);
 					}
 				}
 			}
@@ -273,6 +307,7 @@ void GerenciadorColisoes::colidirAtaque(Projetil* obj1, Jogador* obj2) {
 }
 void GerenciadorColisoes::colidirProjetil(Jogador* obj1, Projetil* obj2) {
 	obj1->removeVidas(1);
+	obj1->setImune();
 	obj2->setAtivo(false);
 }
 
