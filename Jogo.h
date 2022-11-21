@@ -22,6 +22,7 @@ private:
 	ListaEntidades* LEs;
 	Menu* menu;
 
+	float time;
 	Fase* fase;
 	int estado;
 public:

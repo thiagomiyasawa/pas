@@ -21,6 +21,7 @@ Jogo::Jogo() {
     //}
     
     estado = 0;
+    time = 0;
     LEs = fase->getListaEntidades();
 
     Executar();
@@ -57,7 +58,9 @@ void Jogo::Executar() {
 
             fase->executar();
             grafico->display();
+            time = grafico->getDt();
         }
+        
     }
 
 
@@ -65,4 +68,3 @@ void Jogo::Executar() {
 void Jogo::setEstado(int valor) {
     estado = valor;
 }
-float GerenciadorGrafico::dt(0.);

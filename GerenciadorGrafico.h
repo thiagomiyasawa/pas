@@ -48,6 +48,8 @@ public:
 
     float updateDeltaTime();
 
+    float getDt();
+
     RenderWindow* getWindow() const;
 
     void Executar();

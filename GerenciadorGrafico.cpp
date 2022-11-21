@@ -139,6 +139,11 @@ float GerenciadorGrafico::updateDeltaTime() {
     return 0.0f;
 }
 
+float GerenciadorGrafico::getDt()
+{
+    return dt;
+}
+
 RenderWindow* GerenciadorGrafico::getWindow() const {
     return window;
 }
@@ -152,6 +157,7 @@ void GerenciadorGrafico::Executar() {
     }
      clear();
 
-
+     updateDeltaTime();
 
 }
+float GerenciadorGrafico::dt(0.);
