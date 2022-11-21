@@ -2,37 +2,50 @@
 
 Menu::Menu(sf::RenderWindow* janela){
     window = janela;
-  font = new sf::Font();
-  image = new sf::Texture();
-  bg = new sf::Sprite();
+    font = new sf::Font();
+    image = new sf::Texture();
+    bg = new sf::Sprite();
 
-  set_values();
+    window->setPosition(sf::Vector2i(0, 0));
+
+    pos = 0;
+    pressed = theselect = false;
+    font->loadFromFile("./times-new-roman-bold-italic.ttf");
+    image->loadFromFile("./menu.png");
+
+    bg->setTexture(*image);
 }
 
+
 Menu::~Menu(){
-  delete window;
-  delete winclose;
+  window=nullptr;
   delete font;
   delete image;
   delete bg;
 }
 
-void Menu::set_values(){
-  window->setPosition(sf::Vector2i(0,0));
+void Menu::set_values(int tipo){
 
-  pos = 0;
-  pressed = theselect = false;
-  font->loadFromFile("./times-new-roman-bold-italic.ttf");
-  image->loadFromFile("./menu.png");
+  if (tipo == 1) {
+      options = { "zelda++", "iniciar", "ranking" };
+      texts.resize(3);
+      coords = { {677,55},{655,247},{655,453} };
+      sizes = { 124,103,103, };
+  }
 
-  bg->setTexture(*image);
+  else if (tipo == 2) {
+      options = { "zelda++",  "1 jogador", "2 jogadores"};
+      texts.resize(3);
+      coords = { {677,55},{655,247},{655,453} };
+      sizes = { 124,103,103, };
+  }
 
-
-  options = {"zelda++", "1 jogador", "2 jogadores"};
-  texts.resize(3);
-  coords = {{677,55},{655,247},{655,453}};
-  sizes = {124,103,103,};
-
+  else if (tipo == 3) {
+      options = { "zelda++", "Fase 1", "Fase 2" };
+      texts.resize(3);
+      coords = { {677,55},{655,247},{655,453} };
+      sizes = { 124,103,103, };
+  }
   for (std::size_t i{}; i < texts.size(); ++i){
    texts[i].setFont(*font); 
    texts[i].setString(options[i]); 
@@ -43,10 +56,10 @@ void Menu::set_values(){
   }
   texts[1].setOutlineThickness(4);
   pos = 1;
-
+  
 }
 
-void Menu::loop_events(int* estado){
+int Menu::loop_events(){
   sf::Event event;
   while(window->pollEvent(event)){
     if( event.type == sf::Event::Closed){
@@ -61,6 +74,7 @@ void Menu::loop_events(int* estado){
         texts[pos - 1].setOutlineThickness(0);
         pressed = false;
         theselect = false;
+        return 0;
       }
     }
 
@@ -72,19 +86,23 @@ void Menu::loop_events(int* estado){
         texts[pos + 1].setOutlineThickness(0);
         pressed = false;
         theselect = false;
+        return 0;
       }
     }
-
+    if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && theselect) {
+        theselect = false;
+    }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !theselect){
       theselect = true;
+      texts[pos].setOutlineThickness(0);
       if (pos == 1) {
-          *estado = 1;
+        return 1;
       }
       if (pos == 2) {
-          *estado = 2;
+        return 2;
       }
     }
-
+    return 0;
   }
 }
 
@@ -97,7 +115,8 @@ void Menu::draw_all(){
   window->display();
 }
 
-void Menu::run_menu(int* estado){
-    loop_events(estado);
+int Menu::run_menu(){
+    int output=loop_events();
     draw_all();
+    return output;
 }

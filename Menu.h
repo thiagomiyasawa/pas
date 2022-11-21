@@ -20,13 +20,13 @@ class Menu {
     std::vector<std::size_t> sizes;
 
 protected:
-    void set_values();
-    void loop_events(int* estado);
+    int loop_events();
     void draw_all();
 
 public:
     Menu(sf::RenderWindow* janela);
     ~Menu();
-    void run_menu(int* estado);
+    void set_values(int tipo);
+    int run_menu();
 };
 

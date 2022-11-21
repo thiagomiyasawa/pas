@@ -21,7 +21,7 @@ Jogo::Jogo() {
     
     estado = 0;
     time = 0;
-
+    menu->set_values(1);
     Executar();
 }
 
@@ -37,19 +37,43 @@ Jogo::~Jogo(){
 
 void Jogo::Executar() {
     while (grafico->isWindowOpen() && link1->getVivo()  /* && link2->getVivo() */ ) {
+        int output=0;
         if (estado == 0) {
-            menu->run_menu(&estado);
-            if (estado == 2) {
-                link2 = new Jogador(5, Vector2f(0., 280.),12);
-                link2->setWindow(grafico->getWindow());
+            output = menu->run_menu();
+            if (output == 1)/*iniciar*/ {
+                menu->set_values(2);
                 estado = 1;
             }
-            if (estado != 0) {
+            else if (output ==2)/*RANKING*/ {
+                
+            }
+        }
+        else if (estado==1) {
+            output = menu->run_menu();
+            if (output == 2)/*2jogadores*/ {
+                link2 = new Jogador(5, Vector2f(0., 280.), 12);
+                link2->setWindow(grafico->getWindow());
+            }
+            if (output != 0) {
+                menu->set_values(3);
+                estado = 2;
+            }
+        }
+        else if (estado==2) {
+            output = menu->run_menu();
+            if (output == 1)/*fase 1*/ {
                 fase = new PrimeiraFase(grafico->getWindow(), link1, link2);
                 LEs = fase->getListaEntidades();
             }
+            else if (output == 2)/*fase 2*/ {
+                fase = new SegundaFase(grafico->getWindow(), link1, link2);
+                LEs = fase->getListaEntidades();
+            }
+            if (output != 0) {
+                estado = 3;
+            }
         }
-        if (estado == 1) {
+        else if (estado == 3) {
             grafico->Executar();
             for (int i = 0; i < LEs->getSize(); i++) {
                 Entidade* temp = LEs->getItem(i);

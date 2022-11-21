@@ -98,13 +98,52 @@ void SegundaFase::criaMapa()
 	for (int i = 0; i < 3; i++) {
 		geraMoa();
 	}
+	for (int i = 0; i < 3; i++) {
+		geraGanon();
+	}
 
 }
 
 void SegundaFase::geraInimigoAleatorio()
 {
+	int tipo = rand() % 2;
+	if (tipo == 1) {
+		geraMoa();
+	}
+	else {
+		geraGanon();
+	}
 }
 
 void SegundaFase::geraMoa()
 {
+	Moa* moa = nullptr;
+	int area = rand() % 3;
+	if (area == 0) {
+		moa = new Moa(1, Vector2f( rand() % 1230, rand() % 250));
+	}
+	else if (area == 1) {
+		moa = new Moa(1, Vector2f( rand() % 210, rand() % 100 + 300));
+	}
+	else if (area == 2) {
+		moa = new Moa(1, Vector2f(1020 + rand() % 210, rand() % 100 + 300));
+	}
+	colisoes.addInimigo(moa);
+	listaEntidades->push(moa);
+}
+
+void SegundaFase::geraGanon() {
+	Ganondorf* ganon = nullptr;
+	int area = rand() % 3;
+	if (area == 0) {
+		ganon = new Ganondorf(1, Vector2f(20 + rand() % 1230, rand() % 200));
+	}
+	else if (area == 1) {
+		ganon = new Ganondorf(1, Vector2f(rand() % 210, rand() % 50 + 300));
+	}
+	else if (area == 2) {
+		ganon = new Ganondorf(1, Vector2f(1020 + rand() % 210, rand() % 50 + 300));
+	}
+	colisoes.addInimigo(ganon);
+	listaEntidades->push(ganon);
 }

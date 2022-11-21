@@ -1,5 +1,6 @@
 #pragma once
 #include "Fase.h"
+#include "Ganondorf.h"
 class SegundaFase :
     public Fase
 {
@@ -10,5 +11,6 @@ public:
     void criaMapa();
     void geraInimigoAleatorio();
     void geraMoa();
+    void geraGanon();
 };
 
