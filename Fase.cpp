@@ -7,7 +7,6 @@ Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	listaEntidades = new ListaEntidades;
 	listaEntidades->push(j1);
 	listaObstaculos = new Lista<Obstaculo>;
-	
 }
 
 Fase::Fase(RenderWindow* w, Jogador* J1, Jogador* J2) : colisoes(J1, J2) {
@@ -20,7 +19,6 @@ Fase::Fase(RenderWindow* w, Jogador* J1, Jogador* J2) : colisoes(J1, J2) {
 		listaEntidades->push(j2);
 	}
 	listaObstaculos = new Lista<Obstaculo>;
-
 }
 
 Fase::~Fase() {
