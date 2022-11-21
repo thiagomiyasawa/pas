@@ -5,8 +5,8 @@ PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* j) : Fase(w, j) {
 	inicializaElementos();
 }
 
-PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2) 
-:Fase(w,J1,J2) {
+PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2)
+	: Fase(w, J1, J2) {
 	criaMapa();
 	inicializaElementos();
 }
@@ -46,6 +46,7 @@ void PrimeiraFase::criaMapa() {
 		listaObstaculos->push(temp);
 		coordenada.x += 50.;
 	}
+
 	//superior esquerda
 	coordenada = Vector2f(15, 220);
 	for (i = 0; i < 7; i++) {
