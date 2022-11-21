@@ -15,6 +15,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <queue>
 using namespace std;
 using namespace sf;
 using namespace personagens;
@@ -27,6 +28,7 @@ protected:
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
 	RenderWindow* window;
+	queue<int> fila;
 public:
 	Fase(RenderWindow* w, Jogador* j1);
 	Fase(RenderWindow* w, Jogador* J1, Jogador* J2);

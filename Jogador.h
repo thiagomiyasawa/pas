@@ -10,9 +10,10 @@ namespace personagens {
 		Projetil* tiro;
 		int pulo;
 		Texture textura;
+		static int potuacão;
 
 	public:
-		Jogador(int vidas, Vector2f p, bool link1 = true);
+		Jogador(int vidas, Vector2f p, int num);
 		~Jogador();
 
 		void move();
@@ -20,9 +21,7 @@ namespace personagens {
 		int getAtacando();
 		int getImune();
 		int getDirecao();
-		Projetil* getTiro();
 		void setImune();
-		void atira();
 		void setNoChao(bool estado);
 
 
