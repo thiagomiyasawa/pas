@@ -240,7 +240,7 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo
 	}
 }
 void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo* obj2) {
-	if (obj2->getId() == 31 || obj2->getId()==32 || obj2->getId() == 34 ) {
+	if (obj2->getId() == 31 || obj2->getId()==32 || (obj2->getId() == 34 && obj2->getAtivo())) {
 		if (direcao == 1 && !obj1->getNoChao()) {
 			obj1->setVelocidadeY(0);
 			obj1->setNoChao(true);
@@ -264,27 +264,6 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Inimigo* obj1, Obstaculo
 	else if (obj2->getId() == 33) {
 		obj1->removeVidas(100);
 
-	}
-	else if (obj2->getId() == 34) {
-		if (obj2->getAtivo()) {
-			if (direcao == 1) {
-				obj1->setVelocidadeY(0);
-				obj1->setNoChao(true);
-			}
-
-			else if (direcao == 2) {
-				obj1->setVelocidadeY(obj1->getVelocidadeY() * -0.5f);
-			}
-
-			else if (direcao == 3) {
-				obj1->setVelocidadeX(0);
-				obj1->setX(obj2->getX() - (float)(obj1->getLargura() + 2));
-			}
-			else if (direcao == 4) {
-				obj1->setVelocidadeX(0);
-				obj1->setX(obj2->getX() + (float)(obj2->getLargura() + 2));
-			}
-		}
 	}
 }
 void GerenciadorColisoes::colidirObstaculo(Projetil* obj1, Obstaculo* obj2) {

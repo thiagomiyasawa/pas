@@ -1,5 +1,6 @@
 #pragma once
 #include "Personagem.h"
+class Jogo;
 namespace personagens {
 	class Inimigo : public Personagem {
 	protected:
@@ -15,5 +16,6 @@ namespace personagens {
 		void setImune();
 
 		void removeVidas(int dano);
+
 	};
 }//fim
