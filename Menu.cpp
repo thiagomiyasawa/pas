@@ -28,6 +28,7 @@ void Menu::set_values(int tipo){
 
   if (tipo == 1) {
       options = { "zelda++", "iniciar", "ranking" };
+      numOpcoes = 2;
       texts.resize(3);
       coords = { {677,55},{655,247},{655,453} };
       sizes = { 124,103,103, };
@@ -35,6 +36,7 @@ void Menu::set_values(int tipo){
 
   else if (tipo == 2) {
       options = { "zelda++",  "1 jogador", "2 jogadores"};
+      numOpcoes = 2;
       texts.resize(3);
       coords = { {677,55},{655,247},{655,453} };
       sizes = { 124,103,103, };
@@ -42,9 +44,18 @@ void Menu::set_values(int tipo){
 
   else if (tipo == 3) {
       options = { "zelda++", "Fase 1", "Fase 2" };
+      numOpcoes = 2;
       texts.resize(3);
       coords = { {677,55},{655,247},{655,453} };
       sizes = { 124,103,103, };
+  }
+
+  else if (tipo == 4) {
+      options = { "Pause", "despausar", "menu","salvar e sair"};
+      numOpcoes = 3;
+      texts.resize(4);
+      coords = { {654,58},{592,257},{592,415},{592,550} };
+      sizes = { 124,103,103,103 };
   }
   for (std::size_t i{}; i < texts.size(); ++i){
    texts[i].setFont(*font); 
@@ -67,7 +78,7 @@ int Menu::loop_events(){
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !pressed){
-      if( pos < 2){
+      if( pos < numOpcoes){
         ++pos;
         pressed = true;
         texts[pos].setOutlineThickness(4);

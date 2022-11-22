@@ -122,3 +122,4 @@ void Jogador::setNoChao(bool estado) {
     noChao = estado;
     pulo++;
 }
+

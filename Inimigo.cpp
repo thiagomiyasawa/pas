@@ -1,4 +1,5 @@
 #include "Inimigo.h"
+#include "Jogo.h"
 using namespace personagens;
 
 Inimigo::Inimigo(int vida,Vector2f t, Vector2f p, int id, int valor) : Personagem(vida, t, p, id) {
@@ -43,6 +44,8 @@ void Inimigo::removeVidas(int dano) {
 	if (num_vidas <= 0) {
 		vivo = false;
 		body->setFillColor(Color::Transparent);
+		Jogo::addPontos(10);
+
 	}
 
 }

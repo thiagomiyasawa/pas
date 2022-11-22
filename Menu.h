@@ -6,9 +6,9 @@
 class Menu {
     int pos;
     bool pressed, theselect;
+    int numOpcoes;
 
     sf::RenderWindow* window;
-    sf::RectangleShape* winclose;
     sf::Font* font;
     sf::Texture* image;
     sf::Sprite* bg;
