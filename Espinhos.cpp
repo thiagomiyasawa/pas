@@ -15,3 +15,15 @@ Espinhos::~Espinhos()
 int Espinhos::getDano() {
 	return dano;
 }
+
+void Espinhos::gravar() {
+    ofstream gravador("save/espinhos.dat", ios::app);
+
+    if (!gravador)
+    {
+        return;
+    }
+    gravador << posicao.x << ' '
+             << posicao.y <<endl;
+    gravador.close();
+}

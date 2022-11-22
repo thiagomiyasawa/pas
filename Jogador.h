@@ -2,7 +2,6 @@
 #include "Personagem.h"
 #include <math.h>
 #include "Projetil.h"
-using namespace std;
 namespace personagens {
 	class Jogador : public Personagem {
 	private:
@@ -10,10 +9,10 @@ namespace personagens {
 		Projetil* tiro;
 		int pulo;
 		Texture textura;
-		static int potuacão;
+		static int pontuacao;
 
 	public:
-		Jogador(int vidas, Vector2f p, int num);
+		Jogador(int vidas, Vector2f p, int id);
 		~Jogador();
 
 		void move();
@@ -24,7 +23,8 @@ namespace personagens {
 		void setImune();
 		void setNoChao(bool estado);
 
-
+		void gravar();
+		static Jogador* recuperar();
 
 	};
 }//fim

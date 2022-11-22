@@ -1,5 +1,7 @@
 #pragma once
 #include "Ente.h"
+#include <fstream>
+using namespace std;
 class Entidade : public Ente {
 protected:
 	Vector2f posicao;
@@ -20,6 +22,7 @@ public:
 
 	void setX(int valor);
 	void setY(int valor);
+	void setPosicao(Vector2f p);
 	void setVelocidadeX(float v);
 	void setVelocidadeY(float v);
 	void setVelocidade(Vector2f v);
@@ -27,5 +30,7 @@ public:
 	void gravidade();
 
 	virtual bool getVivo();
+
+	virtual void gravar() = 0;
 };
 

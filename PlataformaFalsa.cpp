@@ -12,6 +12,10 @@ PlataformaFalsa::~PlataformaFalsa()
 {
 }
 
+void PlataformaFalsa::setAtivo(int a) {
+	ativo = a;
+}
+
 int PlataformaFalsa::getAtivo() {
 	return ativo;
 }
@@ -20,4 +24,41 @@ void PlataformaFalsa::reduzAtivo() {
 	if (!ativo) {
 		body->setFillColor(Color::Transparent);
 	}
+}
+
+void PlataformaFalsa::gravar()
+{
+	ofstream gravador("save/plataformafalsa.dat", ios::app);
+
+	if (!gravador)
+	{
+		return;
+	}
+	gravador << posicao.x << ' '
+			 << posicao.y << ' '
+			 << ativo << endl;
+	gravador.close();
+
+}
+
+PlataformaFalsa* PlataformaFalsa::recuperar() {
+	ifstream recuperador("save/plataformafalsa.dat", ios::app);
+
+	PlataformaFalsa* pf;
+	Vector2f p;
+	Vector2f t;
+	int a;
+
+	if (!recuperador || recuperador.eof()) {
+		return NULL;
+	}
+
+	recuperador >> p.x >> p.y >> t.x >> t.y >> a;
+
+	pf = new PlataformaFalsa(p, t);
+	pf->setAtivo(a);
+
+	recuperador.close();
+
+	return pf;
 }

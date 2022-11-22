@@ -35,6 +35,9 @@ void Entidade::setX(int valor) {
 void Entidade::setY(int valor) {
 	posicao.y = valor;
 }
+void Entidade::setPosicao(Vector2f p) {
+	posicao = p;
+}
 void Entidade::setVelocidadeX(float v) {
 	velocidade.x = v;
 }

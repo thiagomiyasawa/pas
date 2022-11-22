@@ -10,6 +10,9 @@ class Projetil:public Entidade {
 		void setAtivo(bool estado);
 		bool getAtivo();
 		void move();
+
+		void gravar();
+		static Projetil* recuperar();
 		
 };
 

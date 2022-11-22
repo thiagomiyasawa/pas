@@ -45,6 +45,70 @@ void Octorok::atira() {
 	pedra->setAtivo(true);
 }
 
+void Octorok::setProjetil(Projetil* p) {
+	
+	pedra = p;
+}
+
 Projetil* Octorok::getProjetil() {
 	return pedra;
 }
+
+void Octorok::setRecarga(int rec)
+{
+	recarga = rec;
+}
+
+void Octorok::gravar() {
+	ofstream gravador("save/octorok.dat", ios::app);
+
+	if (!gravador)
+	{
+		return;
+	}
+	gravador << numVidas << ' '
+			 << posicao.x << ' '
+			 << posicao.y << ' '
+			 << velocidade.x << ' '
+			 << velocidade.y << ' '
+			 << recarga << endl;
+	gravador.close();
+	pedra->gravar();
+
+}
+
+Octorok* Octorok::recuperar() {
+	ifstream recuperador("save/octorok.dat", ios::in);
+
+	Octorok* o;
+	int vidas;
+	Vector2f p;
+	Vector2f v;
+	int rec;
+
+	if (!recuperador || recuperador.eof()) {
+		return NULL;
+	}
+
+	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> rec;
+
+	o = new Octorok(vidas, p);
+	o->setVelocidade(v);
+	o->setRecarga(rec);
+	recuperador.close();
+
+	return o;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

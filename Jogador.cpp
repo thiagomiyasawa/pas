@@ -122,3 +122,45 @@ void Jogador::setNoChao(bool estado) {
     noChao = estado;
     pulo++;
 }
+
+void Jogador::gravar() {
+    ofstream gravador("save/jogador.dat", ios::app);
+    
+    if (!gravador)
+    {
+        return;
+    }
+    gravador << numVidas << ' '
+             << posicao.x << ' '
+             << posicao.y << ' '
+             << velocidade.x << ' '
+             << velocidade.y << ' '
+             << id << ' '
+             << pontuacao << endl;
+    gravador.close();
+}
+
+Jogador* Jogador::recuperar() {
+    ifstream recuperador("save/jogador.dat", ios::in);
+    Jogador* j;
+    int vidas;
+    Vector2f p;
+    Vector2f v;
+    int ID;
+    int pontos;
+    if (!recuperador || recuperador.eof()) {
+        return NULL;
+    }
+
+    recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ID >>pontos;
+
+    j = new Jogador(vidas, p, ID);
+    j->setVelocidade(v);
+    pontuacao = pontos;
+
+    recuperador.close();
+    return j;
+
+
+}
+

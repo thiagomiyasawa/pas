@@ -14,7 +14,11 @@ namespace personagens {
 		~Octorok();
 		void move();
 		void atira();
+		void setProjetil(Projetil* p);
 		Projetil* getProjetil();
+		void setRecarga(int rec);
+		void gravar();
+		static Octorok* recuperar();
 	};
 }//fim do namespace
 

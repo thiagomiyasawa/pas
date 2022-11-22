@@ -10,5 +10,8 @@ namespace personagens {
         Moa(int vidas, Vector2f p);
         ~Moa();
         void move();
+        
+        void gravar();
+        static Moa* recuperar();
     };
 }//fim do namespace

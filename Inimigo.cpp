@@ -38,9 +38,9 @@ void Inimigo::setImune() {
 }
 
 void Inimigo::removeVidas(int dano) {
-	num_vidas -= dano;
+	numVidas -= dano;
 	body->setFillColor(Color(232, 124, 171));
-	if (num_vidas <= 0) {
+	if (numVidas <= 0) {
 		vivo = false;
 		body->setFillColor(Color::Transparent);
 	}
