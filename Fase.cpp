@@ -10,7 +10,7 @@ Fase::Fase(RenderWindow* w, Jogador* j) {
 	listaObstaculos = new Lista<Obstaculo>;
 }
 
-Fase::Fase(RenderWindow* w, Jogador* J1, Jogador* J2, float tempo) : colisoes(J1, J2) {
+Fase::Fase(RenderWindow* w, Jogador* J1, Jogador* J2, float tempo) {
 	colisoes = new GerenciadorColisoes(J1, J2);
 	window = w;
 	j1 = J1;

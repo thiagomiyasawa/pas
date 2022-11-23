@@ -147,6 +147,7 @@ void Jogo::continuar() {
     else if (qualFase == 2) {
         fase = SegundaFase::recuperar(grafico->getWindow());
     }
+}
 
 void Jogo::trocaFase() {
     delete fase;
@@ -166,4 +167,4 @@ void Jogo::trocaFase() {
     }
 }
 
-int Jogo::pontuação(0);
+int Jogo::pontuacao(0);

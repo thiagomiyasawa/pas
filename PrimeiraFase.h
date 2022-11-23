@@ -6,7 +6,7 @@ class PrimeiraFase :
 private:
 public:
     PrimeiraFase(RenderWindow* w, Jogador* j, bool nova = true);
-    PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2, bool nova = true);
+    PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2,float tempo, bool nova = true);
     ~PrimeiraFase();
     void criaMapa();
     void geraInimigoAleatorio();
