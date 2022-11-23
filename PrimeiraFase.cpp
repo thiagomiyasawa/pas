@@ -1,14 +1,19 @@
 #include "PrimeiraFase.h"
 
-PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* j) : Fase(w, j) {
-	criaMapa();
-	inicializaElementos();
+PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* j, bool nova) : Fase(w, j) {
+	if (nova) {
+		criaMapa();
+		inicializaElementos();
+	}
+	
 }
 
-PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2)
+PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2, bool nova)
 	: Fase(w, J1, J2) {
-	criaMapa();
-	inicializaElementos();
+	if (nova) {
+		criaMapa();
+		inicializaElementos();
+	}
 }
 
 PrimeiraFase::~PrimeiraFase()
@@ -99,7 +104,7 @@ void PrimeiraFase::criaMapa() {
 
 	for (int i = 0; i < listaObstaculos->getSize(); i++) {
 		Obstaculo* temp = listaObstaculos->getItem(i);
-		colisoes.addObstaculo(temp);
+		colisoes->addObstaculo(temp);
 	}
 
 	for (int i = 0; i < 3; i++) {
@@ -138,9 +143,10 @@ void PrimeiraFase::geraMoa() {
 	else if (area == 3) {
 		moa = new Moa(1, Vector2f(900 + rand() % 380, rand() % 80 + 290));
 	}
-	colisoes.addInimigo(moa);
+	colisoes->addInimigo(moa);
 	listaEntidades->push(moa);
 }
+
 void PrimeiraFase::geraOctorok() {
 	Octorok* octorok = nullptr;
 	int area = rand() % 4;
@@ -156,9 +162,90 @@ void PrimeiraFase::geraOctorok() {
 	else if (area == 3) {
 		octorok = new Octorok(1, Vector2f(900 + rand() % 380, rand() % 80 + 290));
 	}
-	colisoes.addInimigo(octorok);
+	colisoes->addInimigo(octorok);
 	listaEntidades->push(octorok);
-	colisoes.addProjetil(octorok->getProjetil());
+	colisoes->addProjetil(octorok->getProjetil());
 	listaEntidades->push(octorok->getProjetil());
+}
+
+void PrimeiraFase::salvar(int pontos) {
+	ofstream gravador("save/fase.dat", ios::app);
+
+	if (!gravador)
+	{
+		return;
+	}
+	gravador << 1 << ' '
+			 << pontos <<
+			 endl;
+	gravador.close();
+
+	for (int i = 0; i < listaEntidades->getSize(); i++) {
+		Entidade* temp = listaEntidades->getItem(i);
+		if (temp->getId() != 41) {
+			temp->gravar();
+		}
+		
+	}
+}
+
+PrimeiraFase* PrimeiraFase::recuperar(RenderWindow* w) {
+	Jogador* j1 = Jogador::recuperar();
+	Jogador* j2 = Jogador::recuperar();
+	PrimeiraFase* fase;
+
+	if (j2 != nullptr) {
+		fase = new PrimeiraFase(w, j1, j2, false);
+	}
+	else {
+		fase = new PrimeiraFase(w, j1, false);
+	}
+	
+	ListaEntidades* LEs = fase->getListaEntidades();
+	GerenciadorColisoes* c = fase->getGerenciadorColisoes();
+	
+	Moa* m = Moa::recuperar();
+	while (m != nullptr) {
+		c->addInimigo(m);
+		LEs->push(m);
+		m = Moa::recuperar();	
+	}
+
+	Octorok* o = Octorok::recuperar();
+	while (o != nullptr) {
+		c->addInimigo(o);
+		LEs->push(o);
+		o = Octorok::recuperar();
+	}
+
+	Plataforma* p = Plataforma::recuperar();
+	while (p != nullptr) {
+		c->addObstaculo(p);
+		LEs->push(p);
+		p = Plataforma::recuperar();
+	}
+
+	PlataformaFalsa* pf = PlataformaFalsa::recuperar();
+	while (pf != nullptr) {
+		c->addObstaculo(pf);
+		LEs->push(pf);
+		pf = PlataformaFalsa::recuperar();
+	}
+
+	Espinhos* e = Espinhos::recuperar();
+	while (e != nullptr) {
+		c->addObstaculo(e);
+		LEs->push(e);
+		e = Espinhos::recuperar();
+	}
+
+	Lava* l = Lava::recuperar();
+	while (l != nullptr) {
+		c->addObstaculo(l);
+		LEs->push(l);
+		l = Lava::recuperar();
+	}
+
+	return fase;
 }
  

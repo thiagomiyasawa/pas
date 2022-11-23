@@ -11,6 +11,6 @@ public:
     int getDano();
 
     void gravar();
-    Entidade* recuperar();
+    static Espinhos* recuperar();
 };
 

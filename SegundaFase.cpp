@@ -1,15 +1,19 @@
 #include "SegundaFase.h"
 
-SegundaFase::SegundaFase(RenderWindow* w, Jogador* j) : Fase(w, j)
+SegundaFase::SegundaFase(RenderWindow* w, Jogador* j, bool nova) : Fase(w, j)
 {
-	criaMapa();
-	inicializaElementos();
+	if (nova) {
+		criaMapa();
+		inicializaElementos();
+	}
 }
 
-SegundaFase::SegundaFase(RenderWindow* w, Jogador* J1, Jogador* J2)
+SegundaFase::SegundaFase(RenderWindow* w, Jogador* J1, Jogador* J2, bool nova)
 	: Fase(w, J1, J2) {
-	criaMapa();
-	inicializaElementos();
+	if (nova) {
+		criaMapa();
+		inicializaElementos();
+	}
 }
 
 SegundaFase::~SegundaFase()
@@ -92,7 +96,7 @@ void SegundaFase::criaMapa()
 
 	for (int i = 0; i < listaObstaculos->getSize(); i++) {
 		Obstaculo* temp = listaObstaculos->getItem(i);
-		colisoes.addObstaculo(temp);
+		colisoes->addObstaculo(temp);
 	}
 
 	for (int i = 0; i < 3; i++) {
@@ -128,7 +132,7 @@ void SegundaFase::geraMoa()
 	else if (area == 2) {
 		moa = new Moa(1, Vector2f(1020 + rand() % 210, rand() % 100 + 300));
 	}
-	colisoes.addInimigo(moa);
+	colisoes->addInimigo(moa);
 	listaEntidades->push(moa);
 }
 
@@ -144,6 +148,86 @@ void SegundaFase::geraGanon() {
 	else if (area == 2) {
 		ganon = new Ganondorf(1, Vector2f(1020 + rand() % 210, rand() % 50 + 300));
 	}
-	colisoes.addInimigo(ganon);
+	colisoes->addInimigo(ganon);
 	listaEntidades->push(ganon);
+}
+
+void SegundaFase::salvar(int pontos) {
+	ofstream gravador("save/fase.dat", ios::app);
+
+	if (!gravador)
+	{
+		return;
+	}
+	gravador << 2 << ' '
+			 << pontos <<
+			 endl;
+	gravador.close();
+
+	for (int i = 0; i < listaEntidades->getSize(); i++) {
+		Entidade* temp = listaEntidades->getItem(i);
+		if (temp->getId() != 41) {
+			temp->gravar();
+		}
+	}
+}
+
+SegundaFase* SegundaFase::recuperar(RenderWindow* w) {
+	Jogador* j1 = Jogador::recuperar();
+	Jogador* j2 = Jogador::recuperar();
+	SegundaFase* fase;
+
+	if (j2 != nullptr) {
+		fase = new SegundaFase(w, j1, j2, false);
+	}
+	else {
+		fase = new SegundaFase(w, j1, false);
+	}
+
+	ListaEntidades* LEs = fase->getListaEntidades();
+	GerenciadorColisoes* c = fase->getGerenciadorColisoes();
+
+	Moa* m = Moa::recuperar();
+	while (m != nullptr) {
+		c->addInimigo(m);
+		LEs->push(m);
+		m = Moa::recuperar();
+	}
+
+	Ganondorf* g = Ganondorf::recuperar();
+	while (g != nullptr) {
+		c->addInimigo(g);
+		LEs->push(g);
+		g = Ganondorf::recuperar();
+	}
+
+	Plataforma* p = Plataforma::recuperar();
+	while (p != nullptr) {
+		c->addObstaculo(p);
+		LEs->push(p);
+		p = Plataforma::recuperar();
+	}
+
+	PlataformaFalsa* pf = PlataformaFalsa::recuperar();
+	while (pf != nullptr) {
+		c->addObstaculo(pf);
+		LEs->push(pf);
+		pf = PlataformaFalsa::recuperar();
+	}
+
+	Espinhos* e = Espinhos::recuperar();
+	while (e != nullptr) {
+		c->addObstaculo(e);
+		LEs->push(e);
+		e = Espinhos::recuperar();
+	}
+
+	Lava* l = Lava::recuperar();
+	while (l != nullptr) {
+		c->addObstaculo(l);
+		LEs->push(l);
+		l = Lava::recuperar();
+	}
+
+	return fase;
 }

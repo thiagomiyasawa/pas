@@ -87,7 +87,7 @@ Octorok* Octorok::recuperar() {
 	int rec;
 
 	if (!recuperador || recuperador.eof()) {
-		return NULL;
+		return nullptr;
 	}
 
 	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> rec;

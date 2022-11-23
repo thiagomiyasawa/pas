@@ -135,8 +135,7 @@ void Jogador::gravar() {
              << posicao.y << ' '
              << velocidade.x << ' '
              << velocidade.y << ' '
-             << id << ' '
-             << pontuacao << endl;
+             << id <<  endl;
     gravador.close();
 }
 
@@ -149,14 +148,14 @@ Jogador* Jogador::recuperar() {
     int ID;
     int pontos;
     if (!recuperador || recuperador.eof()) {
-        return NULL;
+        return nullptr
+            ;
     }
 
-    recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ID >>pontos;
+    recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ID;
 
     j = new Jogador(vidas, p, ID);
     j->setVelocidade(v);
-    pontuacao = pontos;
 
     recuperador.close();
     return j;

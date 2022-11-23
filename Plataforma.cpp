@@ -19,7 +19,9 @@ void Plataforma::gravar() {
         return;
     }
     gravador << posicao.x << ' '
-             << posicao.y << endl;
+			 << posicao.y << ' '
+			 << tamanho.x << ' '
+			 << tamanho.y << endl;
     gravador.close();
 }
 
@@ -31,7 +33,8 @@ Plataforma* Plataforma::recuperar() {
 	Vector2f t;
 
 	if (!recuperador || recuperador.eof()) {
-		return NULL;
+		return nullptr
+			;
 	}
 
 	recuperador >> p.x >> p.y >> t.x >> t.y;

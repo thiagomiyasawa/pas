@@ -35,7 +35,7 @@ Lava* Lava::recuperar() {
 	Vector2f t;
 
 	if (!recuperador || recuperador.eof()) {
-			return NULL;
+			return nullptr;
 	}
 
 	recuperador >> p.x >> p.y >> t.x >> t.y;

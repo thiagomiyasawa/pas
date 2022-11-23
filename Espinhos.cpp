@@ -24,6 +24,28 @@ void Espinhos::gravar() {
         return;
     }
     gravador << posicao.x << ' '
-             << posicao.y <<endl;
+			 << posicao.y << ' '
+			 << tamanho.x << ' '
+			 << tamanho.y << endl;
     gravador.close();
+}
+
+Espinhos* Espinhos::recuperar() {
+	ifstream recuperador("save/espinhos.dat", ios::app);
+
+	Espinhos* e;
+	Vector2f p;
+	Vector2f t;
+
+	if (!recuperador || recuperador.eof()) {
+		return nullptr;
+	}
+
+	recuperador >> p.x >> p.y >> t.x >> t.y;
+
+	e = new Espinhos(p, t);
+
+	recuperador.close();
+
+	return e;
 }

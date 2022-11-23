@@ -5,12 +5,14 @@ class PrimeiraFase :
 {
 private:
 public:
-    PrimeiraFase(RenderWindow* w, Jogador* j);
-    PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2);
+    PrimeiraFase(RenderWindow* w, Jogador* j, bool nova = true);
+    PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2, bool nova = true);
     ~PrimeiraFase();
     void criaMapa();
     void geraInimigoAleatorio();
     void geraMoa();
     void geraOctorok();
+    void salvar(int pontos);
+    static PrimeiraFase* recuperar(RenderWindow* w);
 };
 

@@ -75,7 +75,7 @@ Ganondorf* Ganondorf::recuperar() {
 	int ir;
 
 	if (!recuperador || recuperador.eof()) {
-			return NULL;
+			return nullptr;
 	}
 
 	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ir;

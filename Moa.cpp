@@ -47,7 +47,7 @@ Moa* Moa::recuperar() {
 	Vector2f v;
 
 	if (!recuperador || recuperador.eof()) {
-		return NULL;
+		return nullptr;
 	}
 
 	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y;

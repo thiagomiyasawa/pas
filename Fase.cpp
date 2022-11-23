@@ -1,6 +1,7 @@
 #include "Fase.h"
 
-Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
+Fase::Fase(RenderWindow* w, Jogador* j) {
+	colisoes = new GerenciadorColisoes(j);
 	window = w;
 	j1 = j;
 	j2 = nullptr;
@@ -9,7 +10,8 @@ Fase::Fase(RenderWindow* w, Jogador* j) : colisoes(j) {
 	listaObstaculos = new Lista<Obstaculo>;
 }
 
-Fase::Fase(RenderWindow* w, Jogador* J1, Jogador* J2) : colisoes(J1, J2) {
+Fase::Fase(RenderWindow* w, Jogador* J1, Jogador* J2) {
+	colisoes = new GerenciadorColisoes(J1, J2);
 	window = w;
 	j1 = J1;
 	j2 = J2;
@@ -27,7 +29,7 @@ Fase::~Fase() {
 	}
 	delete listaEntidades;
 	delete listaObstaculos;
-	delete window;
+	delete colisoes;
 }
 
 void Fase::inicializaElementos() {
@@ -46,6 +48,10 @@ ListaEntidades* Fase::getListaEntidades() {
 	return listaEntidades;
 }
 
+GerenciadorColisoes* Fase::getGerenciadorColisoes() {
+	return colisoes;
+}
+
 void Fase::executar() {
 	/*j1->move();
 	(j1->getTiro())->move();
@@ -58,9 +64,9 @@ void Fase::executar() {
 			temp->move();
 	}
 
-	colisoes.executar();
-	if (colisoes.testaListaInimigo()) {
-		colisoes.limpaListaInimigo();
+	colisoes->executar();
+	if (colisoes->testaListaInimigo()) {
+		colisoes->limpaListaInimigo();
 		for (int i = 0; i < 6; i++) {
 			geraInimigoAleatorio();
 		}
@@ -98,3 +104,4 @@ void Fase::converteEsp(int n) {
 		}
 	}
 }
+

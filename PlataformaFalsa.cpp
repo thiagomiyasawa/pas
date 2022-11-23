@@ -36,6 +36,8 @@ void PlataformaFalsa::gravar()
 	}
 	gravador << posicao.x << ' '
 			 << posicao.y << ' '
+			 << tamanho.x << ' '
+			 << tamanho.y << ' '
 			 << ativo << endl;
 	gravador.close();
 
@@ -50,7 +52,7 @@ PlataformaFalsa* PlataformaFalsa::recuperar() {
 	int a;
 
 	if (!recuperador || recuperador.eof()) {
-		return NULL;
+		return nullptr;
 	}
 
 	recuperador >> p.x >> p.y >> t.x >> t.y >> a;

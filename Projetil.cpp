@@ -52,7 +52,7 @@ Projetil* Projetil::recuperar() {
 	Vector2f v;
 
 	if (!recuperador || recuperador.eof()) {
-		return NULL;
+		return nullptr;
 	}
 
 	recuperador >> a >> p.x >> p.y >> v.x >> v.y;
