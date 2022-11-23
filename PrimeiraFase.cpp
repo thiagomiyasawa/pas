@@ -5,8 +5,8 @@ PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* j) : Fase(w, j) {
 	inicializaElementos();
 }
 
-PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2)
-	: Fase(w, J1, J2) {
+PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2, float tempo)
+	: Fase(w, J1, J2, tempo) {
 	criaMapa();
 	inicializaElementos();
 }
@@ -161,4 +161,6 @@ void PrimeiraFase::geraOctorok() {
 	colisoes.addProjetil(octorok->getProjetil());
 	listaEntidades->push(octorok->getProjetil());
 }
+
+
  

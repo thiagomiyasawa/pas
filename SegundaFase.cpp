@@ -6,8 +6,8 @@ SegundaFase::SegundaFase(RenderWindow* w, Jogador* j) : Fase(w, j)
 	inicializaElementos();
 }
 
-SegundaFase::SegundaFase(RenderWindow* w, Jogador* J1, Jogador* J2)
-	: Fase(w, J1, J2) {
+SegundaFase::SegundaFase(RenderWindow* w, Jogador* J1, Jogador* J2, float tempo)
+	: Fase(w, J1, J2, tempo) {
 	criaMapa();
 	inicializaElementos();
 }

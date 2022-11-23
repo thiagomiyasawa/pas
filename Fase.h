@@ -28,10 +28,10 @@ protected:
 	ListaEntidades* listaEntidades;
 	GerenciadorColisoes colisoes;
 	RenderWindow* window;
-	queue<int> fila;
+	float tempoInicial;
 public:
 	Fase(RenderWindow* w, Jogador* j1);
-	Fase(RenderWindow* w, Jogador* J1, Jogador* J2);
+	Fase(RenderWindow* w, Jogador* J1, Jogador* J2, float tempo);
 	~Fase();
 	void inicializaElementos();
 	ListaEntidades* getListaEntidades();
@@ -44,5 +44,6 @@ public:
 
 	virtual void geraInimigoAleatorio() = 0;
 	
+	float gettempo(float tempo);
 };
 

@@ -5,6 +5,7 @@ Jogo::Jogo() {
     link1 = new Jogador(5, Vector2f(0., 280.),11);
     link1->setWindow(grafico->getWindow());
     menu = new Menu(grafico->getWindow());
+    fim = false;
    
     link2 = nullptr;
     
@@ -26,7 +27,7 @@ Jogo::~Jogo(){
 
 void Jogo::Executar() {
     while (grafico->isWindowOpen() && link1->getVivo()  /* && link2->getVivo() */) {
-        while (link1->getVivo() || (link2 != nullptr && link2->getVivo())) {
+        while ((link1->getVivo() || (link2 != nullptr && link2->getVivo())) && !fim) {
             int output = 0;
             if (estado == 0) {
                 output = menu->run_menu();
@@ -52,12 +53,16 @@ void Jogo::Executar() {
             else if (estado == 2) {
                 output = menu->run_menu();
                 if (output == 1)/*fase 1*/ {
-                    fase = new PrimeiraFase(grafico->getWindow(), link1, link2);
+                    time = grafico->getDt();
+                    fase = new PrimeiraFase(grafico->getWindow(), link1, link2,time);
                     LEs = fase->getListaEntidades();
+                    numFase = 1;
                 }
                 else if (output == 2)/*fase 2*/ {
-                    fase = new SegundaFase(grafico->getWindow(), link1, link2);
+                    time = grafico->getDt();
+                    fase = new SegundaFase(grafico->getWindow(), link1, link2, time);
                     LEs = fase->getListaEntidades();
+                    numFase = 2;
                 }
                 if (output != 0) {
                     estado = 3;
@@ -74,6 +79,14 @@ void Jogo::Executar() {
                 fase->executar();
                 grafico->display();
                 time = grafico->getDt();
+                if (fase->gettempo(time) >= 90.) {
+                    if (numFase == 1) {
+                        trocaFase();
+                    }
+                    else {
+                        fim = true;
+                    }
+                }
             }
             else if (estado == 4) {
                 output = menu->run_menu();
@@ -92,6 +105,7 @@ void Jogo::Executar() {
                 menu->set_values(4);
             }
         }
+        resetarJogo();
     }
 }
 
@@ -114,6 +128,24 @@ void Jogo::resetarJogo() {
     estado = 0;
     time = 0;
     menu->set_values(1);
+}
+
+void Jogo::trocaFase() {
+    delete fase;
+    fase = new SegundaFase(grafico->getWindow(), link1, link2, grafico->getDt());
+    time = grafico->getDt();
+    LEs = fase->getListaEntidades();
+    numFase = 2;
+    link1->setX(0.);
+    link1->setY(280.);
+    link1->setVelocidadeX(0);
+    link1->setVelocidadeY(0);
+    if (link2 != nullptr) {
+        link2->setX(0.);
+        link2->setY(280.);
+        link2->setVelocidadeX(0);
+        link2->setVelocidadeY(0);
+    }
 }
 
 int Jogo::pontuação(0);
