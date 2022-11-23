@@ -27,7 +27,7 @@ Jogo::~Jogo(){
 }
 
 void Jogo::Executar() {
-    while (grafico->isWindowOpen() && link1->getVivo()  /* && link2->getVivo() */) {
+    while (grafico->isWindowOpen() ) {
         while ((link1->getVivo() || (link2 != nullptr && link2->getVivo())) && !fim) {
             int output = 0;
             if (estado == 0) {
@@ -36,7 +36,10 @@ void Jogo::Executar() {
                     menu->set_values(2);
                     estado = 1;
                 }
-                else if (output == 2)/*RANKING*/ {
+                else if (output == 2)/*continuar*/ {
+                    continuar();
+                }
+                else if (output == 3)/*RANKING*/ {
 
                 }
             }
@@ -99,7 +102,9 @@ void Jogo::Executar() {
                     resetarJogo();
                 }
                 else if (output == 3)/*salvar e sair*/ {
-
+                    fase->salvar(pontuacao);
+                    grafico->closeWindow();
+                    
                 }
             }
             if (Keyboard::isKeyPressed(Keyboard::Escape)) {
