@@ -31,10 +31,6 @@ Fase::~Fase() {
 }
 
 void Fase::inicializaElementos() {
-	/*listaEntidades->push(i1);
-	listaEntidades->push(ganondorf);
-	listaEntidades->push(octo1);
-	listaEntidades->push(moa1);*/
 	for (int i = 0; i < listaObstaculos->getSize(); i++) {
 		Entidade* temp = listaObstaculos->getItem(i);
 		listaEntidades->push(temp);
@@ -51,11 +47,6 @@ GerenciadorColisoes* Fase::getGerenciadorColisoes() {
 }
 
 void Fase::executar() {
-	/*j1->move();
-	(j1->getTiro())->move();
-	if (j2 != nullptr) {
-	j2->move();
-	}*/
 	for (int i = 0; i < listaEntidades->getSize(); i++) {
 		Entidade* temp = listaEntidades->getItem(i);
 		if (temp != nullptr && temp->getVivo())
