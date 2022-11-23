@@ -21,3 +21,41 @@ void Moa::move() {
 	velocidade.y -= 0.001f;
 	gravidade();
 }
+
+void Moa::gravar() {
+	ofstream gravador("save/moa.dat", ios::app);
+
+	if (!gravador)
+	{
+		return;
+	}
+	gravador << numVidas << ' '
+			 << posicao.x << ' '
+			 << posicao.y << ' '
+			 << velocidade.x << ' '
+			 << velocidade.y << endl;
+	gravador.close();
+}
+
+
+Moa* Moa::recuperar() {
+	ifstream recuperador("save/moa.dat", ios::in);
+
+	Moa* m;
+	int vidas;
+	Vector2f p;
+	Vector2f v;
+
+	if (!recuperador || recuperador.eof()) {
+		return nullptr;
+	}
+
+	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y;
+
+	m = new Moa(vidas, p);
+	m->setVelocidade(v);
+
+	recuperador.close();
+
+	return m;
+}

@@ -28,3 +28,41 @@ void Projetil::move() {
 		velocidade.y += 0.001f;
 	}
 }
+
+void Projetil::gravar() {
+	ofstream gravador("save/projetil.dat", ios::app);
+
+	if (!gravador)
+	{
+		return;
+	}
+	gravador << ativo << ' '
+			 << posicao.x << ' '
+			 << posicao.y << ' '
+			 << velocidade.x << ' '
+			 << velocidade.y << endl;
+	gravador.close();
+}
+
+Projetil* Projetil::recuperar() {
+	ifstream recuperador("save/projetil.dat", ios::in);
+	Projetil* P;
+	bool a;
+	Vector2f p;
+	Vector2f v;
+
+	if (!recuperador || recuperador.eof()) {
+		return nullptr;
+	}
+
+	recuperador >> a >> p.x >> p.y >> v.x >> v.y;
+
+	P = new Projetil();
+	P->setAtivo(a);
+	P->setPosicao(p);
+	P->setVelocidade(v);
+	
+	recuperador.close();
+	
+	return P;
+}

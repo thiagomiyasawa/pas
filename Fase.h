@@ -26,7 +26,7 @@ protected:
 	Jogador* j2;
 	Lista<Obstaculo>* listaObstaculos;
 	ListaEntidades* listaEntidades;
-	GerenciadorColisoes colisoes;
+	GerenciadorColisoes* colisoes;
 	RenderWindow* window;
 	float tempoInicial;
 public:
@@ -35,6 +35,7 @@ public:
 	~Fase();
 	void inicializaElementos();
 	ListaEntidades* getListaEntidades();
+	GerenciadorColisoes* getGerenciadorColisoes();
 	
 	void executar();
 	
@@ -43,6 +44,7 @@ public:
 	void converteEsp(int n);
 
 	virtual void geraInimigoAleatorio() = 0;
+	virtual void salvar(int pontos) = 0;
 	
 	float gettempo(float tempo);
 };

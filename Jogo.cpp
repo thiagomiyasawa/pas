@@ -7,6 +7,7 @@ Jogo::Jogo() {
     menu = new Menu(grafico->getWindow());
     fim = false;
    
+
     link2 = nullptr;
     
     estado = 0;
@@ -91,6 +92,7 @@ void Jogo::Executar() {
             else if (estado == 4) {
                 output = menu->run_menu();
                 if (output == 1)/*resume*/ {
+                    fase->salvar(pontuacao);
                     estado = 3;
                 }
                 else if (output == 2)/*menu*/ {
@@ -110,8 +112,8 @@ void Jogo::Executar() {
 }
 
 void Jogo::addPontos(int valor) {
-    pontuação += valor;
-    printf("%d\n", pontuação);
+    pontuacao += valor;
+    printf("%d\n", pontuacao);
 }
 
 void Jogo::resetarJogo() {
@@ -124,11 +126,27 @@ void Jogo::resetarJogo() {
     link1 = new Jogador(5, Vector2f(0., 280.), 11);
     link1->setWindow(grafico->getWindow());
     link2 = nullptr;
-    pontuação = 0;
+    pontuacao = 0;
     estado = 0;
     time = 0;
     menu->set_values(1);
 }
+
+void Jogo::continuar() {
+    ifstream recuperador("save/fase.dat", ios::in);
+    int qualFase;
+    int pontos;
+
+    recuperador >> qualFase >> pontos;
+
+    pontuacao = pontos;
+
+    if (qualFase == 1) {
+        fase = PrimeiraFase::recuperar(grafico->getWindow());
+    }
+    else if (qualFase == 2) {
+        fase = SegundaFase::recuperar(grafico->getWindow());
+    }
 
 void Jogo::trocaFase() {
     delete fase;

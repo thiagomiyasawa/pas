@@ -12,5 +12,8 @@ namespace personagens {
         Ganondorf(int vidas, Vector2f p);
         ~Ganondorf();
         void move();
+
+        void gravar();
+        static Ganondorf* recuperar();
     };
 }//fim do namespace

@@ -11,7 +11,7 @@ namespace personagens {
 		Texture textura;
 
 	public:
-		Jogador(int vidas, Vector2f p, int num);
+		Jogador(int vidas, Vector2f p, int id);
 		~Jogador();
 
 		void move();
@@ -22,7 +22,8 @@ namespace personagens {
 		void setImune();
 		void setNoChao(bool estado);
 
-
+		void gravar();
+		static Jogador* recuperar();
 
 	};
 }//fim

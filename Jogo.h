@@ -27,7 +27,7 @@ private:
 	float time;
 	Fase* fase;
 	int estado;
-	static int pontuação;
+	static int pontuacao;
 public:
 	Jogo();
 	~Jogo();
@@ -36,5 +36,6 @@ public:
 	static void addPontos(int valor);
 	void resetarJogo();
 	void trocaFase();
+	void continuar();
 };
 

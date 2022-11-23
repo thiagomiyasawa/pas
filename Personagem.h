@@ -2,7 +2,7 @@
 #include "Entidade.h"
 class Personagem : public Entidade {
 protected:
-	int num_vidas;
+	int numVidas;
 	bool noChao;
 	bool vivo;
 	int direcao;

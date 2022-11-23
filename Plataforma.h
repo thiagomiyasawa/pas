@@ -7,5 +7,8 @@ private:
 public:
     Plataforma(Vector2f coordenada, Vector2f tamanho);
     ~Plataforma();
+
+    void gravar();
+    static Plataforma* recuperar();
 };
 

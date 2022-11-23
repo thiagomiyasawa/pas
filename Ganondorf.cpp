@@ -48,3 +48,42 @@ void Ganondorf::move() {
 	}
 	noChao = false;
 }
+
+void Ganondorf::gravar() {
+	ofstream gravador("save/ganondorf.dat", ios::app);
+
+	if (!gravador)
+	{
+		return;
+	}
+	gravador << numVidas << ' '
+			 << posicao.x << ' '
+			 << posicao.y << ' '
+			 << velocidade.x << ' '
+			 << velocidade.y << ' '
+			 << irritado << endl;
+	gravador.close();
+}
+
+Ganondorf* Ganondorf::recuperar() {
+	ifstream recuperador("save/ganondorf.dat", ios::in);
+
+	Ganondorf* g;
+	int vidas;
+	Vector2f p;
+	Vector2f v;
+	int ir;
+
+	if (!recuperador || recuperador.eof()) {
+			return nullptr;
+	}
+
+	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ir;
+
+	g = new Ganondorf(vidas, p);
+	g->setVelocidade(v);
+
+	recuperador.close();
+	
+	return g;
+}
