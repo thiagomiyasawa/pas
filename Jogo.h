@@ -21,6 +21,8 @@ private:
 	Jogador* link2;
 	ListaEntidades* LEs;
 	Menu* menu;
+	int numFase;
+	bool fim;
 
 	float time;
 	Fase* fase;
@@ -33,6 +35,7 @@ public:
 
 	static void addPontos(int valor);
 	void resetarJogo();
+	void trocaFase();
 	void continuar();
 };
 

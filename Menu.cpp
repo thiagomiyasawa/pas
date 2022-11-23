@@ -106,12 +106,7 @@ int Menu::loop_events(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !theselect){
       theselect = true;
       texts[pos].setOutlineThickness(0);
-      if (pos == 1) {
-        return 1;
-      }
-      if (pos == 2) {
-        return 2;
-      }
+      return pos;
     }
     return 0;
   }
