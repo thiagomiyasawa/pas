@@ -27,9 +27,6 @@ Fase::~Fase() {
 	for (int i = 0; i < listaEntidades->getSize(); i++) {
 		listaEntidades->pop(i);
 	}
-	delete listaEntidades;
-	delete listaObstaculos;
-	delete colisoes;
 }
 
 void Fase::inicializaElementos() {
