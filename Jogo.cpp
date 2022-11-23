@@ -120,8 +120,8 @@ void Jogo::resetarJogo() {
     delete link1;
     if(link2!= nullptr)
         delete link2;
-    delete LEs;
     delete fase;
+    LEs = nullptr;
 
     link1 = new Jogador(5, Vector2f(0., 280.), 11);
     link1->setWindow(grafico->getWindow());
