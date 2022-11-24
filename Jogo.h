@@ -11,6 +11,7 @@
 #include "PrimeiraFase.h"
 #include "SegundaFase.h"
 #include "Menu.h"
+#include "MenuGameOver.h"
 using namespace std;
 using namespace sf;
 using namespace personagens;
@@ -21,6 +22,7 @@ private:
 	Jogador* link2;
 	ListaEntidades* LEs;
 	Menu* menu;
+	MenuGameOver* end;
 	int numFase;
 	bool fim;
 
@@ -37,5 +39,6 @@ public:
 	void resetarJogo();
 	void trocaFase();
 	void continuar();
+	void FimDejogo(int pontos);
 };
 

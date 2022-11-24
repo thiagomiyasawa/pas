@@ -84,6 +84,12 @@
     <ClCompile Include="SegundaFase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CaixaDeTexto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuGameOver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Jogo.h">
@@ -153,6 +159,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SegundaFase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CaixaDeTexto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuGameOver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
