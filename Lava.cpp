@@ -5,11 +5,18 @@ Lava::Lava(Vector2f coordenada, Vector2f tamanho) :
 {
 	textura.loadFromFile("sprites/lava.png");
 	body->setTexture(&textura);
+	dano = 1000;
+	solido = false;
+	danoso = true;
 }
 
 
 Lava::~Lava()
 {
+}
+
+int Lava::getDano() {
+	return dano;
 }
 
 void Lava::gravar() {

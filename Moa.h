@@ -6,6 +6,7 @@ namespace personagens {
         public Inimigo
     {
     private:
+            int invisivel;
     public:
         Moa(int vidas, Vector2f p);
         ~Moa();
