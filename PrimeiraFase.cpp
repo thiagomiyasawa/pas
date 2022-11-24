@@ -191,17 +191,17 @@ void PrimeiraFase::salvar(int pontos, float tempo) {
 	}
 }
 
-PrimeiraFase* PrimeiraFase::recuperar(RenderWindow* w) {
+PrimeiraFase* PrimeiraFase::recuperar(RenderWindow* w, float tempo) {
 	Lista<Jogador>* lj = Jogador::recuperar();
 	PrimeiraFase* fase;
 	if (lj->getSize() == 2) {
 
-		fase = new PrimeiraFase(w, lj->getItem(0), lj->getItem(1), false);
+		fase = new PrimeiraFase(w, lj->getItem(0), lj->getItem(1), tempo, false);
 
 	}
 	else {
 
-		fase = new PrimeiraFase(w, lj->getItem(0), false);
+		fase = new PrimeiraFase(w, lj->getItem(0), tempo, false);
 	}
 	ListaEntidades* LEs = fase->getListaEntidades();
 	GerenciadorColisoes* c = fase->getGerenciadorColisoes();
@@ -217,8 +217,11 @@ PrimeiraFase* PrimeiraFase::recuperar(RenderWindow* w) {
 	Lista<Projetil>* pr = Projetil::recuperar();
 	for (int i = 0; i < o->getSize(); i++) {
 		Octorok* temp = o->getItem(i);
-		temp->setProjetil(pr->getItem(i));
+		Projetil* tempP = pr->getItem(i);
+		temp->setProjetil(tempP);
+		LEs->push(tempP);
 		LEs->push(temp);
+		c->addProjetil(tempP);
 		c->addInimigo(temp);
 	}
 	

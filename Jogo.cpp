@@ -38,6 +38,7 @@ void Jogo::Executar() {
                 }
                 else if (output == 2)/*continuar*/ {
                     continuar();
+                    LEs = fase->getListaEntidades();
                     estado = 3;
                 }
                 else if (output == 3)/*RANKING*/ {
@@ -149,7 +150,7 @@ void Jogo::continuar() {
     pontuacao = pontos;
 
     if (qualFase == 1) {
-        fase = PrimeiraFase::recuperar(grafico->getWindow());
+        fase = PrimeiraFase::recuperar(grafico->getWindow(), time);
     }
     else if (qualFase == 2) {
         fase = SegundaFase::recuperar(grafico->getWindow());

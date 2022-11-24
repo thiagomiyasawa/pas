@@ -13,6 +13,6 @@ public:
     void geraMoa();
     void geraOctorok();
     void salvar(int pontos, float tempo);
-    static PrimeiraFase* recuperar(RenderWindow* w);
+    static PrimeiraFase* recuperar(RenderWindow* w, float tempo);
 };
 
