@@ -3,7 +3,6 @@
 class Projetil:public Entidade {
 	private:
 		bool ativo;
-
 	public:
 		Projetil();
 		~Projetil();

@@ -288,6 +288,7 @@ void GerenciadorColisoes::colidirProjetil(Jogador* obj1, Projetil* obj2) {
 	obj1->removeVidas(1);
 	obj1->setImune();
 	obj2->setAtivo(false);
+	obj1->getBody()->setFillColor(Color::Color(20, 34, 184));
 }
 
 

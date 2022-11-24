@@ -1,14 +1,13 @@
 #include "SegundaFase.h"
 
-SegundaFase::SegundaFase(RenderWindow* w, Jogador* j, bool nova) : Fase(w, j)
-{
+SegundaFase::SegundaFase(RenderWindow* w, Jogador* J1, float tempo, bool nova)
+	: Fase(w, J1, nullptr, tempo) {
 	if (nova) {
 		criaMapa();
 		inicializaElementos();
 		tempoRestante = 90;
 	}
 }
-
 SegundaFase::SegundaFase(RenderWindow* w, Jogador* J1, Jogador* J2,float tempo, bool nova)
 	: Fase(w, J1, J2,tempo) {
 	if (nova) {
