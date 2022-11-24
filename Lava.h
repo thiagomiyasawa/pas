@@ -9,6 +9,6 @@ public:
     ~Lava();
 
     void gravar();
-    static Lava* recuperar();
+    static Lista<Lava>* recuperar();
 };
 

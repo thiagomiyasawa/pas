@@ -11,6 +11,6 @@ public:
     int getDano();
 
     void gravar();
-    static Espinhos* recuperar();
+    static Lista<Espinhos>* recuperar();
 };
 

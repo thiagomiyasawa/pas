@@ -30,22 +30,22 @@ void Espinhos::gravar() {
     gravador.close();
 }
 
-Espinhos* Espinhos::recuperar() {
-	ifstream recuperador("save/espinhos.dat", ios::app);
-
-	Espinhos* e;
+Lista<Espinhos>* Espinhos::recuperar() {
+	ifstream recuperador("save/espinhos.dat", ios::in);
+	Lista<Espinhos>* l = new Lista<Espinhos>;
 	Vector2f p;
 	Vector2f t;
-
-	if (!recuperador || recuperador.eof()) {
+	if (!recuperador) {
 		return nullptr;
 	}
+	while (!recuperador.eof()) {
+		recuperador >> p.x >> p.y >> t.x >> t.y;
 
-	recuperador >> p.x >> p.y >> t.x >> t.y;
-
-	e = new Espinhos(p, t);
-
+		Espinhos* temp = new Espinhos(p, t);
+		l->push(temp);
+	}
 	recuperador.close();
+	return l;
 
-	return e;
+
 }

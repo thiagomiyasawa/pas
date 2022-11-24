@@ -13,7 +13,9 @@ namespace personagens {
         ~Ganondorf();
         void move();
 
+        void setIrritado(int i);
+
         void gravar();
-        static Ganondorf* recuperar();
+        static Lista<Ganondorf>* recuperar();
     };
 }//fim do namespace

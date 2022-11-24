@@ -9,6 +9,6 @@ public:
     ~Plataforma();
 
     void gravar();
-    static Plataforma* recuperar();
+    static Lista<Plataforma>* recuperar();
 };
 

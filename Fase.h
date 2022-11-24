@@ -29,6 +29,7 @@ protected:
 	GerenciadorColisoes* colisoes;
 	RenderWindow* window;
 	float tempoInicial;
+	float tempoRestante;
 public:
 	Fase(RenderWindow* w, Jogador* j1);
 	Fase(RenderWindow* w, Jogador* J1, Jogador* J2, float tempo);
@@ -44,8 +45,10 @@ public:
 	void converteEsp(int n);
 
 	virtual void geraInimigoAleatorio() = 0;
-	virtual void salvar(int pontos) = 0;
+	virtual void salvar(int pontos, float tempo) = 0;
 	
-	float gettempothiago(float tempo);
+	float getTempo(float tempo);
+	void setTempoRestante(float tempo);
+	float getTempoRestante();
 };
 

@@ -83,7 +83,7 @@ void Jogo::Executar() {
                 fase->executar();
                 grafico->display();
                 time = grafico->getDt();
-                if (fase->gettempo(time) >= 90.) {
+                if (fase->getTempo(time) >= fase->getTempoRestante()) {
                     if (numFase == 1) {
                         trocaFase();
                     }
@@ -95,14 +95,14 @@ void Jogo::Executar() {
             else if (estado == 4) {
                 output = menu->run_menu();
                 if (output == 1)/*resume*/ {
-                    fase->salvar(pontuacao);
+                    fase->salvar(pontuacao, time);
                     estado = 3;
                 }
                 else if (output == 2)/*menu*/ {
                     resetarJogo();
                 }
                 else if (output == 3)/*salvar e sair*/ {
-                    fase->salvar(pontuacao);
+                    fase->salvar(pontuacao, time);
                     grafico->closeWindow();
                     
                 }
@@ -141,8 +141,9 @@ void Jogo::continuar() {
     ifstream recuperador("save/fase.dat", ios::in);
     int qualFase;
     int pontos;
+    float tempo;
 
-    recuperador >> qualFase >> pontos;
+    recuperador >> qualFase >> pontos >> tempo;
 
     pontuacao = pontos;
 
@@ -152,6 +153,8 @@ void Jogo::continuar() {
     else if (qualFase == 2) {
         fase = SegundaFase::recuperar(grafico->getWindow());
     }
+
+    fase->setTempoRestante(tempo);
 }
 
 void Jogo::trocaFase() {

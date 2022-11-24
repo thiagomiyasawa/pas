@@ -14,6 +14,6 @@ public:
     void reduzAtivo();
 
     void gravar();
-    static PlataformaFalsa* recuperar();
+    static Lista<PlataformaFalsa>* recuperar();
 };
 

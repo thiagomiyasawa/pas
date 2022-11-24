@@ -37,25 +37,24 @@ void Moa::gravar() {
 	gravador.close();
 }
 
-
-Moa* Moa::recuperar() {
+Lista<Moa>* Moa::recuperar() {
 	ifstream recuperador("save/moa.dat", ios::in);
-
-	Moa* m;
+	Lista<Moa>* l = new Lista<Moa>;
 	int vidas;
 	Vector2f p;
 	Vector2f v;
-
-	if (!recuperador || recuperador.eof()) {
+	if (!recuperador) {
 		return nullptr;
 	}
+	while (!recuperador.eof()) {
+		recuperador >> vidas >> p.x >> p.y >> v.x >> v.y;
 
-	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y;
-
-	m = new Moa(vidas, p);
-	m->setVelocidade(v);
-
+		Moa* temp = new Moa(vidas, p);
+		temp->setVelocidade(v);
+		l->push(temp);
+	}
 	recuperador.close();
+	return l;
 
-	return m;
+
 }

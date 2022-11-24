@@ -4,6 +4,7 @@ PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* j, bool nova) : Fase(w, j) 
 	if (nova) {
 		criaMapa();
 		inicializaElementos();
+		tempoRestante = 90;
 	}
 	
 }
@@ -13,6 +14,7 @@ PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2,float tempo
 	if (nova) {
 		criaMapa();
 		inicializaElementos();
+		tempoRestante = 90;
 	}
 }
 
@@ -168,15 +170,17 @@ void PrimeiraFase::geraOctorok() {
 	listaEntidades->push(octorok->getProjetil());
 }
 
-void PrimeiraFase::salvar(int pontos) {
+void PrimeiraFase::salvar(int pontos, float tempo) {
 	ofstream gravador("save/fase.dat", ios::app);
 
 	if (!gravador)
 	{
 		return;
 	}
+	setTempoRestante(90 - (tempo - tempoInicial));
 	gravador << 1 << ' '
-			 << pontos <<
+			 << pontos << ' '
+			 << tempoRestante << 
 			 endl;
 	gravador.close();
 
@@ -190,61 +194,64 @@ void PrimeiraFase::salvar(int pontos) {
 }
 
 PrimeiraFase* PrimeiraFase::recuperar(RenderWindow* w) {
-	Jogador* j1 = Jogador::recuperar();
-	Jogador* j2 = Jogador::recuperar();
+	Lista<Jogador>* lj = Jogador::recuperar();
 	PrimeiraFase* fase;
+	if (lj->getSize() == 2) {
 
-	if (j2 != nullptr) {
-		fase = new PrimeiraFase(w, j1, j2, false);
+		fase = new PrimeiraFase(w, lj->getItem(0), lj->getItem(1), false);
+
 	}
 	else {
-		fase = new PrimeiraFase(w, j1, false);
+
+		fase = new PrimeiraFase(w, lj->getItem(0), false);
 	}
-	
 	ListaEntidades* LEs = fase->getListaEntidades();
 	GerenciadorColisoes* c = fase->getGerenciadorColisoes();
 	
-	Moa* m = Moa::recuperar();
-	while (m != nullptr) {
-		c->addInimigo(m);
-		LEs->push(m);
-		m = Moa::recuperar();	
+	Lista<Moa>* m = Moa::recuperar();
+	for (int i = 0; i < m->getSize(); i++) {
+		Moa* temp = m->getItem(i);
+		LEs->push(temp);
+		c->addInimigo(temp);
 	}
 
-	Octorok* o = Octorok::recuperar();
-	while (o != nullptr) {
-		c->addInimigo(o);
-		LEs->push(o);
-		o = Octorok::recuperar();
+	Lista<Octorok>* o = Octorok::recuperar();
+	Lista<Projetil>* pr = Projetil::recuperar();
+	for (int i = 0; i < o->getSize(); i++) {
+		Octorok* temp = o->getItem(i);
+		temp->setProjetil(pr->getItem(i));
+		LEs->push(temp);
+		c->addInimigo(temp);
+	}
+	
+	Lista<Plataforma>* p = Plataforma::recuperar();
+	for (int i = 0; i < p->getSize(); i++) {
+		Plataforma* temp = p->getItem(i);
+		LEs->push(temp);
+		c->addObstaculo(temp);
 	}
 
-	Plataforma* p = Plataforma::recuperar();
-	while (p != nullptr) {
-		c->addObstaculo(p);
-		LEs->push(p);
-		p = Plataforma::recuperar();
+	Lista<PlataformaFalsa>* pf = PlataformaFalsa::recuperar();
+	for (int i = 0; i < pf->getSize(); i++) {
+		PlataformaFalsa* temp = pf->getItem(i);
+		LEs->push(temp);
+		c->addObstaculo(temp);
 	}
 
-	PlataformaFalsa* pf = PlataformaFalsa::recuperar();
-	while (pf != nullptr) {
-		c->addObstaculo(pf);
-		LEs->push(pf);
-		pf = PlataformaFalsa::recuperar();
+	Lista<Espinhos>* e = Espinhos::recuperar();
+	for (int i = 0; i < e->getSize(); i++) {
+		Espinhos* temp = e->getItem(i);
+		LEs->push(temp);
+		c->addObstaculo(temp);
 	}
 
-	Espinhos* e = Espinhos::recuperar();
-	while (e != nullptr) {
-		c->addObstaculo(e);
-		LEs->push(e);
-		e = Espinhos::recuperar();
+	Lista<Lava>* l = Lava::recuperar();
+	for (int i = 0; i < l->getSize(); i++) {
+		Lava* temp = l->getItem(i);
+		LEs->push(temp);
+		c->addObstaculo(temp);
 	}
-
-	Lava* l = Lava::recuperar();
-	while (l != nullptr) {
-		c->addObstaculo(l);
-		LEs->push(l);
-		l = Lava::recuperar();
-	}
+	
 
 	return fase;
 }

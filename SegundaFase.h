@@ -13,7 +13,7 @@ public:
     void geraInimigoAleatorio();
     void geraMoa();
     void geraGanon();
-    void salvar(int pontos);
+    void salvar(int pontos, float tempo);
     static SegundaFase* recuperar(RenderWindow* w);
 };
 

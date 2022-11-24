@@ -12,6 +12,6 @@ namespace personagens {
         void move();
         
         void gravar();
-        static Moa* recuperar();
+        static Lista<Moa>* recuperar();
     };
 }//fim do namespace

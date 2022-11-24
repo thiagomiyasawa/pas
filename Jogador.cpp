@@ -1,4 +1,5 @@
 #include "Jogador.h"
+#include "Lista.h"
 using namespace personagens;
 Jogador::Jogador(int vidas, Vector2f p, int ID) : Personagem(vidas, Vector2f(40.,80.), p , ID, 1) {
     body->setPosition(p);
@@ -139,26 +140,25 @@ void Jogador::gravar() {
     gravador.close();
 }
 
-Jogador* Jogador::recuperar() {
+Lista<Jogador>* Jogador::recuperar() {
     ifstream recuperador("save/jogador.dat", ios::in);
-    Jogador* j;
+    Lista<Jogador>* l = new Lista<Jogador>;
     int vidas;
     Vector2f p;
     Vector2f v;
     int ID;
-    int pontos;
-    if (!recuperador || recuperador.eof()) {
-        return nullptr
-            ;
+    if (!recuperador) {
+        return nullptr;
     }
+    while (!recuperador.eof()) {
+        recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ID;
 
-    recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ID;
-
-    j = new Jogador(vidas, p, ID);
-    j->setVelocidade(v);
-
+        Jogador* temp = new Jogador(vidas, p, ID);
+        temp->setVelocidade(v);
+        l->push(temp);
+    }
     recuperador.close();
-    return j;
+    return l;
 
 
 }

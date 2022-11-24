@@ -25,23 +25,22 @@ void Plataforma::gravar() {
     gravador.close();
 }
 
-Plataforma* Plataforma::recuperar() {
-	ifstream recuperador("save/plataforma.dat", ios::app);
-
-	Plataforma* P;
+Lista<Plataforma>* Plataforma::recuperar() {
+	ifstream recuperador("save/plataforma.dat", ios::in);
+	Lista<Plataforma>* l = new Lista<Plataforma>;
 	Vector2f p;
 	Vector2f t;
-
-	if (!recuperador || recuperador.eof()) {
-		return nullptr
-			;
+	if (!recuperador) {
+		return nullptr;
 	}
+	while (!recuperador.eof()) {
+		recuperador >> p.x >> p.y >> t.x >> t.y;
 
-	recuperador >> p.x >> p.y >> t.x >> t.y;
-
-	P = new Plataforma(p, t);
-
+		Plataforma* temp = new Plataforma(p, t);
+		l->push(temp);
+	}
 	recuperador.close();
+	return l;
 
-	return P;
+
 }

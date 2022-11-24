@@ -27,22 +27,22 @@ void Lava::gravar() {
 
 }
 
-Lava* Lava::recuperar() {
-	ifstream recuperador("save/lava.dat", ios::app);
-
-	Lava* l;
+Lista<Lava>* Lava::recuperar() {
+	ifstream recuperador("save/lava.dat", ios::in);
+	Lista<Lava>* l = new Lista<Lava>;
 	Vector2f p;
 	Vector2f t;
-
-	if (!recuperador || recuperador.eof()) {
-			return nullptr;
+	if (!recuperador) {
+		return nullptr;
 	}
+	while (!recuperador.eof()) {
+		recuperador >> p.x >> p.y >> t.x >> t.y;
 
-	recuperador >> p.x >> p.y >> t.x >> t.y;
-
-	l = new Lava(p, t);
-
+		Lava* temp = new Lava(p, t);
+		l->push(temp);
+	}
 	recuperador.close();
-
 	return l;
+
+
 }

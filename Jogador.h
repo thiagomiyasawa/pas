@@ -23,7 +23,7 @@ namespace personagens {
 		void setNoChao(bool estado);
 
 		void gravar();
-		static Jogador* recuperar();
+		static Lista<Jogador>* recuperar();
 
 	};
 }//fim

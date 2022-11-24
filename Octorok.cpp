@@ -77,29 +77,30 @@ void Octorok::gravar() {
 
 }
 
-Octorok* Octorok::recuperar() {
-	ifstream recuperador("save/octorok.dat", ios::in);
 
-	Octorok* o;
+Lista<Octorok>* Octorok::recuperar() {
+	ifstream recuperador("save/octorok.dat", ios::in);
+	Lista<Octorok>* l = new Lista<Octorok>;
 	int vidas;
 	Vector2f p;
 	Vector2f v;
 	int rec;
-
-	if (!recuperador || recuperador.eof()) {
+	if (!recuperador) {
 		return nullptr;
 	}
+	while (!recuperador.eof()) {
+		recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> rec;
 
-	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> rec;
-
-	o = new Octorok(vidas, p);
-	o->setVelocidade(v);
-	o->setRecarga(rec);
+		Octorok* temp = new Octorok(vidas, p);
+		temp->setVelocidade(v);
+		temp->setRecarga(rec);
+		l->push(temp);
+	}
 	recuperador.close();
+	return l;
 
-	return o;
+
 }
-
 
 
 

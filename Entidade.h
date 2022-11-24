@@ -1,5 +1,6 @@
 #pragma once
 #include "Ente.h"
+#include "Lista.h"
 #include <fstream>
 using namespace std;
 class Entidade : public Ente {

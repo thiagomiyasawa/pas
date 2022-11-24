@@ -44,25 +44,27 @@ void Projetil::gravar() {
 	gravador.close();
 }
 
-Projetil* Projetil::recuperar() {
+Lista<Projetil>* Projetil::recuperar() {
 	ifstream recuperador("save/projetil.dat", ios::in);
-	Projetil* P;
+	Lista<Projetil>* l = new Lista<Projetil>;
 	bool a;
 	Vector2f p;
 	Vector2f v;
-
-	if (!recuperador || recuperador.eof()) {
+	if (!recuperador) {
 		return nullptr;
 	}
+	while (!recuperador.eof()) {
+		recuperador >> a >> p.x >> p.y >> v.x >> v.y;
 
-	recuperador >> a >> p.x >> p.y >> v.x >> v.y;
+		Projetil* temp = new Projetil();
+		temp->setAtivo(a);
+		temp->setPosicao(p);
+		temp->setVelocidade(v);
 
-	P = new Projetil();
-	P->setAtivo(a);
-	P->setPosicao(p);
-	P->setVelocidade(v);
-	
+		l->push(temp);
+	}
 	recuperador.close();
-	
-	return P;
+	return l;
+
+
 }

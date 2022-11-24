@@ -43,24 +43,24 @@ void PlataformaFalsa::gravar()
 
 }
 
-PlataformaFalsa* PlataformaFalsa::recuperar() {
-	ifstream recuperador("save/plataformafalsa.dat", ios::app);
-
-	PlataformaFalsa* pf;
+Lista<PlataformaFalsa>* PlataformaFalsa::recuperar() {
+	ifstream recuperador("save/plataformafalsa.dat", ios::in);
+	Lista<PlataformaFalsa>* l = new Lista<PlataformaFalsa>;
 	Vector2f p;
 	Vector2f t;
 	int a;
-
-	if (!recuperador || recuperador.eof()) {
+	if (!recuperador) {
 		return nullptr;
 	}
+	while (!recuperador.eof()) {
+		recuperador >> p.x >> p.y >> t.x >> t.y >> a;
 
-	recuperador >> p.x >> p.y >> t.x >> t.y >> a;
-
-	pf = new PlataformaFalsa(p, t);
-	pf->setAtivo(a);
-
+		PlataformaFalsa* temp = new PlataformaFalsa(p, t);
+		temp->setAtivo(a);
+		l->push(temp);
+	}
 	recuperador.close();
+	return l;
 
-	return pf;
+
 }

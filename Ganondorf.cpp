@@ -49,6 +49,10 @@ void Ganondorf::move() {
 	noChao = false;
 }
 
+void Ganondorf::setIrritado(int i) {
+	irritado = i;
+}
+
 void Ganondorf::gravar() {
 	ofstream gravador("save/ganondorf.dat", ios::app);
 
@@ -65,25 +69,26 @@ void Ganondorf::gravar() {
 	gravador.close();
 }
 
-Ganondorf* Ganondorf::recuperar() {
+Lista<Ganondorf>* Ganondorf::recuperar() {
 	ifstream recuperador("save/ganondorf.dat", ios::in);
-
-	Ganondorf* g;
+	Lista<Ganondorf>* l = new Lista<Ganondorf>;
 	int vidas;
 	Vector2f p;
 	Vector2f v;
 	int ir;
-
-	if (!recuperador || recuperador.eof()) {
-			return nullptr;
+	if (!recuperador) {
+		return nullptr;
 	}
+	while (!recuperador.eof()) {
+		recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ir;
 
-	recuperador >> vidas >> p.x >> p.y >> v.x >> v.y >> ir;
-
-	g = new Ganondorf(vidas, p);
-	g->setVelocidade(v);
-
+		Ganondorf* temp = new Ganondorf(vidas, p);
+		temp->setVelocidade(v);
+		temp->setIrritado(ir);
+		l->push(temp);
+	}
 	recuperador.close();
-	
-	return g;
+	return l;
+
+
 }

@@ -93,6 +93,16 @@ void Fase::converteEsp(int n) {
 		}
 	}
 }
-float Fase::gettempo(float tempo) {
+float Fase::getTempo(float tempo) {
 	return tempo - tempoInicial;
 }
+
+void Fase::setTempoRestante(float tempo) {
+	tempoRestante = tempo;
+}
+
+float Fase::getTempoRestante()
+{
+	return tempoRestante;
+}
+

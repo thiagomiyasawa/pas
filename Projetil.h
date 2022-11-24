@@ -12,7 +12,7 @@ class Projetil:public Entidade {
 		void move();
 
 		void gravar();
-		static Projetil* recuperar();
+		static Lista<Projetil>* recuperar();
 		
 };
 

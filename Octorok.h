@@ -18,7 +18,7 @@ namespace personagens {
 		Projetil* getProjetil();
 		void setRecarga(int rec);
 		void gravar();
-		static Octorok* recuperar();
+		static Lista<Octorok>* recuperar();
 	};
 }//fim do namespace
 
