@@ -8,7 +8,7 @@ Moa::Moa(int vidas, Vector2f p) :
 	body->setTexture(&textura);
 	body->setFillColor(Color::Red);
 	velocidade = Vector2f(0.088, 0.);
-	invisivel = 0;
+	invisivel = -4000;
 }
 
 Moa::~Moa()
