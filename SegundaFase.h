@@ -6,7 +6,7 @@ class SegundaFase :
 {
 private:
 public:
-    SegundaFase(RenderWindow* w, Jogador* j, bool nova = true);
+    SegundaFase(RenderWindow* w, Jogador* J1, float tempo, bool nova = true);
     SegundaFase(RenderWindow* w, Jogador* J1, Jogador* J2,float tempo, bool nova = true);
     ~SegundaFase();
     void criaMapa();

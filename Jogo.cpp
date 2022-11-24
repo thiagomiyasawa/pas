@@ -38,6 +38,7 @@ void Jogo::Executar() {
                 }
                 else if (output == 2)/*continuar*/ {
                     continuar();
+                    estado = 3;
                 }
                 else if (output == 3)/*RANKING*/ {
 

@@ -1,13 +1,11 @@
 #include "PrimeiraFase.h"
-
-PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* j, bool nova) : Fase(w, j) {
+PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, float tempo, bool nova)
+	: Fase(w, J1, nullptr, tempo) {
 	if (nova) {
 		criaMapa();
 		inicializaElementos();
 	}
-	
 }
-
 PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, Jogador* J2,float tempo, bool nova)
 	: Fase(w, J1, J2,tempo) {
 	if (nova) {

@@ -46,6 +46,6 @@ public:
 	virtual void geraInimigoAleatorio() = 0;
 	virtual void salvar(int pontos) = 0;
 	
-	float gettempothiago(float tempo);
+	float gettempo(float tempo);
 };
 
