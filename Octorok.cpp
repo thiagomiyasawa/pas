@@ -66,12 +66,12 @@ void Octorok::gravar() {
 	{
 		return;
 	}
-	gravador << numVidas << ' '
+	gravador  << endl<< numVidas << ' '
 			 << posicao.x << ' '
 			 << posicao.y << ' '
 			 << velocidade.x << ' '
 			 << velocidade.y << ' '
-			 << recarga << endl;
+			 << recarga;
 	gravador.close();
 	pedra->gravar();
 

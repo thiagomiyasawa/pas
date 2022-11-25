@@ -19,10 +19,10 @@ void Lava::gravar() {
 	{
 		return;
 	}
-	gravador << posicao.x << ' '
+	gravador << endl<< posicao.x << ' '
 			 << posicao.y << ' '
 			 << tamanho.x << ' '
-		     << tamanho.y << endl;
+		     << tamanho.y ;
 	gravador.close();
 
 }

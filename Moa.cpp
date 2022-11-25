@@ -29,11 +29,11 @@ void Moa::gravar() {
 	{
 		return;
 	}
-	gravador << numVidas << ' '
+	gravador << endl<< numVidas << ' '
 			 << posicao.x << ' '
 			 << posicao.y << ' '
 			 << velocidade.x << ' '
-			 << velocidade.y << endl;
+			 << velocidade.y ;
 	gravador.close();
 }
 

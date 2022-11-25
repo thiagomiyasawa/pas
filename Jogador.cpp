@@ -131,12 +131,12 @@ void Jogador::gravar() {
     {
         return;
     }
-    gravador << numVidas << ' '
+    gravador <<  endl<< numVidas << ' '
              << posicao.x << ' '
              << posicao.y << ' '
              << velocidade.x << ' '
              << velocidade.y << ' '
-             << id <<  endl;
+             << id ;
     gravador.close();
 }
 

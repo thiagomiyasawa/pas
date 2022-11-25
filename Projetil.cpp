@@ -36,11 +36,11 @@ void Projetil::gravar() {
 	{
 		return;
 	}
-	gravador << ativo << ' '
+	gravador  << endl << ativo << ' '
 			 << posicao.x << ' '
 			 << posicao.y << ' '
 			 << velocidade.x << ' '
-			 << velocidade.y << endl;
+			 << velocidade.y;
 	gravador.close();
 }
 
