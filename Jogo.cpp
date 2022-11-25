@@ -5,6 +5,7 @@ Jogo::Jogo() {
     link1 = new Jogador(5, Vector2f(0., 280.),11);
     link1->setWindow(grafico->getWindow());
     menu = new Menu(grafico->getWindow());
+    end = new MenuGameOver(grafico->getWindow());
     fim = false;
    
 
@@ -114,6 +115,7 @@ void Jogo::Executar() {
                 menu->set_values(4);
             }
         }
+        FimDejogo(pontuacao);
         resetarJogo();
     }
 }
@@ -175,6 +177,19 @@ void Jogo::trocaFase() {
         link2->setVelocidadeX(0);
         link2->setVelocidadeY(0);
     }
+}
+
+void Jogo::FimDejogo(int pontos) {
+    bool enter = false;
+    end->set_values(pontos);
+    while (!enter && grafico->isWindowOpen()) {
+        end->run_menu();
+        if (sf::Keyboard::isKeyPressed(Keyboard::Enter)) {
+            enter = true;
+        }
+    }
+    std::string nome = end->getSting();
+    /*codigo do salvamento do ranking*/
 }
 
 int Jogo::pontuacao(0);

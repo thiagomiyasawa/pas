@@ -6,6 +6,8 @@ Espinhos::Espinhos(Vector2f coordenada, Vector2f tamanho) :
 	textura.loadFromFile("sprites/espinhos.png");
 	body->setTexture(&textura);
 	dano = 1;
+	solido = true;
+	danoso = true;
 }
 
 Espinhos::~Espinhos()

@@ -8,6 +8,7 @@ Moa::Moa(int vidas, Vector2f p) :
 	body->setTexture(&textura);
 	body->setFillColor(Color::Red);
 	velocidade = Vector2f(0.088, 0.);
+	invisivel = -4000;
 }
 
 Moa::~Moa()
@@ -15,6 +16,14 @@ Moa::~Moa()
 }
 
 void Moa::move() {
+	invisivel--;
+	if (invisivel < 0) {
+		body->setFillColor(Color::Red);
+	}
+	if (invisivel <= -8000) {
+		body->setFillColor(Color::Transparent);
+		invisivel = 2000;
+	}
 	posicao.x += velocidade.x;
 	posicao.y += velocidade.y;
 	body->setPosition(posicao);

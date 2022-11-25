@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CaixaDeTexto.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Espinhos.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuGameOver.cpp" />
     <ClCompile Include="Moa.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Octorok.cpp" />
@@ -164,6 +166,7 @@
     <ClCompile Include="SegundaFase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CaixaDeTexto.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Espinhos.h" />
@@ -178,6 +181,7 @@
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuGameOver.h" />
     <ClInclude Include="Moa.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Octorok.h" />

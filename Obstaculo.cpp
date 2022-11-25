@@ -3,6 +3,8 @@
 Obstaculo::Obstaculo(Vector2f p, Vector2f t, int id)
 	: Entidade(p, t, id) {
 	body->setPosition(p);
+	solido = true;
+	danoso = false;
 }
 
 Obstaculo::~Obstaculo() {
@@ -17,3 +19,9 @@ void Obstaculo::reduzAtivo() {
 
 }
 
+bool Obstaculo::getSolido() {
+	return solido;
+}
+bool Obstaculo::getDanoso() {
+	return danoso;
+}
