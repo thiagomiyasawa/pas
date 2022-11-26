@@ -12,6 +12,7 @@
 #include "SegundaFase.h"
 #include "Menu.h"
 #include "MenuGameOver.h"
+#include "Ranking.h"
 using namespace std;
 using namespace sf;
 using namespace personagens;
@@ -23,6 +24,7 @@ private:
 	ListaEntidades* LEs;
 	Menu* menu;
 	MenuGameOver* end;
+	Ranking* rank;
 	int numFase;
 	bool fim;
 
@@ -40,5 +42,6 @@ public:
 	void trocaFase();
 	void continuar();
 	void FimDejogo(int pontos);
+	int getPontos();
 };
 

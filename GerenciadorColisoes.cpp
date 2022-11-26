@@ -259,7 +259,7 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo
 		}
 	}
 	if (obj2->getDanoso()) {
-		if (!obj1->getImune()) {
+		if (!obj1->getImune() || obj2->getId()==33) {
 			obj1->removeVidas(obj2->getDano());
 			obj1->setImune();
 			obj1->getBody()->setFillColor(Color::Color(20, 34, 184));

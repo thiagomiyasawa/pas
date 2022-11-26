@@ -6,6 +6,7 @@ Jogo::Jogo() {
     link1->setWindow(grafico->getWindow());
     menu = new Menu(grafico->getWindow());
     end = new MenuGameOver(grafico->getWindow());
+    rank = new Ranking(grafico->getWindow(), this);
     fim = false;
    
 
@@ -43,7 +44,7 @@ void Jogo::Executar() {
                     estado = 3;
                 }
                 else if (output == 3)/*RANKING*/ {
-
+                    rank->mostrarRank();
                 }
             }
             else if (estado == 1) {
@@ -110,7 +111,7 @@ void Jogo::Executar() {
                     
                 }
             }
-            if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+            if (Keyboard::isKeyPressed(Keyboard::Escape) && estado == 3) {
                 estado = 4;
                 menu->set_values(4);
             }
@@ -189,7 +190,10 @@ void Jogo::FimDejogo(int pontos) {
         }
     }
     std::string nome = end->getSting();
-    /*codigo do salvamento do ranking*/
+    rank->addColocado(nome);
+}
+int Jogo::getPontos() {
+    return pontuacao;
 }
 
 int Jogo::pontuacao(0);
