@@ -169,7 +169,7 @@ void PrimeiraFase::geraOctorok() {
 }
 
 void PrimeiraFase::salvar(int pontos, float tempo) {
-	ofstream gravador("save/fase.dat", ios::app);
+	ofstream gravador("save/fase.dat", ios::trunc);
 
 	if (!gravador)
 	{
@@ -182,6 +182,30 @@ void PrimeiraFase::salvar(int pontos, float tempo) {
 			 endl;
 	gravador.close();
 
+	gravador.open("save/espinhos.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/jogador.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/lava.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/moa.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/octorok.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/plataforma.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/plataformafalsa.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/projetil.dat", ios::trunc);
+	gravador.close();
+
 	for (int i = 0; i < listaEntidades->getSize(); i++) {
 		Entidade* temp = listaEntidades->getItem(i);
 		if (temp->getId() != 41) {
@@ -189,6 +213,10 @@ void PrimeiraFase::salvar(int pontos, float tempo) {
 		}
 		
 	}
+	
+
+
+
 }
 
 PrimeiraFase* PrimeiraFase::recuperar(RenderWindow* w, float tempo) {

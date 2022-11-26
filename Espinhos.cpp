@@ -42,7 +42,7 @@ Lista<Espinhos>* Espinhos::recuperar() {
 	}
 	while (!recuperador.eof()) {
 		recuperador >> p.x >> p.y >> t.x >> t.y;
-		cout << p.x << p.y << t.x << t.y << endl;
+
 		Espinhos* temp = new Espinhos(p, t);
 		l->push(temp);
 	}

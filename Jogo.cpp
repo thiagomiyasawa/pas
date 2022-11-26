@@ -2,7 +2,7 @@
 
 Jogo::Jogo() {
     grafico = GerenciadorGrafico::getInstance();
-    link1 = new Jogador(5, Vector2f(0., 280.),11);
+    link1 = new Jogador(2, Vector2f(0., 280.),11);
     link1->setWindow(grafico->getWindow());
     menu = new Menu(grafico->getWindow());
     end = new MenuGameOver(grafico->getWindow());
@@ -86,6 +86,7 @@ void Jogo::Executar() {
                 fase->executar();
                 grafico->display();
                 time = grafico->getDt();
+
                 if (fase->getTempo(time) >= fase->getTempoRestante()) {
                     if (numFase == 1) {
                         trocaFase();
