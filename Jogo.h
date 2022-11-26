@@ -24,7 +24,7 @@ private:
 	ListaEntidades* LEs;
 	Menu* menu;
 	MenuGameOver* end;
-	Ranking* rank;
+	Ranking* ranking;
 	int numFase;
 	bool fim;
 

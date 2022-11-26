@@ -6,7 +6,7 @@ Jogo::Jogo() {
     link1->setWindow(grafico->getWindow());
     menu = new Menu(grafico->getWindow());
     end = new MenuGameOver(grafico->getWindow());
-    rank = new Ranking(grafico->getWindow(), this);
+    ranking = new Ranking(grafico->getWindow(), this);
     fim = false;
    
 
@@ -16,6 +16,7 @@ Jogo::Jogo() {
     time = 0;
     menu->set_values(1);
     Executar();
+    ranking->salva();
 }
 
 Jogo::~Jogo(){
@@ -25,6 +26,7 @@ Jogo::~Jogo(){
     delete LEs;
     delete fase;
     delete menu;
+    delete ranking;
     menu = nullptr;
 }
 
@@ -44,7 +46,7 @@ void Jogo::Executar() {
                     estado = 3;
                 }
                 else if (output == 3)/*RANKING*/ {
-                    rank->mostrarRank();
+                    ranking->mostrarRank();
                 }
             }
             else if (estado == 1) {
@@ -191,7 +193,7 @@ void Jogo::FimDejogo(int pontos) {
         }
     }
     std::string nome = end->getSting();
-    rank->addColocado(nome);
+    ranking->addColocado(nome);
 }
 int Jogo::getPontos() {
     return pontuacao;

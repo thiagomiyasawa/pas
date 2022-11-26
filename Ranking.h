@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <queue>
+#include <fstream>
+using namespace std;
 
 typedef struct {
 	std::string  nome;
@@ -27,5 +29,7 @@ public:
 	void addColocado(std::string nome, int  pontuacao);
 	void mostrarRank();
 	void drawAll();
+	void salva();
+	void recupera();
 };
 

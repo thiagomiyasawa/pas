@@ -13,18 +13,13 @@ Ranking::Ranking(sf::RenderWindow* janela, Jogo* game){
     image->loadFromFile("./menu.png");
 
     bg->setTexture(*image);
-    Colocado base;
-    base.nome = "a";
-    base.pontos = -1;
-    for (int i = 0; i < 5; i++) {
-        rank.push(base);
-    }
-
     coordsNomes = { {535,136},{535,186},{535,236},{535,286}, {535,336} };
     coordsPontos = { {895,136},{895,186},{895,236},{895,286}, {895,336} };
+    recupera();
 }
 
 Ranking::~Ranking() {
+    
     window = nullptr;
     jogo = nullptr;
     delete font;
@@ -116,7 +111,7 @@ void Ranking::mostrarRank() {
     texts.resize(10);
     Colocado aux;
     int i;
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 5 && !rank.empty(); i++) {
         aux = rank.front();
         texts[i].setFont(*font);
         texts[i].setString(aux.nome);
@@ -156,4 +151,36 @@ void Ranking::drawAll() {
         window->draw(t);
     }
     window->display();
+}
+
+void Ranking::salva() {
+    ofstream gravador("save/batata.dat", ios::out);
+
+    if (!gravador)
+    {
+        return;
+    }
+    while (!rank.empty()) {
+        Colocado temp = rank.front();
+        rank.pop();
+        gravador << endl << temp.nome << ' ' << temp.pontos;
+    }
+
+    gravador.close();
+}
+
+void Ranking::recupera() {
+    ifstream recuperador("save/ranking.dat", ios::in);
+    string nome;
+    int pontos;
+    if (!recuperador) {
+        return;
+    }
+
+    while (!recuperador.eof()) {
+        recuperador >> nome >> pontos;
+        addColocado(nome, pontos);
+    }
+    
+    recuperador.close();
 }
