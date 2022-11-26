@@ -11,8 +11,6 @@ MenuGameOver::MenuGameOver(sf::RenderWindow* janela) {
 
     window->setPosition(sf::Vector2i(0, 0));
 
-    pos = 0;
-    pressed = theselect = false;
     font->loadFromFile("./times-new-roman-bold-italic.ttf");
     image->loadFromFile("./menu.png");
 
@@ -30,8 +28,6 @@ MenuGameOver::~MenuGameOver() {
 void MenuGameOver::set_values(int pontos) {
     window->setPosition(sf::Vector2i(0, 0));
 
-    pos = 0;
-    pressed = theselect = false;
     font->loadFromFile("./times-new-roman-bold-italic.ttf");
     image->loadFromFile("./menu.png");
 
