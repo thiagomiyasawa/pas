@@ -239,7 +239,7 @@ void GerenciadorColisoes::colidirObstaculo(int direcao, Jogador* obj1, Obstaculo
 		}
 	}*/
 	if (obj2->getSolido()) {
-		if (direcao == 1 && !obj1->getNoChao()) {
+		if (direcao == 1 && !obj1->getNoChao() && obj2->getAtivo()) {
 			obj1->setVelocidadeY(0);
 			obj1->setNoChao(true);
 			obj2->reduzAtivo();
