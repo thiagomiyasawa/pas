@@ -31,7 +31,7 @@ void Jogador::move() {
             body->setFillColor(Color::Color(200, 238, 39));
         }
     }
-    if (atacando>-2000) {
+    if (atacando>-100) {
         atacando--;
         if (!atacando) {
             body->setFillColor(Color::Color(200, 238, 39));
@@ -59,8 +59,8 @@ void Jogador::move() {
 
         }
         if (Keyboard::isKeyPressed(Keyboard::M)) {
-            if (atacando <= -1000) {
-                atacando = 1000;
+            if (atacando <= -100) {
+                atacando = 2000;
                 body->setFillColor(Color(155, 157, 131));
             }
         }
@@ -84,8 +84,8 @@ void Jogador::move() {
 
         }
         if (Keyboard::isKeyPressed(Keyboard::B)) {
-            if (atacando <= -1000) {
-                atacando = 1000;
+            if (atacando <= -100) {
+                atacando = 2000;
                 body->setFillColor(Color(155, 157, 131));
             }
         }
