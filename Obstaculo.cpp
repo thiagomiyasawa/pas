@@ -1,5 +1,8 @@
  #include "Obstaculo.h"
 
+using namespace entidades;
+using namespace obstaculos;
+
 Obstaculo::Obstaculo(Vector2f p, Vector2f t, int id)
 	: Entidade(p, t, id) {
 	body->setPosition(p);

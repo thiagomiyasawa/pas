@@ -1,5 +1,7 @@
 #include "Inimigo.h"
 #include "Jogo.h"
+
+using namespace entidades;
 using namespace personagens;
 
 Inimigo::Inimigo(int vida,Vector2f t, Vector2f p, int id, int valor) : Personagem(vida, t, p, id) {

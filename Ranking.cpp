@@ -155,8 +155,8 @@ void Ranking::drawAll() {
 }
 
 void Ranking::salva() {
-    ofstream gravador("save/batata.dat", ios::out);
-
+    ofstream gravador("save/ranking.dat", ios::out);
+    int i = 0;
     if (!gravador)
     {
         return;
@@ -165,6 +165,10 @@ void Ranking::salva() {
         Colocado temp = rank.front();
         rank.pop();
         gravador << endl << temp.nome << ' ' << temp.pontos;
+        i++;
+    }
+    for (; i < 5; i++) {
+        gravador << endl << 0 << ' ' << 0;
     }
 
     gravador.close();

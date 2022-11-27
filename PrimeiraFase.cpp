@@ -1,4 +1,5 @@
 #include "PrimeiraFase.h"
+using namespace fases;
 PrimeiraFase::PrimeiraFase(RenderWindow* w, Jogador* J1, float tempo, bool nova)
 	: Fase(w, J1, nullptr, tempo) {
 	if (nova) {

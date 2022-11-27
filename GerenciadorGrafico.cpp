@@ -6,6 +6,8 @@
 #define WIDTH 1280
 #define HEIGHT 720
 
+using namespace gerenciadores;
+
 /* Singleton design pattern - Only one instance will be created */
 GerenciadorGrafico* GerenciadorGrafico::instance = nullptr;
 

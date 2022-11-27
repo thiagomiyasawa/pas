@@ -16,6 +16,7 @@ Jogo::Jogo() {
     time = 0;
     menu->set_values(1);
     Executar();
+    cout << 1;
     ranking->salva();
 }
 
@@ -119,7 +120,7 @@ void Jogo::Executar() {
                 menu->set_values(4);
             }
         }
-        FimDejogo(pontuacao);
+        fimDeJogo(pontuacao);
         resetarJogo();
     }
 }
@@ -159,7 +160,7 @@ void Jogo::continuar() {
         fase = PrimeiraFase::recuperar(grafico->getWindow(), time);
     }
     else if (qualFase == 2) {
-        fase = SegundaFase::recuperar(grafico->getWindow());
+        fase = SegundaFase::recuperar(grafico->getWindow(), time);
     }
 
     fase->setTempoRestante(tempo);
@@ -183,7 +184,7 @@ void Jogo::trocaFase() {
     }
 }
 
-void Jogo::FimDejogo(int pontos) {
+void Jogo::fimDeJogo(int pontos) {
     bool enter = false;
     end->set_values(pontos);
     while (!enter && grafico->isWindowOpen()) {
@@ -194,6 +195,9 @@ void Jogo::FimDejogo(int pontos) {
     }
     std::string nome = end->getSting();
     ranking->addColocado(nome);
+    ranking->salva();
+    ranking->recupera();
+
 }
 int Jogo::getPontos() {
     return pontuacao;

@@ -1,5 +1,8 @@
 #include "Octorok.h"
+
+using namespace entidades;
 using namespace personagens;
+
 Octorok::Octorok(int vidas, Vector2f p) :
 	Inimigo(vidas, Vector2f(50.,50.), p, 22)
 {

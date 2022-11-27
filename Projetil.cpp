@@ -1,4 +1,7 @@
 #include "Projetil.h"
+
+using namespace entidades;
+
 Projetil:: Projetil():Entidade(Vector2f(0.,0.), Vector2f(20.,10.), 41) {
 	ativo = false;
 	velocidade = Vector2f(0.2, 0.);

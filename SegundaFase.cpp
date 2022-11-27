@@ -1,4 +1,5 @@
 #include "SegundaFase.h"
+using namespace fases;
 
 SegundaFase::SegundaFase(RenderWindow* w, Jogador* J1, float tempo, bool nova)
 	: Fase(w, J1, nullptr, tempo) {
@@ -154,7 +155,7 @@ void SegundaFase::geraGanon() {
 }
 
 void SegundaFase::salvar(int pontos, float tempo) {
-	ofstream gravador("save/fase.dat", ios::app);
+	ofstream gravador("save/fase.dat", ios::trunc);
 
 	if (!gravador)
 	{
@@ -163,7 +164,32 @@ void SegundaFase::salvar(int pontos, float tempo) {
 	setTempoRestante(90 - (tempo - tempoInicial));
 	gravador << 2 << ' '
 		<< pontos << ' '
-		<< tempoRestante << endl;
+		<< tempoRestante <<
+		endl;
+	gravador.close();
+
+	gravador.open("save/espinhos.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/jogador.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/lava.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/moa.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/ganondorf.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/plataforma.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/plataformafalsa.dat", ios::trunc);
+	gravador.close();
+
+	gravador.open("save/projetil.dat", ios::trunc);
 	gravador.close();
 
 	for (int i = 0; i < listaEntidades->getSize(); i++) {
@@ -171,20 +197,25 @@ void SegundaFase::salvar(int pontos, float tempo) {
 		if (temp->getId() != 41) {
 			temp->gravar();
 		}
+
 	}
+
+
+
+
 }
 
-SegundaFase* SegundaFase::recuperar(RenderWindow* w) {
+SegundaFase* SegundaFase::recuperar(RenderWindow* w, float tempo) {
 	Lista<Jogador>* lj = Jogador::recuperar();
 	SegundaFase* fase;
 	if (lj->getSize() == 2) {
 
-		fase = new SegundaFase(w, lj->getItem(1), lj->getItem(2), false);
+		fase = new SegundaFase(w, lj->getItem(0), lj->getItem(1), tempo, false);
 
 	}
 	else {
 
-		fase = new SegundaFase(w, lj->getItem(1), false);
+		fase = new SegundaFase(w, lj->getItem(0), tempo, false);
 	}
 	ListaEntidades* LEs = fase->getListaEntidades();
 	GerenciadorColisoes* c = fase->getGerenciadorColisoes();

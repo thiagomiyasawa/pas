@@ -1,4 +1,7 @@
 #include "GerenciadorColisoes.h"
+
+using namespace gerenciadores;
+
 GerenciadorColisoes::GerenciadorColisoes(Jogador* player1,Jogador* player2){
 	jogador1 = player1;
 	jogador2 = player2;

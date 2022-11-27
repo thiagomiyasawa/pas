@@ -3,35 +3,37 @@
 #include "Lista.h"
 #include <fstream>
 using namespace std;
-class Entidade : public Ente {
-protected:
-	Vector2f posicao;
-	Vector2f velocidade;
-	
-	Texture textura;
-	int id;
-public:
-	Entidade(Vector2f p, Vector2f t, int ID = 0);
-	~Entidade();
-	
-	virtual void move()=0;
-	float getX() const;
-	float getY() const;
-	int getId() const;
-	float getVelocidadeX();
-	float getVelocidadeY();
+using namespace listas;
+namespace entidades {
+	class Entidade : public Ente {
+	protected:
+		Vector2f posicao;
+		Vector2f velocidade;
 
-	void setX(int valor);
-	void setY(int valor);
-	void setPosicao(Vector2f p);
-	void setVelocidadeX(float v);
-	void setVelocidadeY(float v);
-	void setVelocidade(Vector2f v);
+		Texture textura;
+		int id;
+	public:
+		Entidade(Vector2f p, Vector2f t, int ID = 0);
+		~Entidade();
 
-	void gravidade();
+		virtual void move() = 0;
+		float getX() const;
+		float getY() const;
+		int getId() const;
+		float getVelocidadeX();
+		float getVelocidadeY();
 
-	virtual bool getVivo();
+		void setX(int valor);
+		void setY(int valor);
+		void setPosicao(Vector2f p);
+		void setVelocidadeX(float v);
+		void setVelocidadeY(float v);
+		void setVelocidade(Vector2f v);
 
-	virtual void gravar() = 0;
-};
+		void gravidade();
 
+		virtual bool getVivo();
+
+		virtual void gravar() = 0;
+	};
+}//fim do namespace

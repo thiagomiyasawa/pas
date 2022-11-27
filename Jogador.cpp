@@ -1,5 +1,6 @@
 #include "Jogador.h"
 #include "Lista.h"
+using namespace entidades;
 using namespace personagens;
 Jogador::Jogador(int vidas, Vector2f p, int ID) : Personagem(vidas, Vector2f(40.,80.), p , ID, 1) {
     body->setPosition(p);

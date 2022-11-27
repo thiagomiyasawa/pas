@@ -2,14 +2,16 @@
 #include "Entidade.h"
 #include "Lista.h"
 #include <iostream>
+
 using namespace std;
+using namespace entidades;
 
-
-class ListaEntidades
-{
+namespace listas {
+	class ListaEntidades
+	{
 	private:
 		Lista<Entidade> lista;
-	
+
 	public:
 		ListaEntidades();
 		~ListaEntidades();
@@ -21,5 +23,6 @@ class ListaEntidades
 
 
 
-};
+	};
+}//fim do namespace
 

@@ -3,27 +3,30 @@
 #include <math.h>
 
 using namespace std;
-namespace personagens {
-	class Jogador : public Personagem {
-	private:
-		int atacando;
-		int pulo;
-		Texture textura;
 
-	public:
-		Jogador(int vidas, Vector2f p, int id);
-		~Jogador();
+namespace entidades {
+	namespace personagens {
+		class Jogador : public Personagem {
+		private:
+			int atacando;
+			int pulo;
+			Texture textura;
 
-		void move();
+		public:
+			Jogador(int vidas, Vector2f p, int id);
+			~Jogador();
 
-		int getAtacando();
-		int getImune();
-		int getDirecao();
-		void setImune();
-		void setNoChao(bool estado);
+			void move();
 
-		void gravar();
-		static Lista<Jogador>* recuperar();
+			int getAtacando();
+			int getImune();
+			int getDirecao();
+			void setImune();
+			void setNoChao(bool estado);
 
-	};
-}//fim
+			void gravar();
+			static Lista<Jogador>* recuperar();
+
+		};
+	}//fim
+}//fim do namespace

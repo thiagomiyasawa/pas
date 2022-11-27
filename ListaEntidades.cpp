@@ -1,4 +1,5 @@
 #include "ListaEntidades.h"
+using namespace listas;
 
 ListaEntidades::ListaEntidades() {
 
