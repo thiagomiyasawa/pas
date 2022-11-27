@@ -26,10 +26,10 @@ void Ganondorf::move() {
 		dano = 1;
 	}
 	if (noChao) {
-		if (posicao.y + tamanho.y < 350 && posicao.x < 370) {
+		if (posicao.y + tamanho.y < 300 && posicao.x < 370) {
 			velocidade.x = 0.088;
 		}
-		else if (posicao.y + tamanho.y < 350 && posicao.x+tamanho.x >930 ) {
+		else if (posicao.y + tamanho.y < 300 && posicao.x+tamanho.x >930 ) {
 			velocidade.x = -0.088;
 		}
 		else if (posicao.x < 20) {
