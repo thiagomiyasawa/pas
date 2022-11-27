@@ -26,6 +26,12 @@ void PlataformaFalsa::reduzAtivo() {
 	}
 }
 
+void PlataformaFalsa::move() {
+	velocidade.y -= 0.001f;
+	gravidade();
+
+}
+
 void PlataformaFalsa::gravar()
 {
 	ofstream gravador("save/plataformafalsa.dat", ios::app);

@@ -8,6 +8,7 @@ private:
 public:
     PlataformaFalsa(Vector2f coordenada, Vector2f tamanho);
     ~PlataformaFalsa();
+    void move();
 
     void setAtivo(int a);
     int getAtivo();

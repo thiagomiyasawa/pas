@@ -8,9 +8,6 @@ Entidade::Entidade(Vector2f p, Vector2f t,int ID) : Ente(t) {
 Entidade::~Entidade() {
 }
 
-void Entidade::move()
-{
-}
 
 float Entidade::getX() const {
 	return posicao.x;

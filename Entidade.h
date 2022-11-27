@@ -14,7 +14,7 @@ public:
 	Entidade(Vector2f p, Vector2f t, int ID = 0);
 	~Entidade();
 	
-	virtual void move();
+	virtual void move()=0;
 	float getX() const;
 	float getY() const;
 	int getId() const;

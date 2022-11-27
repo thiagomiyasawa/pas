@@ -18,6 +18,11 @@ int Espinhos::getDano() {
 	return dano;
 }
 
+void Espinhos::move() {
+	velocidade.y -= 0.001f;
+	gravidade();
+
+}
 void Espinhos::gravar() {
     ofstream gravador("save/espinhos.dat", ios::app);
 
