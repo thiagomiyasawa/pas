@@ -18,6 +18,11 @@ Lava::~Lava()
 int Lava::getDano() {
 	return dano;
 }
+void Lava::move() {
+	velocidade.y -= 0.001f;
+	gravidade();
+
+}
 
 void Lava::gravar() {
 	ofstream gravador("save/lava.dat", ios::app);

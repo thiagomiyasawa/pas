@@ -10,7 +10,11 @@ Plataforma::Plataforma(Vector2f coordenada, Vector2f tamanho) :
 Plataforma::~Plataforma()
 {
 }
+void Plataforma::move() {
+	velocidade.y -= 0.001f;
+	gravidade();
 
+}
 void Plataforma::gravar() {
     ofstream gravador("save/plataforma.dat", ios::app);
 

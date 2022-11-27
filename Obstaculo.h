@@ -12,5 +12,6 @@ public:
 	virtual void reduzAtivo();
 	bool getSolido();
 	bool getDanoso();
+	virtual void move()=0;
 };
 

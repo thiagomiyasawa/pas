@@ -9,6 +9,7 @@ public:
     Espinhos(Vector2f coordenada, Vector2f tamanho);
     ~Espinhos();
     int getDano();
+    void move();
 
     void gravar();
     static Lista<Espinhos>* recuperar();
