@@ -1,12 +1,15 @@
 #include "CaixaDeTexto.h"
 
 CaixaDeTexto::CaixaDeTexto(sf::Vector2f cord, sf::Font* fonte) {
-	limite = 10;
 	caixaTexto.setCharacterSize(103);
 	caixaTexto.setFillColor(sf::Color(228, 58, 20));
 	caixaTexto.setFont(*fonte);
 	caixaTexto.setString("_");
 	caixaTexto.setPosition(cord);
+}
+
+CaixaDeTexto::~CaixaDeTexto() {
+
 }
 
 void CaixaDeTexto::inputLogic(int tecla) {
@@ -38,10 +41,10 @@ std::string CaixaDeTexto::getTexto() {
 void CaixaDeTexto::escrever(sf::Event input) {
 	int tecla = input.text.unicode;
 	if (tecla < 128) {
-		if (texto.str().length() <= limite) {
+		if (texto.str().length() <= 10) {
 			inputLogic(tecla);
 		}
-		else if (texto.str().length() > limite && tecla == DELETE_KEY) {
+		else if (texto.str().length() > 10 && tecla == DELETE_KEY) {
 			popBack();
 		}
 	}

@@ -6,8 +6,8 @@
 class MenuGameOver
 {
 private:
-    int pos;
-    bool pressed, theselect;
+    
+
 
 
     sf::RenderWindow* window;
@@ -24,7 +24,6 @@ private:
 protected:
     bool loop_events();
     void draw_all();
-    sf::Keyboard::Key imputs();
 public:
     MenuGameOver(sf::RenderWindow* janela);
     ~MenuGameOver();

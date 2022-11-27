@@ -16,6 +16,8 @@ Ranking::Ranking(sf::RenderWindow* janela, Jogo* game){
     coordsNomes = { {535,136},{535,186},{535,236},{535,286}, {535,336} };
     coordsPontos = { {895,136},{895,186},{895,236},{895,286}, {895,336} };
     recupera();
+   
+
 }
 
 Ranking::~Ranking() {
@@ -44,7 +46,6 @@ void Ranking::addColocado(std::string nome) {
             if (!posicionado) {
                 if (aux.pontos > jogador.pontos) {
                     rank.push(aux);
-                    posicionado = true;
                 }
                 else if (aux.pontos < jogador.pontos) {
                     rank.push(jogador);

@@ -13,12 +13,14 @@ class CaixaDeTexto
 private:
 	sf::Text caixaTexto;
 	std::ostringstream texto;
-	int limite;
+
+protected:
 	void inputLogic(int tecla);
 	void popBack();
 
 public:
 	CaixaDeTexto(sf::Vector2f cord, sf::Font* fonte);
+	~CaixaDeTexto();
 	std::string getTexto();
 	void drawTo(sf::RenderWindow* window);
 	void escrever(sf::Event input);

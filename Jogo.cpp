@@ -2,7 +2,7 @@
 
 Jogo::Jogo() {
     grafico = GerenciadorGrafico::getInstance();
-    link1 = new Jogador(2, Vector2f(0., 280.),11);
+    link1 = new Jogador(5, Vector2f(0., 280.),11);
     link1->setWindow(grafico->getWindow());
     menu = new Menu(grafico->getWindow());
     end = new MenuGameOver(grafico->getWindow());
