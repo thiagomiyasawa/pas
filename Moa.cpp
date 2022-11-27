@@ -1,4 +1,6 @@
 #include "Moa.h"
+
+using namespace entidades;
 using namespace personagens;
 
 Moa::Moa(int vidas, Vector2f p) :

@@ -1,5 +1,7 @@
 #include "Entidade.h"
 
+using namespace entidades;
+
 Entidade::Entidade(Vector2f p, Vector2f t,int ID) : Ente(t) {
 	posicao = p;
 	id = ID;

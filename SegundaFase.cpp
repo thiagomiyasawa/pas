@@ -1,4 +1,5 @@
 #include "SegundaFase.h"
+using namespace fases;
 
 SegundaFase::SegundaFase(RenderWindow* w, Jogador* J1, float tempo, bool nova)
 	: Fase(w, J1, nullptr, tempo) {

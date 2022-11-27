@@ -1,5 +1,8 @@
 #include "Lava.h"
 
+using namespace entidades;
+using namespace obstaculos;
+
 Lava::Lava(Vector2f coordenada, Vector2f tamanho) :
 	Obstaculo(coordenada, tamanho, 33)
 {

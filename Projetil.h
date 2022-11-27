@@ -1,6 +1,8 @@
 #pragma once
 #include "Entidade.h"
-class Projetil:public Entidade {
+
+namespace entidades {
+	class Projetil :public Entidade {
 	private:
 		bool ativo;
 	public:
@@ -12,6 +14,7 @@ class Projetil:public Entidade {
 
 		void gravar();
 		static Lista<Projetil>* recuperar();
-		
-};
 
+	};
+
+}//fim do namespace

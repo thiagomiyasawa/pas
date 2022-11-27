@@ -4,56 +4,59 @@
 #include "Fase.h"
 #include <iostream>
 #include <map>
+
 using namespace sf;
 using namespace std;
-class GerenciadorGrafico {
-private:
-    RenderWindow* window;
-    View view;
-    map<const char*, Texture*> texturesMap;
-    map<const char*, Font*> fontsMap;
-    Clock clock;
-    static float dt;
-    
-    /* Singleton design pattern */
-    static GerenciadorGrafico* instance;
-    GerenciadorGrafico();
-public:
-     ~GerenciadorGrafico();
-    static GerenciadorGrafico* getInstance();
 
-    void render(sf::RectangleShape* body);
+namespace gerenciadores {
+    class GerenciadorGrafico {
+    private:
+        RenderWindow* window;
+        View view;
+        map<const char*, Texture*> texturesMap;
+        map<const char*, Font*> fontsMap;
+        Clock clock;
+        static float dt;
 
-    void render(sf::Text* text);
-    
-    void display();
+        /* Singleton design pattern */
+        static GerenciadorGrafico* instance;
+        GerenciadorGrafico();
+    public:
+        ~GerenciadorGrafico();
+        static GerenciadorGrafico* getInstance();
 
-    void clear();
+        void render(sf::RectangleShape* body);
 
-    bool isWindowOpen() const;
-    
-    void closeWindow();
+        void render(sf::Text* text);
 
-    void setWindowSize(Vector2u size);
-    
-    Vector2u getWindowSize() const;
+        void display();
 
-    Vector2f getTopLeftPosition() const;
+        void clear();
 
-    void centerView(Vector2f pos);
+        bool isWindowOpen() const;
 
-    Texture* loadTexture(const char* path);
+        void closeWindow();
 
-    Font* loadFont(const char* path);
+        void setWindowSize(Vector2u size);
 
-    float updateDeltaTime();
+        Vector2u getWindowSize() const;
 
-    float getDt();
+        Vector2f getTopLeftPosition() const;
 
-    RenderWindow* getWindow() const;
+        void centerView(Vector2f pos);
 
-    void Executar();
+        Texture* loadTexture(const char* path);
+
+        Font* loadFont(const char* path);
+
+        float updateDeltaTime();
+
+        float getDt();
+
+        RenderWindow* getWindow() const;
+
+        void Executar();
 
     };
-
+}//fim do namespace
 

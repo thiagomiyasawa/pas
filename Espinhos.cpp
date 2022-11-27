@@ -1,5 +1,8 @@
 #include "Espinhos.h"
 
+using namespace entidades;
+using namespace obstaculos;
+
 Espinhos::Espinhos(Vector2f coordenada, Vector2f tamanho) :
 	Obstaculo(coordenada, tamanho, 32)
 {

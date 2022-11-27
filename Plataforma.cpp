@@ -1,5 +1,8 @@
 #include "Plataforma.h"
 
+using namespace entidades;
+using namespace obstaculos;
+
 Plataforma::Plataforma(Vector2f coordenada, Vector2f tamanho) :
 	Obstaculo(coordenada,tamanho, 31)
 {

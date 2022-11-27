@@ -13,9 +13,16 @@
 #include "Menu.h"
 #include "MenuGameOver.h"
 #include "Ranking.h"
+
 using namespace std;
 using namespace sf;
+using namespace gerenciadores;
+using namespace entidades;
 using namespace personagens;
+using namespace obstaculos;
+using namespace listas;
+using namespace fases;
+
 class Jogo{
 private:
 	GerenciadorGrafico* grafico;

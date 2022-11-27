@@ -1,4 +1,7 @@
 #include "Personagem.h"
+
+using namespace entidades;
+
 Personagem::Personagem(int n, Vector2f t, Vector2f p, int id, int estado)
 	: Entidade(p, t, id) {
 	numVidas = n;

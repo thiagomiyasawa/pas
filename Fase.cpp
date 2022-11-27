@@ -1,4 +1,5 @@
 #include "Fase.h"
+using namespace fases;
 
 Fase::Fase(RenderWindow* w, Jogador* j) {
 	colisoes = new GerenciadorColisoes(j);
