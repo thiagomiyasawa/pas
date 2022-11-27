@@ -154,7 +154,7 @@ void Ranking::drawAll() {
 }
 
 void Ranking::salva() {
-    ofstream gravador("save/batata.dat", ios::out);
+    ofstream gravador("save/ranking.dat", ios::out);
 
     if (!gravador)
     {

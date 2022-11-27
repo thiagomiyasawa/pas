@@ -14,6 +14,6 @@ public:
     void geraMoa();
     void geraGanon();
     void salvar(int pontos, float tempo);
-    static SegundaFase* recuperar(RenderWindow* w);
+    static SegundaFase* recuperar(RenderWindow* w, float tempo);
 };
 

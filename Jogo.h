@@ -41,7 +41,7 @@ public:
 	void resetarJogo();
 	void trocaFase();
 	void continuar();
-	void FimDejogo(int pontos);
+	void fimDeJogo(int pontos);
 	int getPontos();
 };
 
