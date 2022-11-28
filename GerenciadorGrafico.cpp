@@ -20,18 +20,10 @@ GerenciadorGrafico* GerenciadorGrafico::getInstance() {
 }
 
 GerenciadorGrafico::GerenciadorGrafico() :
-    window(new RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Zelda", Style::Titlebar | Style::Close)),
-    view(Vector2f(WIDTH / 2, HEIGHT / 2), Vector2f(WIDTH, HEIGHT)),
-    texturesMap(),
-    fontsMap() { }
+    window(new RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Zelda", Style::Titlebar | Style::Close)){ 
+}
 
 GerenciadorGrafico::~GerenciadorGrafico() {
-    map<const char*, Texture*>::iterator it;
-
-    for (it = texturesMap.begin(); it != texturesMap.end(); ++it) {
-        delete (it->second);
-    }
-
     delete (window);
 }
 
@@ -90,51 +82,6 @@ void GerenciadorGrafico::centerView(Vector2f pos) {
     window->setView(view);
 }
 
-    /* Returns a texture to be used by an entity. */
-Texture* GerenciadorGrafico::loadTexture(const char* path) {
-    /* Tries to find an existing texture linked by the path to it. */
-    map<const char*, Texture*>::iterator it = texturesMap.begin();
-    while (it != texturesMap.end()) {
-        if (!strcmp(it->first, path))
-            return it->second;
-        it++;
-    }
-
-    /* If not found, must load it. */
-    Texture* tex = new Texture();
-
-    if (!tex->loadFromFile(path)) {
-        cout << "ERROR loading file " << path << endl;
-        exit(1);
-    }
-
-    texturesMap.insert(pair<const char*, Texture*>(path, tex));
-
-    return tex;
-}
-
-/* Returns a font pointer to be used by texts. */
-Font* GerenciadorGrafico::loadFont(const char* path) {
-    /* Tries to find an existing font linked by the path to it */
-    map<const char*, Font*>::iterator it = fontsMap.begin();
-    while (it != fontsMap.end()) {
-        if (!strcmp(it->first, path))
-            return it->second;
-        it++;
-    }
-
-    /* If not found, must load it. */
-    Font* font = new Font();
-
-    if (!font->loadFromFile(path)) {
-        cout << "ERROR loading file " << path << endl;
-        exit(1);
-    }
-
-    fontsMap.insert(pair<const char*, Font*>(path, font));
-
-    return font;
-}
 
 float GerenciadorGrafico::updateDeltaTime() {   
     dt = clock.getElapsedTime().asSeconds();
