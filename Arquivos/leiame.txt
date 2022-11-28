@@ -1,0 +1,2 @@
+o projeto foi programado no microsoft visual studio 2022, no window 11 X64,
+a biblioteca grafica utilizada foi a SFML 2.5.1
