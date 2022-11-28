@@ -144,6 +144,7 @@ void Jogo::resetarJogo() {
     estado = 0;
     time = 0;
     menu->set_values(1);
+    fim = false;
 }
 
 void Jogo::continuar() {
