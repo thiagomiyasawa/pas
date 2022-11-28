@@ -12,9 +12,6 @@ namespace gerenciadores {
     class GerenciadorGrafico {
     private:
         RenderWindow* window;
-        View view;
-        map<const char*, Texture*> texturesMap;
-        map<const char*, Font*> fontsMap;
         Clock clock;
         static float dt;
 
@@ -42,12 +39,6 @@ namespace gerenciadores {
         Vector2u getWindowSize() const;
 
         Vector2f getTopLeftPosition() const;
-
-        void centerView(Vector2f pos);
-
-        Texture* loadTexture(const char* path);
-
-        Font* loadFont(const char* path);
 
         float updateDeltaTime();
 
