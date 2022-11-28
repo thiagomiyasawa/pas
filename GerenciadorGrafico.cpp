@@ -62,8 +62,6 @@ void GerenciadorGrafico::closeWindow() {
     /* Sets window size to its parameters */
 void GerenciadorGrafico::setWindowSize(Vector2u size) {
     window->setSize(sf::Vector2u(size.x, size.y));
-    view.setSize(size.x, size.y);
-    window->setView(view);
 }
 
     /* Returns the window size. */
@@ -76,11 +74,6 @@ Vector2f GerenciadorGrafico::getTopLeftPosition() const {
     return Vector2f(window->getView().getCenter().x - window->getSize().x / 2, window->getView().getCenter().y - window->getSize().y / 2);
 }
 
-    /* Changes the view position. */
-void GerenciadorGrafico::centerView(Vector2f pos) {
-    view.setCenter(Vector2f(pos.x, pos.y));
-    window->setView(view);
-}
 
 
 float GerenciadorGrafico::updateDeltaTime() {   
